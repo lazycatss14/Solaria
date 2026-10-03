@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Solaria Settings</title>
+
+    <!-- SOLARIA GLOBAL THEME -->
+    <link
+        rel="stylesheet"
+        href="../css/theme.css"
+    >
+
+    <!-- SETTINGS PAGE CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/settings.css"
+    >
+
+    <!-- SOLARIA THEME CONTROLLER -->
+    <script src="../js/theme.js"></script>
+
+</head>
+
+<body>
+
+    <div class="settings-screen">
+
+        <!-- TOP BAR -->
+
+        <header class="settings-topbar">
+
+            <div class="settings-brand">
+                SOLARIA
+            </div>
+
+            <button
+                id="backButton"
+                class="back-button"
+                type="button"
+            >
+                ← BACK
+            </button>
+
+        </header>
+
+
+        <!-- SETTINGS CONTENT -->
+
+        <main class="settings-content">
+
+            <h1>SETTINGS</h1>
+
+
+            <!-- =================================================
+                 MUSIC
+            ================================================== -->
+
+            <section class="settings-section">
+
+                <h2>MUSIC</h2>
+
+                <div class="settings-line">
+
+                    <div>
+
+                        <strong>
+                            Background Music
+                        </strong>
+
+                        <span>
+                            Play Solaria background music
+                        </span>
+
+                    </div>
+
+                    <label class="toggle">
+
+                        <input
+                            type="checkbox"
+                            id="musicEnabled"
+                        >
+
+                        <span class="toggle-slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="settings-line">
+
+                    <div>
+
+                        <strong>
+                            Volume
+                        </strong>
+
+                        <span id="volumeText">
+                            50%
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="musicVolume"
+                        min="0"
+                        max="100"
+                        value="50"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 APPEARANCE
+            ================================================== -->
+
+            <section class="settings-section">
+
+                <h2>APPEARANCE</h2>
+
+                <div class="settings-line">
+
+                    <div>
+
+                        <strong>
+                            Theme
+                        </strong>
+
+                        <span>
+                            Choose how Solaria looks
+                        </span>
+
+                    </div>
+
+
+                    <div class="theme-control">
+
+                        <span
+                            id="themeIcon"
+                            class="theme-icon"
+                            aria-hidden="true"
+                        >
+                            🖥️
+                        </span>
+
+
+                        <select
+                            id="themeSelect"
+                            class="theme-select"
+                            aria-label="Solaria theme"
+                        >
+
+                            <option value="system">
+                                System
+                            </option>
+
+                            <option value="light">
+                                Light
+                            </option>
+
+                            <option value="dark">
+                                Dark
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ACCOUNT
+            ================================================== -->
+
+            <section class="settings-section">
+
+                <h2>ACCOUNT</h2>
+
+                <div class="account-info">
+
+                    <!-- DISPLAY NAME -->
+
+                    <div class="account-row account-edit-row">
+
+                        <div class="account-row-info">
+
+                            <span>
+                                Display Name
+                            </span>
+
+                            <strong id="displayName">
+                                Loading...
+                            </strong>
+
+                        </div>
+
+                        <div class="display-name-editor">
+
+                            <input
+                                type="text"
+                                id="displayNameInput"
+                                maxlength="30"
+                                placeholder="Display name"
+                                autocomplete="off"
+                            >
+
+                            <button
+                                type="button"
+                                id="saveDisplayNameButton"
+                                class="settings-small-button"
+                            >
+                                SAVE
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- USERNAME -->
+
+                    <div class="account-row">
+
+                        <span>
+                            Username
+                        </span>
+
+                        <strong id="username">
+                            Loading...
+                        </strong>
+
+                    </div>
+
+
+                    <!-- GOLDEN BLOCKS -->
+
+                    <div class="account-row">
+
+                        <span>
+                            Golden Blocks
+                        </span>
+
+                        <strong id="goldenBlocks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PRIVACY
+            ================================================== -->
+
+            <section class="settings-section">
+
+                <h2>PRIVACY</h2>
+
+                <div class="settings-line">
+
+                    <div>
+
+                        <strong>
+                            Allow Friend Requests
+                        </strong>
+
+                        <span>
+                            Let other players send you friend requests
+                        </span>
+
+                    </div>
+
+                    <label class="toggle">
+
+                        <input
+                            type="checkbox"
+                            id="friendRequestsEnabled"
+                        >
+
+                        <span class="toggle-slider"></span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 GAME
+            ================================================== -->
+
+            <section class="settings-section">
+
+                <h2>GAME</h2>
+
+                <button
+                    class="settings-option"
+                    id="graphicsButton"
+                    type="button"
+                >
+
+                    <span>
+                        Graphics
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="settings-option"
+                    id="soundButton"
+                    type="button"
+                >
+
+                    <span>
+                        Sound Effects
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="settings-option"
+                    id="controlsButton"
+                    type="button"
+                >
+
+                    <span>
+                        Controls
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </section>
+
+
+            <!-- =================================================
+                 ABOUT
+            ================================================== -->
+
+            <section class="settings-section">
+
+                <h2>ABOUT</h2>
+
+                <div class="about-text">
+
+                    <strong>
+                        Solaria
+                    </strong>
+
+                    <span>
+                        Browser
+                    </span>
+
+                    <span>
+                        Version 0.7.2
+                    </span>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- SETTINGS JAVASCRIPT -->
+    <script src="../js/settings.js"></script>
+
+</body>
+
+</html>

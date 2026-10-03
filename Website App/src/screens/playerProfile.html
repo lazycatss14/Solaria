@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Solaria - Player Profile</title>
+
+
+    <!-- =========================================
+         SOLARIA THEME
+    ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css"
+    >
+
+
+    <!-- =========================================
+         SOLARIA GLOBAL CSS
+    ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <!-- =========================================
+         PLAYER PROFILE CSS
+    ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../css/playerProfile.css"
+    >
+
+
+    <!-- =========================================
+         SOLARIA THEME CONTROLLER
+    ========================================= -->
+
+    <script src="../js/theme.js"></script>
+
+
+    <!-- =========================================
+         PLAYER FRIEND BUTTON
+    ========================================= -->
+
+    <style>
+
+        .player-friend-area {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin-top: 24px;
+            margin-bottom: 10px;
+
+        }
+
+
+        .player-friend-button {
+
+            min-width: 190px;
+
+            padding: 12px 24px;
+
+            border: 2px solid var(--solaria-border-2);
+
+            border-radius: 8px;
+
+            background: var(--solaria-gold);
+
+            color: var(--solaria-text);
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.12s ease,
+                opacity 0.12s ease,
+                background 0.12s ease,
+                color 0.12s ease,
+                border-color 0.12s ease;
+
+        }
+
+
+        .player-friend-button:hover {
+
+            transform: translateY(-1px);
+
+            background: var(--solaria-gold-hover);
+
+        }
+
+
+        .player-friend-button:active {
+
+            transform: translateY(1px);
+
+        }
+
+
+        .player-friend-button:disabled {
+
+            opacity: 0.65;
+
+            cursor: default;
+
+            transform: none;
+
+        }
+
+
+        .player-friend-button.request-sent {
+
+            background: var(--solaria-muted);
+
+            color: var(--solaria-surface);
+
+        }
+
+
+        .player-friend-button.accept {
+
+            background: var(--solaria-green);
+
+            color: var(--solaria-green-text);
+
+            border-color: var(--solaria-green-border);
+
+        }
+
+
+        .player-friend-button.remove {
+
+            background: var(--solaria-danger);
+
+            color: var(--solaria-danger-text);
+
+            border-color: var(--solaria-danger-border);
+
+        }
+
+
+        .player-friend-button.hidden {
+
+            display: none;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main
+        id="playerProfileScreen"
+        class="screen"
+    >
+
+
+        <!-- =========================================
+             TOP BAR
+        ========================================= -->
+
+        <header class="topbar">
+
+
+            <!-- LOGO -->
+
+            <div
+                id="profileLogo"
+                class="topbar-brand"
+            >
+
+                <span class="topbar-logo">
+                    SOLARIA
+                </span>
+
+            </div>
+
+
+            <!-- =====================================
+                 NAVIGATION
+            ===================================== -->
+
+            <nav class="topbar-nav">
+
+                <button
+                    id="homeButton"
+                    class="topbar-button"
+                    type="button"
+                >
+                    HOME
+                </button>
+
+
+                <button
+                    id="gamesButton"
+                    class="topbar-button"
+                    type="button"
+                >
+                    GAMES
+                </button>
+
+
+                <button
+                    id="avatarButton"
+                    class="topbar-button"
+                    type="button"
+                >
+                    AVATAR
+                </button>
+
+
+                <button
+                    id="settingsButton"
+                    class="topbar-button"
+                    type="button"
+                >
+                    SETTINGS
+                </button>
+
+            </nav>
+
+
+            <!-- =====================================
+                 ACCOUNT
+            ===================================== -->
+
+            <div class="topbar-account">
+
+                <span
+                    id="usernameDisplay"
+                    class="topbar-username"
+                >
+                    Loading...
+                </span>
+
+
+                <button
+                    id="logoutButton"
+                    class="topbar-logout"
+                    type="button"
+                >
+                    LOG OUT
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             PROFILE CONTENT
+        ========================================= -->
+
+        <section class="profile-content">
+
+
+            <!-- BACK BUTTON -->
+
+            <button
+                id="backButton"
+                class="back-button"
+                type="button"
+            >
+                ← BACK
+            </button>
+
+
+            <!-- =====================================
+                 PLAYER PROFILE
+            ===================================== -->
+
+            <div
+                id="playerProfile"
+                class="player-profile"
+            >
+
+
+                <!-- PROFILE HEADER -->
+
+                <div class="player-profile-header">
+
+
+                    <!-- AVATAR -->
+
+                    <div
+                        id="playerAvatar"
+                        class="player-profile-avatar"
+                    >
+                        👤
+                    </div>
+
+
+                    <!-- NAME -->
+
+                    <div class="player-profile-name-area">
+
+                        <h1
+                            id="playerDisplayName"
+                            class="player-profile-display-name"
+                        >
+                            Loading...
+                        </h1>
+
+
+                        <p
+                            id="playerUsername"
+                            class="player-profile-username"
+                        >
+                            Loading...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     FRIEND BUTTON
+                ================================== -->
+
+                <div
+                    id="playerFriendArea"
+                    class="player-friend-area"
+                >
+
+                    <button
+                        id="playerFriendButton"
+                        class="player-friend-button hidden"
+                        type="button"
+                    >
+                        ADD FRIEND
+                    </button>
+
+                </div>
+
+
+                <!-- =================================
+                     PLAYER INFORMATION
+                ================================== -->
+
+                <div class="player-profile-info">
+
+
+                    <!-- GOLDEN BLOCKS -->
+
+                    <div class="player-profile-stat">
+
+                        <span class="player-profile-stat-label">
+                            GOLDEN BLOCKS
+                        </span>
+
+
+                        <span
+                            id="playerGoldenBlocks"
+                            class="player-profile-stat-value"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <!-- ONLINE STATUS -->
+
+                    <div class="player-profile-stat">
+
+                        <span class="player-profile-stat-label">
+                            PLAYER
+                        </span>
+
+
+                        <span
+                            id="playerStatus"
+                            class="player-profile-stat-value"
+                        >
+                            LOADING...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROFILE MESSAGE -->
+
+                <div
+                    id="playerProfileMessage"
+                    class="player-profile-message"
+                    aria-live="polite"
+                ></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         SOLARIA JAVASCRIPT
+    ========================================= -->
+
+    <script src="../js/auth.js?v=0.4.3"></script>
+
+    <script src="../js/music.js?v=0.4.3"></script>
+
+    <script src="../js/playerProfile.js?v=0.4.3"></script>
+
+</body>
+
+</html>

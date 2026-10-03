@@ -1,0 +1,1030 @@
+/* =========================================================
+   SOLARIA
+   PLAYER PROFILE
+   WINDOWS XP STYLE
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #5b9bd5;
+
+    color:
+        #000000;
+}
+
+body {
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   PROFILE PAGE
+   ========================================================= */
+
+.profile-page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5b9bd5 0%,
+            #7eb9df 24%,
+            #d9edf7 48%,
+            #ece9d8 100%
+        );
+}
+
+
+/* =========================================================
+   PROFILE CONTENT
+   ========================================================= */
+
+.profile-content {
+    width:
+        min(
+            900px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        28px 0 50px;
+
+    flex: 1;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.back-button {
+    min-height:
+        29px;
+
+    padding:
+        5px 13px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius:
+        3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f5f4ee 45%,
+            #d7d5cc 100%
+        );
+
+    color:
+        #000000;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #faf9f4 45%,
+            #e4e2da 100%
+        );
+}
+
+.back-button:active {
+    transform:
+        translateY(1px);
+
+    box-shadow:
+        inset 0 2px 3px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   PLAYER PROFILE WINDOW
+   ========================================================= */
+
+.player-profile {
+    width:
+        100%;
+
+    margin-top:
+        14px;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius:
+        3px;
+
+    background:
+        #ece9d8;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   PROFILE HEADER
+   ========================================================= */
+
+.player-profile-header {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    padding:
+        14px;
+
+    border-bottom:
+        1px solid #7f9db9;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #e8f0f7 45%,
+            #c8d9e8 100%
+        );
+
+    box-shadow:
+        inset 0 1px 0 #ffffff;
+}
+
+
+/* =========================================================
+   PROFILE AVATAR
+   ========================================================= */
+
+.player-profile-avatar {
+    width:
+        82px;
+
+    height:
+        82px;
+
+    min-width:
+        82px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        1px solid #6f8da9;
+
+    border-radius:
+        3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #d9edf9,
+            #9fc7e2
+        );
+
+    color:
+        #003399;
+
+    font-size:
+        38px;
+
+    user-select:
+        none;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   AVATAR IMAGE
+   ========================================================= */
+
+.player-profile-avatar img {
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+}
+
+
+/* =========================================================
+   NAME AREA
+   ========================================================= */
+
+.player-profile-name-area {
+    min-width:
+        0;
+
+    flex:
+        1;
+}
+
+
+/* =========================================================
+   DISPLAY NAME
+   ========================================================= */
+
+.player-profile-display-name {
+    margin:
+        0 0 4px;
+
+    color:
+        #003399;
+
+    font-size:
+        24px;
+
+    font-weight:
+        bold;
+
+    line-height:
+        1.15;
+
+    word-break:
+        break-word;
+
+    text-shadow:
+        0 1px 0 #ffffff;
+}
+
+
+/* =========================================================
+   USERNAME
+   ========================================================= */
+
+.player-profile-username {
+    margin:
+        0;
+
+    color:
+        #555555;
+
+    font-size:
+        12px;
+
+    font-weight:
+        normal;
+
+    word-break:
+        break-word;
+}
+
+
+/* =========================================================
+   FRIEND AREA
+   ========================================================= */
+
+.player-friend-area {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        12px 16px;
+
+    border-bottom:
+        1px solid #c0beb5;
+
+    background:
+        #f7f6ef;
+}
+
+
+/* =========================================================
+   FRIEND BUTTON
+   ========================================================= */
+
+.player-friend-button {
+    min-width:
+        190px;
+
+    min-height:
+        31px;
+
+    padding:
+        5px 20px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius:
+        3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f3f2ec 45%,
+            #d7d5cc 100%
+        );
+
+    color:
+        #000000;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   FRIEND BUTTON HOVER
+   ========================================================= */
+
+.player-friend-button:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #e4e2da
+        );
+}
+
+
+/* =========================================================
+   FRIEND BUTTON ACTIVE
+   ========================================================= */
+
+.player-friend-button:active {
+    transform:
+        translateY(1px);
+
+    box-shadow:
+        inset 0 2px 3px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   FRIEND BUTTON DISABLED
+   ========================================================= */
+
+.player-friend-button:disabled {
+    cursor:
+        default;
+
+    opacity:
+        0.6;
+
+    transform:
+        none;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff;
+}
+
+
+/* =========================================================
+   REQUEST SENT
+   ========================================================= */
+
+.player-friend-button.request-sent {
+    border-color:
+        #9b9991;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f0efea,
+            #d8d6cd
+        );
+
+    color:
+        #666666;
+
+    cursor:
+        default;
+}
+
+
+/* =========================================================
+   ACCEPT FRIEND
+   ========================================================= */
+
+.player-friend-button.accept {
+    border-color:
+        #28662d;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #8ed18d 0%,
+            #63b967 50%,
+            #44994a 100%
+        );
+
+    color:
+        #ffffff;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.25);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.player-friend-button.accept:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #9bdd9a,
+            #4da452
+        );
+}
+
+
+/* =========================================================
+   REMOVE FRIEND
+   ========================================================= */
+
+.player-friend-button.remove {
+    border-color:
+        #9b5b5b;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f4d6d6 0%,
+            #e6baba 50%,
+            #d99d9d 100%
+        );
+
+    color:
+        #6b2525;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.player-friend-button.remove:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #f6dddd,
+            #e0aaaa
+        );
+}
+
+
+/* =========================================================
+   HIDDEN FRIEND BUTTON
+   ========================================================= */
+
+.player-friend-button.hidden {
+    display:
+        none;
+}
+
+
+/* =========================================================
+   PROFILE INFORMATION
+   ========================================================= */
+
+.player-profile-info {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        1px;
+
+    background:
+        #9fa9b0;
+}
+
+
+/* =========================================================
+   PROFILE STAT
+   ========================================================= */
+
+.player-profile-stat {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        6px;
+
+    padding:
+        17px;
+
+    background:
+        #f7f6ef;
+
+    min-width:
+        0;
+}
+
+
+/* =========================================================
+   STAT LABEL
+   ========================================================= */
+
+.player-profile-stat-label {
+    color:
+        #555555;
+
+    font-size:
+        10px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        0;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   STAT VALUE
+   ========================================================= */
+
+.player-profile-stat-value {
+    color:
+        #003399;
+
+    font-size:
+        18px;
+
+    font-weight:
+        bold;
+
+    word-break:
+        break-word;
+}
+
+
+/* =========================================================
+   PROFILE MESSAGE
+   ========================================================= */
+
+.player-profile-message {
+    min-height:
+        20px;
+
+    padding:
+        14px 17px 17px;
+
+    color:
+        #555555;
+
+    font-size:
+        11px;
+
+    font-weight:
+        normal;
+
+    line-height:
+        1.5;
+
+    background:
+        #f7f6ef;
+}
+
+
+/* =========================================================
+   LOADING STATE
+   ========================================================= */
+
+.player-profile.loading {
+    opacity:
+        0.7;
+}
+
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.player-profile.error {
+    border-color:
+        #a45a5a;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.player-profile.empty {
+    padding:
+        25px;
+
+    text-align:
+        center;
+
+    color:
+        #666666;
+
+    background:
+        #f7f6ef;
+
+    font-size:
+        12px;
+}
+
+
+/* =========================================================
+   PROFILE BUTTON
+   ========================================================= */
+
+.profile-button {
+    min-height:
+        29px;
+
+    padding:
+        5px 13px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius:
+        3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f3f2ec 45%,
+            #d7d5cc 100%
+        );
+
+    color:
+        #000000;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.profile-button:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #e4e2da
+        );
+}
+
+.profile-button:active {
+    transform:
+        translateY(1px);
+}
+
+
+/* =========================================================
+   PROFILE HEADER ACTIONS
+   ========================================================= */
+
+.player-profile-actions {
+    margin-left:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+}
+
+
+/* =========================================================
+   FOCUS STATES
+   ========================================================= */
+
+.back-button:focus-visible,
+.player-friend-button:focus-visible,
+.profile-button:focus-visible {
+    outline:
+        1px dotted #000000;
+
+    outline-offset:
+        2px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.profile-page::-webkit-scrollbar {
+    width:
+        16px;
+}
+
+.profile-page::-webkit-scrollbar-track {
+    background:
+        #d8d7ce;
+
+    border-left:
+        1px solid #aaa9a2;
+}
+
+.profile-page::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            to right,
+            #f7f6ef,
+            #d1cfc6 50%,
+            #aaa8a0
+        );
+
+    border:
+        1px solid #88867f;
+
+    border-radius:
+        2px;
+}
+
+.profile-page::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            to right,
+            #ffffff,
+            #dedcd3 50%,
+            #b5b3aa
+        );
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .profile-content {
+        width:
+            calc(100% - 20px);
+
+        padding:
+            20px 0 40px;
+    }
+
+    .player-profile-header {
+        padding:
+            12px;
+
+        gap:
+            10px;
+    }
+
+    .player-profile-avatar {
+        width:
+            70px;
+
+        height:
+            70px;
+
+        min-width:
+            70px;
+
+        font-size:
+            30px;
+    }
+
+    .player-profile-display-name {
+        font-size:
+            20px;
+    }
+
+    .player-profile-username {
+        font-size:
+            11px;
+    }
+
+    .player-friend-area {
+        padding:
+            10px;
+    }
+
+    .player-friend-button {
+        width:
+            100%;
+
+        min-width:
+            0;
+    }
+
+    .player-profile-info {
+        grid-template-columns:
+            1fr;
+    }
+
+    .player-profile-stat {
+        padding:
+            15px;
+    }
+
+    .player-profile-actions {
+        width:
+            100%;
+
+        margin-left:
+            0;
+
+        margin-top:
+            8px;
+    }
+
+    .profile-button {
+        width:
+            100%;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .profile-content {
+        width:
+            calc(100% - 12px);
+    }
+
+    .player-profile-header {
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+    .player-profile-avatar {
+        align-self:
+            center;
+    }
+
+    .player-profile-name-area {
+        width:
+            100%;
+
+        text-align:
+            center;
+    }
+
+    .player-friend-area {
+        padding:
+            9px;
+    }
+
+    .player-friend-button {
+        width:
+            100%;
+
+        font-size:
+            10px;
+    }
+
+    .player-profile-actions {
+        width:
+            100%;
+    }
+
+    .player-profile-stat {
+        padding:
+            14px;
+    }
+
+    .player-profile-stat-value {
+        font-size:
+            17px;
+    }
+}
+
+
+/* =========================================================
+   END SOLARIA XP PLAYER PROFILE
+   ========================================================= */

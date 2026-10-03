@@ -1,0 +1,850 @@
+/* =========================================================
+   SOLARIA
+   DOWNLOAD PAGE CSS
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #000000;
+
+    line-height: 1.5;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #3b8edb 0%,
+            #76c9f2 38%,
+            #a9ddf5 54%,
+            #65a936 55%,
+            #3f8d28 72%,
+            #28731f 100%
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   XP SKY LIGHT
+========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 72% 18%,
+            rgba(255, 255, 255, 0.65),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 25% 10%,
+            rgba(255, 255, 255, 0.35),
+            transparent 18%
+        );
+
+    z-index: -2;
+}
+
+
+/* =========================================================
+   XP GREEN HILLS
+========================================================= */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    left: -10%;
+    right: -10%;
+    bottom: -18%;
+
+    height: 55%;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 20% 100%,
+            #2f7d24 0%,
+            #3f8d28 48%,
+            transparent 49%
+        ),
+        radial-gradient(
+            ellipse at 75% 100%,
+            #357f24 0%,
+            #4d942c 52%,
+            transparent 53%
+        );
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+    width: 100%;
+
+    min-height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 8px 18px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5fa8e5 0%,
+            #3f8edb 45%,
+            #245a9b 100%
+        );
+
+    border-bottom:
+        2px solid #173f70;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.35);
+
+    color: white;
+}
+
+
+/* =========================================================
+   SOLARIA LOGO
+========================================================= */
+
+.logo {
+    font-size: 24px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    color: #ffffff;
+
+    text-shadow:
+        1px 1px 0 #245a9b;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+}
+
+
+.navigation a {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 34px;
+
+    padding: 6px 13px;
+
+    color: #000000;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #ece9d8 45%,
+            #d8d5c7 100%
+        );
+
+    border:
+        1px solid #6f6f6f;
+
+    border-radius: 3px;
+
+    box-shadow:
+        inset 1px 1px 0 #ffffff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+.navigation a:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #dceeff 45%,
+            #b8d8f5 100%
+        );
+}
+
+
+.navigation a.current {
+    background:
+        linear-gradient(
+            to bottom,
+            #c8e2fa 0%,
+            #9fc8eb 100%
+        );
+}
+
+
+/* =========================================================
+   DOWNLOAD PAGE
+========================================================= */
+
+.download-page {
+    width: 100%;
+
+    padding-bottom: 45px;
+}
+
+
+/* =========================================================
+   DOWNLOAD HEADER
+========================================================= */
+
+.download-header {
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: 50px auto 25px;
+
+    padding: 0 20px;
+}
+
+
+.download-window {
+    overflow: hidden;
+
+    background: #ece9d8;
+
+    border:
+        1px solid #245a9b;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+
+.window-titlebar {
+    min-height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 6px 12px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5b9bd5 0%,
+            #3f8edb 45%,
+            #245a9b 100%
+        );
+
+    border-bottom:
+        1px solid #173f70;
+
+    text-shadow:
+        1px 1px 0 #245a9b;
+}
+
+
+.download-header-content {
+    padding: 45px 25px 50px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #ece9d8 100%
+        );
+}
+
+
+.download-logo {
+    margin-bottom: 8px;
+
+    color: #245a9b;
+
+    font-size: clamp(38px, 8vw, 68px);
+
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        2px 2px 0 #ffffff;
+}
+
+
+.download-header-content h1 {
+    margin: 0 0 8px;
+
+    font-size: clamp(25px, 5vw, 40px);
+}
+
+
+.download-header-content p {
+    margin: 0;
+
+    color: #333333;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   PLATFORM SECTION
+========================================================= */
+
+.download-platform {
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: 0 auto 25px;
+
+    padding: 0 20px;
+}
+
+
+/* =========================================================
+   PLATFORM WINDOW
+========================================================= */
+
+.platform-window {
+    overflow: hidden;
+
+    background: #ece9d8;
+
+    border:
+        1px solid #8f8f8f;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 5px 14px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =========================================================
+   PLATFORM CONTENT
+========================================================= */
+
+.platform-content {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f7f6ef 100%
+        );
+}
+
+
+.platform-icon {
+    width: 105px;
+
+    min-width: 105px;
+
+    height: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 58px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #dcd9cc
+        );
+
+    border:
+        1px solid #8f8f8f;
+
+    border-radius: 5px;
+
+    box-shadow:
+        inset 1px 1px 0 #ffffff,
+        0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   PLATFORM INFORMATION
+========================================================= */
+
+.platform-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.platform-info h2 {
+    margin: 0 0 6px;
+
+    color: #245a9b;
+
+    font-size: 25px;
+}
+
+
+.platform-info p {
+    margin: 4px 0;
+
+    color: #333333;
+
+    font-size: 14px;
+}
+
+
+.platform-version {
+    font-weight: bold;
+
+    color: #555555 !important;
+}
+
+
+.platform-requirements {
+    margin-bottom: 18px !important;
+
+    color: #666666 !important;
+}
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+========================================================= */
+
+.download-button {
+    display: inline-flex;
+
+    width: auto;
+
+    min-width: 230px;
+}
+
+
+.download-button:hover {
+    filter: brightness(1.08);
+}
+
+
+.download-button:active {
+    transform: translateY(1px);
+}
+
+
+/* =========================================================
+   INFORMATION SECTION
+========================================================= */
+
+.download-information {
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: 10px auto 25px;
+
+    padding: 0 20px;
+}
+
+
+.information-window {
+    overflow: hidden;
+
+    background: #ece9d8;
+
+    border:
+        1px solid #8f8f8f;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.22);
+}
+
+
+.information-content {
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #f7f6ef
+        );
+}
+
+
+.information-content h2 {
+    margin: 0 0 8px;
+
+    color: #245a9b;
+
+    font-size: 21px;
+}
+
+
+.information-content p {
+    margin: 7px 0;
+
+    color: #333333;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.download-back {
+    display: flex;
+
+    justify-content: center;
+
+    padding: 10px 20px 30px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 8px 18px;
+
+    border:
+        1px solid #6f6f6f;
+
+    border-radius: 3px;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 1px 1px 0 #ffffff;
+
+    transition:
+        transform 0.05s ease,
+        filter 0.1s ease;
+}
+
+
+.button:hover {
+    filter: brightness(1.05);
+}
+
+
+.button:active {
+    transform: translateY(1px);
+}
+
+
+.button.primary {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5fa8e5 0%,
+            #3f8edb 45%,
+            #245a9b 100%
+        );
+
+    border-color: #173f70;
+}
+
+
+.button.secondary {
+    color: #000000;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #ece9d8 45%,
+            #d4d1c3 100%
+        );
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    width: 100%;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(36, 90, 155, 0.96),
+            rgba(23, 63, 112, 0.98)
+        );
+
+    border-top:
+        2px solid #173f70;
+
+    box-shadow:
+        0 -3px 8px rgba(0, 0, 0, 0.25);
+}
+
+
+.footer-logo {
+    margin-bottom: 10px;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-bottom: 12px;
+}
+
+
+.footer-links a {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    text-decoration: underline;
+}
+
+
+.footer-links a:hover {
+    color: #dceeff;
+}
+
+
+.footer p {
+    margin: 0;
+
+    color: #e5f2ff;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        text-align: center;
+    }
+
+
+    .navigation {
+        justify-content: center;
+    }
+
+
+    .platform-content {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 25px 20px;
+    }
+
+
+    .platform-icon {
+        width: 90px;
+
+        min-width: 90px;
+
+        height: 90px;
+
+        font-size: 48px;
+    }
+
+
+    .platform-info {
+        width: 100%;
+    }
+
+
+    .download-button {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .download-header {
+        margin-top: 25px;
+    }
+
+
+    .download-header-content {
+        padding:
+            35px 18px
+            40px;
+    }
+
+
+    .navigation a {
+        flex: 1 1 auto;
+    }
+
+
+    .platform-content {
+        padding:
+            22px 15px;
+    }
+
+
+    .information-content {
+        padding:
+            20px 16px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+
+        animation: none !important;
+    }
+
+}

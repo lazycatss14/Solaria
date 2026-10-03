@@ -1,0 +1,1395 @@
+/* =========================================================
+   SOLARIA XP SETTINGS
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+    background: #3f7fb8;
+    color: #000000;
+}
+
+body {
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   SOLARIA XP VARIABLES
+   ========================================================= */
+
+:root {
+    --solaria-page-bg: #ece9d8;
+    --solaria-text: #000000;
+    --solaria-heading: #003399;
+    --solaria-muted: #555555;
+
+    --solaria-topbar:
+        linear-gradient(
+            to bottom,
+            #3f8edb 0%,
+            #1767b4 48%,
+            #0b4f9c 100%
+        );
+
+    --solaria-card:
+        #ece9d8;
+
+    --solaria-card-solid:
+        #f7f6ef;
+
+    --solaria-section-header-start:
+        #ffffff;
+
+    --solaria-section-header-end:
+        #d9e8f4;
+
+    --solaria-border:
+        #7f9db9;
+
+    --solaria-line:
+        #c0beb5;
+
+    --solaria-hover:
+        #edf5fc;
+
+    --solaria-hover-strong:
+        #d9ebfa;
+
+    --solaria-input:
+        #ffffff;
+
+    --solaria-sun:
+        #f6c453;
+
+    --solaria-orange:
+        #ef9c28;
+
+    --solaria-toggle-off:
+        #999999;
+
+    --solaria-toggle-knob:
+        #ffffff;
+
+    --solaria-shadow:
+        rgba(0, 0, 0, 0.22);
+
+    --solaria-shadow-strong:
+        rgba(0, 0, 0, 0.4);
+
+    --solaria-focus:
+        rgba(49, 106, 173, 0.4);
+
+    color-scheme: light;
+}
+
+
+/* =========================================================
+   DARK THEME COMPATIBILITY
+   ========================================================= */
+
+html[data-theme="dark"],
+body[data-theme="dark"] {
+    --solaria-page-bg: #d9d9d1;
+    --solaria-text: #000000;
+    --solaria-heading: #003399;
+    --solaria-muted: #444444;
+
+    --solaria-topbar:
+        linear-gradient(
+            to bottom,
+            #377db8 0%,
+            #194f88 48%,
+            #123e6d 100%
+        );
+
+    --solaria-card: #d9d9d1;
+    --solaria-card-solid: #eeeeea;
+
+    --solaria-section-header-start: #ffffff;
+    --solaria-section-header-end: #c9dbea;
+
+    --solaria-border: #6f8da9;
+    --solaria-line: #aaa9a2;
+
+    --solaria-hover: #e5f1fa;
+    --solaria-hover-strong: #cde5f7;
+
+    --solaria-input: #ffffff;
+
+    --solaria-sun: #e2b83f;
+    --solaria-orange: #d98a1e;
+
+    --solaria-toggle-off: #777777;
+    --solaria-toggle-knob: #ffffff;
+
+    --solaria-shadow:
+        rgba(0, 0, 0, 0.3);
+
+    --solaria-shadow-strong:
+        rgba(0, 0, 0, 0.5);
+
+    --solaria-focus:
+        rgba(49, 106, 173, 0.45);
+
+    color-scheme: light;
+}
+
+
+/* =========================================================
+   SYSTEM THEME
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+    html[data-theme="system"] {
+        --solaria-page-bg: #d9d9d1;
+        --solaria-text: #000000;
+        --solaria-heading: #003399;
+        --solaria-muted: #444444;
+
+        --solaria-topbar:
+            linear-gradient(
+                to bottom,
+                #377db8 0%,
+                #194f88 48%,
+                #123e6d 100%
+            );
+
+        --solaria-card: #d9d9d1;
+        --solaria-card-solid: #eeeeea;
+
+        --solaria-section-header-start: #ffffff;
+        --solaria-section-header-end: #c9dbea;
+
+        --solaria-border: #6f8da9;
+        --solaria-line: #aaa9a2;
+
+        --solaria-hover: #e5f1fa;
+        --solaria-hover-strong: #cde5f7;
+
+        --solaria-input: #ffffff;
+
+        --solaria-sun: #e2b83f;
+        --solaria-orange: #d98a1e;
+
+        --solaria-toggle-off: #777777;
+        --solaria-toggle-knob: #ffffff;
+
+        --solaria-shadow:
+            rgba(0, 0, 0, 0.3);
+
+        --solaria-shadow-strong:
+            rgba(0, 0, 0, 0.5);
+
+        --solaria-focus:
+            rgba(49, 106, 173, 0.45);
+
+        color-scheme: light;
+    }
+}
+
+
+/* =========================================================
+   SETTINGS SCREEN
+   ========================================================= */
+
+.settings-screen {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5b9bd5 0%,
+            #7db7dc 18%,
+            #dceef7 42%,
+            #ece9d8 100%
+        );
+
+    color:
+        var(--solaria-text);
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+
+/* =========================================================
+   XP DESKTOP BACKGROUND DETAILS
+   ========================================================= */
+
+.settings-screen::before {
+    content: "";
+
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 22%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(75, 140, 75, 0),
+            rgba(75, 140, 75, 0.18)
+        );
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.settings-topbar {
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0 12px;
+
+    background:
+        var(--solaria-topbar);
+
+    border-bottom:
+        1px solid #0a3d72;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.35);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 10;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.settings-brand {
+    font-size: 20px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    color:
+        #ffffff;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.45);
+
+    transition:
+        color 0.25s ease;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.back-button {
+    border:
+        1px solid #315a82;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f3f2ed 45%,
+            #d7d5cc 100%
+        );
+
+    color:
+        #000000;
+
+    padding:
+        5px 14px;
+
+    min-height:
+        29px;
+
+    border-radius:
+        3px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.2);
+
+    transition:
+        background 0.1s,
+        transform 0.05s,
+        box-shadow 0.1s;
+}
+
+.back-button:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #faf9f4 45%,
+            #e5e3db 100%
+        );
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 2px 3px rgba(0, 0, 0, 0.22);
+}
+
+.back-button:active {
+    transform:
+        translateY(1px);
+
+    box-shadow:
+        inset 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.settings-content {
+    position: relative;
+
+    z-index: 1;
+
+    width:
+        min(
+            900px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        35px 0 70px;
+}
+
+.settings-content h1 {
+    margin:
+        0 0 20px;
+
+    padding:
+        12px 15px;
+
+    font-size:
+        24px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        0;
+
+    color:
+        #ffffff;
+
+    background:
+        var(--solaria-topbar);
+
+    border:
+        1px solid #0a3d72;
+
+    border-radius:
+        4px;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.3);
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.45);
+
+    transition:
+        color 0.25s ease;
+}
+
+
+/* =========================================================
+   SETTINGS SECTION
+   ========================================================= */
+
+.settings-section {
+    margin-bottom:
+        18px;
+
+    background:
+        var(--solaria-card);
+
+    border:
+        1px solid var(--solaria-border);
+
+    border-radius:
+        4px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 3px 9px var(--solaria-shadow);
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.settings-section h2 {
+    margin:
+        0;
+
+    padding:
+        8px 12px;
+
+    font-size:
+        12px;
+
+    letter-spacing:
+        0;
+
+    font-weight:
+        bold;
+
+    color:
+        #003399;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--solaria-section-header-start),
+            var(--solaria-section-header-end)
+        );
+
+    border-bottom:
+        1px solid var(--solaria-border);
+
+    text-shadow:
+        0 1px 0 #ffffff;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* =========================================================
+   SETTINGS LINE
+   ========================================================= */
+
+.settings-line {
+    min-height:
+        65px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+
+    padding:
+        12px 14px;
+
+    border-bottom:
+        1px solid var(--solaria-line);
+
+    transition:
+        background 0.1s;
+}
+
+.settings-line:last-child {
+    border-bottom:
+        0;
+}
+
+.settings-line:hover {
+    background:
+        var(--solaria-hover);
+}
+
+.settings-line strong {
+    display:
+        block;
+
+    font-size:
+        13px;
+
+    color:
+        var(--solaria-heading);
+
+    transition:
+        color 0.25s ease;
+}
+
+.settings-line span {
+    display:
+        block;
+
+    margin-top:
+        4px;
+
+    color:
+        var(--solaria-muted);
+
+    font-size:
+        11px;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+/* =========================================================
+   TOGGLE
+   ========================================================= */
+
+.toggle {
+    position:
+        relative;
+
+    width:
+        44px;
+
+    height:
+        22px;
+
+    flex-shrink:
+        0;
+}
+
+.toggle input {
+    opacity:
+        0;
+
+    width:
+        0;
+
+    height:
+        0;
+}
+
+.toggle-slider {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        var(--solaria-toggle-off);
+
+    border:
+        1px solid #666666;
+
+    border-radius:
+        3px;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+
+    transition:
+        background 0.15s,
+        box-shadow 0.15s;
+}
+
+.toggle-slider::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    left:
+        1px;
+
+    top:
+        1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #d7d5cc
+        );
+
+    border:
+        1px solid #777777;
+
+    border-radius:
+        2px;
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.15s;
+}
+
+.toggle input:checked + .toggle-slider {
+    background:
+        linear-gradient(
+            to bottom,
+            #6dbd72,
+            #3d8d42
+        );
+
+    border-color:
+        #28622d;
+}
+
+.toggle input:checked + .toggle-slider::before {
+    transform:
+        translateX(22px);
+}
+
+
+/* =========================================================
+   RANGE
+   ========================================================= */
+
+#musicVolume {
+    width:
+        280px;
+
+    cursor:
+        pointer;
+
+    accent-color:
+        #316ac5;
+}
+
+
+/* =========================================================
+   ACCOUNT
+   ========================================================= */
+
+.account-info {
+    padding:
+        0;
+}
+
+.account-row {
+    min-height:
+        58px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        12px 14px;
+
+    border-bottom:
+        1px solid var(--solaria-line);
+
+    transition:
+        background 0.1s;
+}
+
+.account-row:last-child {
+    border-bottom:
+        0;
+}
+
+.account-row:hover {
+    background:
+        var(--solaria-hover);
+}
+
+.account-row span {
+    color:
+        var(--solaria-muted);
+
+    font-size:
+        12px;
+}
+
+.account-row strong {
+    font-size:
+        13px;
+
+    color:
+        var(--solaria-heading);
+}
+
+
+/* =========================================================
+   DISPLAY NAME EDITOR
+   ========================================================= */
+
+.account-edit-row {
+    gap:
+        20px;
+}
+
+.account-row-info {
+    min-width:
+        0;
+}
+
+.display-name-editor {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        5px;
+}
+
+.display-name-editor input {
+    width:
+        190px;
+
+    height:
+        29px;
+
+    padding:
+        4px 6px;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius:
+        2px;
+
+    background:
+        var(--solaria-input);
+
+    color:
+        var(--solaria-text);
+
+    font-size:
+        12px;
+
+    outline:
+        none;
+
+    box-shadow:
+        inset 1px 1px 2px rgba(0, 0, 0, 0.12);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.display-name-editor input:focus {
+    border-color:
+        #316ac5;
+
+    box-shadow:
+        0 0 0 1px #316ac5;
+}
+
+
+/* =========================================================
+   SMALL SETTINGS BUTTON
+   ========================================================= */
+
+.settings-small-button {
+    border:
+        1px solid #315a82;
+
+    padding:
+        5px 10px;
+
+    min-height:
+        29px;
+
+    border-radius:
+        3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f3f2ed 45%,
+            #d7d5cc 100%
+        );
+
+    color:
+        #000000;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.16);
+
+    transition:
+        background 0.1s,
+        transform 0.05s,
+        box-shadow 0.1s;
+}
+
+.settings-small-button:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #e7e5dc
+        );
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.settings-small-button:active {
+    transform:
+        translateY(1px);
+}
+
+
+/* =========================================================
+   GAME OPTIONS
+   ========================================================= */
+
+.settings-option {
+    width:
+        100%;
+
+    min-height:
+        55px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 14px;
+
+    border:
+        0;
+
+    border-bottom:
+        1px solid var(--solaria-line);
+
+    background:
+        transparent;
+
+    color:
+        var(--solaria-text);
+
+    font-size:
+        13px;
+
+    font-weight:
+        normal;
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+
+    transition:
+        background 0.1s,
+        padding-left 0.1s,
+        color 0.25s ease;
+}
+
+.settings-option:last-child {
+    border-bottom:
+        0;
+}
+
+.settings-option:hover {
+    background:
+        linear-gradient(
+            to right,
+            var(--solaria-hover-strong),
+            rgba(255, 255, 255, 0.25)
+        );
+
+    padding-left:
+        18px;
+}
+
+.settings-option:active {
+    background:
+        #d6e9f7;
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-text {
+    padding:
+        15px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        5px;
+
+    background:
+        var(--solaria-card-solid);
+
+    transition:
+        background 0.25s ease;
+}
+
+.about-text strong {
+    font-size:
+        14px;
+
+    color:
+        var(--solaria-heading);
+}
+
+.about-text span {
+    color:
+        var(--solaria-muted);
+
+    font-size:
+        11px;
+}
+
+
+/* =========================================================
+   THEME SELECTOR
+   ========================================================= */
+
+.theme-control {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    flex-shrink:
+        0;
+}
+
+.theme-icon {
+    width:
+        26px;
+
+    height:
+        26px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        16px;
+
+    border:
+        1px solid #9c9c94;
+
+    border-radius:
+        2px;
+
+    background:
+        #ece9d8;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.theme-select {
+    min-width:
+        125px;
+
+    height:
+        29px;
+
+    padding:
+        3px 6px;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius:
+        2px;
+
+    background:
+        var(--solaria-input);
+
+    color:
+        var(--solaria-text);
+
+    font-size:
+        12px;
+
+    cursor:
+        pointer;
+
+    outline:
+        none;
+
+    box-shadow:
+        inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.theme-select:hover {
+    border-color:
+        #316ac5;
+}
+
+.theme-select:focus {
+    border-color:
+        #316ac5;
+
+    box-shadow:
+        0 0 0 1px #316ac5;
+}
+
+.theme-select option {
+    background:
+        #ffffff;
+
+    color:
+        #000000;
+}
+
+
+/* =========================================================
+   THEME ICON STATES
+   ========================================================= */
+
+html[data-theme="dark"] .theme-icon {
+    background:
+        #d9e8f4;
+
+    transform:
+        rotate(-8deg);
+}
+
+@media (prefers-color-scheme: dark) {
+    html[data-theme="system"] .theme-icon {
+        background:
+            #d9e8f4;
+    }
+}
+
+
+/* =========================================================
+   XP PANEL BUTTONS
+   ========================================================= */
+
+.settings-section button {
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================================
+   FOCUS STATES
+   ========================================================= */
+
+.back-button:focus-visible,
+.settings-option:focus-visible,
+.settings-small-button:focus-visible,
+.toggle input:focus-visible + .toggle-slider,
+#musicVolume:focus-visible,
+.theme-select:focus-visible,
+.display-name-editor input:focus-visible {
+    outline:
+        1px dotted #000000;
+
+    outline-offset:
+        2px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.settings-screen::-webkit-scrollbar {
+    width:
+        16px;
+}
+
+.settings-screen::-webkit-scrollbar-track {
+    background:
+        #d8d7ce;
+
+    border-left:
+        1px solid #aaa9a2;
+}
+
+.settings-screen::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            to right,
+            #f7f6ef,
+            #d1cfc6 50%,
+            #aaa8a0
+        );
+
+    border:
+        1px solid #88867f;
+
+    border-radius:
+        2px;
+}
+
+.settings-screen::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            to right,
+            #ffffff,
+            #dedcd3 50%,
+            #b5b3aa
+        );
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .settings-topbar {
+        padding:
+            0 10px;
+    }
+
+    .settings-brand {
+        font-size:
+            18px;
+    }
+
+    .settings-content {
+        width:
+            calc(100% - 20px);
+
+        padding:
+            22px 0 50px;
+    }
+
+    .settings-content h1 {
+        font-size:
+            20px;
+
+        padding:
+            10px 12px;
+    }
+
+    .settings-line {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            10px;
+    }
+
+    .settings-option {
+        min-height:
+            52px;
+    }
+
+    .account-row {
+        gap:
+            12px;
+    }
+
+    .account-edit-row {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+    .display-name-editor {
+        width:
+            100%;
+    }
+
+    .display-name-editor input {
+        flex:
+            1;
+
+        width:
+            auto;
+    }
+
+    #musicVolume {
+        width:
+            100%;
+    }
+
+    .theme-control {
+        width:
+            100%;
+    }
+
+    .theme-select {
+        flex:
+            1;
+
+        width:
+            100%;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .settings-topbar {
+        height:
+            48px;
+    }
+
+    .settings-brand {
+        font-size:
+            16px;
+    }
+
+    .back-button {
+        min-height:
+            27px;
+
+        padding:
+            4px 9px;
+
+        font-size:
+            10px;
+    }
+
+    .settings-content {
+        width:
+            calc(100% - 12px);
+    }
+
+    .settings-content h1 {
+        font-size:
+            18px;
+    }
+
+    .settings-section h2 {
+        font-size:
+            11px;
+    }
+
+    .settings-line strong {
+        font-size:
+            12px;
+    }
+
+    .settings-line span {
+        font-size:
+            10px;
+    }
+}
+
+
+/* =========================================================
+   END SOLARIA XP SETTINGS
+   ========================================================= */

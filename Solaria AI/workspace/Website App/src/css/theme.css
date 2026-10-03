@@ -1,0 +1,260 @@
+/* ============================================================
+   SOLARIA GLOBAL THEME
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   LIGHT THEME
+   ------------------------------------------------------------ */
+
+:root,
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    --solaria-background: #f5f7fb;
+    --solaria-background-secondary: #ffffff;
+    --solaria-background-tertiary: #eef1f6;
+
+    --solaria-surface: #ffffff;
+    --solaria-surface-hover: #f1f4f8;
+    --solaria-surface-active: #e7ebf1;
+
+    --solaria-border: #d9dee7;
+    --solaria-border-strong: #c6ccd6;
+
+    --solaria-text: #20242b;
+    --solaria-text-secondary: #5f6773;
+    --solaria-text-muted: #858d99;
+
+    --solaria-accent: #f3a928;
+    --solaria-accent-hover: #e69a16;
+    --solaria-accent-soft: rgba(243, 169, 40, 0.14);
+
+    --solaria-success: #3aa76d;
+    --solaria-danger: #d95c5c;
+
+    --solaria-shadow: rgba(30, 40, 55, 0.10);
+
+    --solaria-input-background: #ffffff;
+    --solaria-input-border: #d1d7e0;
+
+    --solaria-card-background: #ffffff;
+    --solaria-card-border: #dce1e8;
+}
+
+
+/* ------------------------------------------------------------
+   DARK THEME
+   ------------------------------------------------------------ */
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --solaria-background: #11151b;
+    --solaria-background-secondary: #171c23;
+    --solaria-background-tertiary: #1d232c;
+
+    --solaria-surface: #1a2028;
+    --solaria-surface-hover: #222a34;
+    --solaria-surface-active: #29323e;
+
+    --solaria-border: #303946;
+    --solaria-border-strong: #414b5a;
+
+    --solaria-text: #f2f4f7;
+    --solaria-text-secondary: #b7bec9;
+    --solaria-text-muted: #858e9c;
+
+    --solaria-accent: #f5b83d;
+    --solaria-accent-hover: #ffc85c;
+    --solaria-accent-soft: rgba(245, 184, 61, 0.16);
+
+    --solaria-success: #54c985;
+    --solaria-danger: #e87575;
+
+    --solaria-shadow: rgba(0, 0, 0, 0.35);
+
+    --solaria-input-background: #151a21;
+    --solaria-input-border: #343e4b;
+
+    --solaria-card-background: #1a2028;
+    --solaria-card-border: #303946;
+}
+
+
+/* ------------------------------------------------------------
+   GLOBAL DOCUMENT
+   ------------------------------------------------------------ */
+
+html {
+    background: var(--solaria-background);
+    color: var(--solaria-text);
+
+    transition:
+        background-color 180ms ease,
+        color 180ms ease;
+}
+
+body {
+    background: var(--solaria-background);
+    color: var(--solaria-text);
+
+    transition:
+        background-color 180ms ease,
+        color 180ms ease;
+}
+
+
+/* ------------------------------------------------------------
+   COMMON ELEMENTS
+   ------------------------------------------------------------ */
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+button {
+    color: var(--solaria-text);
+}
+
+input,
+textarea,
+select {
+    background: var(--solaria-input-background);
+    color: var(--solaria-text);
+
+    border-color: var(--solaria-input-border);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--solaria-text-muted);
+}
+
+
+/* ------------------------------------------------------------
+   THEME UTILITY CLASSES
+   ------------------------------------------------------------ */
+
+.solaria-surface {
+    background: var(--solaria-surface);
+    color: var(--solaria-text);
+}
+
+.solaria-card {
+    background: var(--solaria-card-background);
+    color: var(--solaria-text);
+    border: 1px solid var(--solaria-card-border);
+
+    box-shadow:
+        0 4px 18px var(--solaria-shadow);
+}
+
+.solaria-muted {
+    color: var(--solaria-text-secondary);
+}
+
+
+/* ------------------------------------------------------------
+   THEME SETTINGS BUTTONS
+   ------------------------------------------------------------ */
+
+[data-theme-option] {
+    background: var(--solaria-surface);
+    color: var(--solaria-text);
+
+    border: 1px solid var(--solaria-border);
+
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease,
+        color 150ms ease,
+        transform 100ms ease;
+}
+
+[data-theme-option]:hover {
+    background: var(--solaria-surface-hover);
+    border-color: var(--solaria-border-strong);
+}
+
+[data-theme-option]:active {
+    transform: scale(0.98);
+}
+
+[data-theme-option].selected,
+[data-theme-option].active {
+    background: var(--solaria-accent-soft);
+    color: var(--solaria-text);
+
+    border-color: var(--solaria-accent);
+}
+
+
+/* ------------------------------------------------------------
+   COMMON SOLARIA PANELS
+   ------------------------------------------------------------ */
+
+.panel,
+.card,
+.settings-card,
+.settings-section,
+.modal,
+.dialog,
+.sidebar,
+.topbar,
+.navbar {
+    transition:
+        background-color 180ms ease,
+        color 180ms ease,
+        border-color 180ms ease;
+}
+
+
+/* ------------------------------------------------------------
+   LINKS
+   ------------------------------------------------------------ */
+
+a {
+    color: var(--solaria-accent);
+}
+
+a:hover {
+    color: var(--solaria-accent-hover);
+}
+
+
+/* ------------------------------------------------------------
+   SELECTION
+   ------------------------------------------------------------ */
+
+::selection {
+    background: var(--solaria-accent-soft);
+    color: var(--solaria-text);
+}
+
+
+/* ------------------------------------------------------------
+   SCROLLBARS
+   ------------------------------------------------------------ */
+
+* {
+    scrollbar-color:
+        var(--solaria-border-strong)
+        var(--solaria-background);
+}
+
+
+/* ------------------------------------------------------------
+   REDUCED MOTION
+   ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}

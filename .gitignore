@@ -1,0 +1,62 @@
+﻿# ==========================================
+# SOLARIA GITIGNORE
+# ==========================================
+
+# Node / Electron
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Electron builds
+dist/
+release/
+releases/
+
+# Generated build/output folders
+build/
+out/
+
+# User data
+userdata/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Compiled binaries
+*.exe
+*.dll
+*.obj
+*.o
+*.a
+*.lib
+
+# macOS
+.DS_Store

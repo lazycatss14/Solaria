@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Solaria</title>
+
+
+    <!-- =========================================
+         SOLARIA GLOBAL THEME
+    ========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="./css/theme.css"
+    >
+
+    <script src="./js/theme.js"></script>
+
+
+    <!-- =========================================
+         PAGE STYLES
+    ========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="./css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="./css/friends.css"
+    >
+
+</head>
+
+<body>
+
+
+    <!-- =========================================
+         SIGN IN
+    ========================================== -->
+
+    <section
+        id="signInScreen"
+        class="screen"
+    >
+
+        <div class="auth-container">
+
+            <div class="auth-logo">
+                SOLARIA
+            </div>
+
+            <h1>
+                Welcome to Solaria
+            </h1>
+
+            <p>
+                Sign in or create your Solaria account.
+            </p>
+
+            <button
+                id="showLoginButton"
+                class="primary-button"
+            >
+                LOGIN
+            </button>
+
+            <button
+                id="showSignUpButton"
+                class="secondary-button"
+            >
+                CREATE ACCOUNT
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         LOGIN
+    ========================================== -->
+
+    <section
+        id="loginScreen"
+        class="screen hidden"
+    >
+
+        <div class="auth-container">
+
+            <div class="auth-logo">
+                SOLARIA
+            </div>
+
+            <h1>
+                LOGIN
+            </h1>
+
+            <input
+                id="loginUsername"
+                type="text"
+                placeholder="Username or Email"
+                autocomplete="username"
+            >
+
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Password"
+                autocomplete="current-password"
+            >
+
+            <label class="checkbox-row">
+
+                <input
+                    id="rememberInput"
+                    type="checkbox"
+                >
+
+                <span>
+                    Remember me
+                </span>
+
+            </label>
+
+            <button
+                id="loginButton"
+                class="primary-button"
+            >
+                LOGIN
+            </button>
+
+            <button
+                id="googleLoginButton"
+                class="google-button"
+            >
+                CONTINUE WITH GOOGLE
+            </button>
+
+            <button
+                id="backToSignInButton"
+                class="text-button"
+            >
+                ← BACK
+            </button>
+
+            <div
+                id="loginError"
+                class="error-message"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CREATE ACCOUNT
+    ========================================== -->
+
+    <section
+        id="profileSetupScreen"
+        class="screen hidden"
+    >
+
+        <div class="auth-container">
+
+            <div class="auth-logo">
+                SOLARIA
+            </div>
+
+            <h1>
+                CREATE ACCOUNT
+            </h1>
+
+            <input
+                id="signUpUsername"
+                type="email"
+                placeholder="Email"
+                autocomplete="email"
+            >
+
+            <input
+                id="signUpBlockWorldUsername"
+                type="text"
+                placeholder="Solaria Username"
+                maxlength="20"
+                autocomplete="off"
+            >
+
+            <div
+                id="usernameStatus"
+                class="username-status"
+            ></div>
+
+            <input
+                id="signUpDisplayName"
+                type="text"
+                placeholder="Display Name"
+                maxlength="30"
+                autocomplete="off"
+            >
+
+            <input
+                id="signUpPassword"
+                type="password"
+                placeholder="Password"
+                autocomplete="new-password"
+            >
+
+            <input
+                id="signUpPasswordConfirm"
+                type="password"
+                placeholder="Confirm Password"
+                autocomplete="new-password"
+            >
+
+            <button
+                id="signUpButton"
+                class="primary-button"
+            >
+                CREATE ACCOUNT
+            </button>
+
+            <button
+                id="googleSignUpButton"
+                class="google-button"
+            >
+                SIGN UP WITH GOOGLE
+            </button>
+
+            <button
+                id="backFromSignUpButton"
+                class="text-button"
+            >
+                ← BACK
+            </button>
+
+            <div
+                id="signUpError"
+                class="error-message"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PROFILE SETUP
+    ========================================== -->
+
+    <section
+        id="profileSetupDetailsScreen"
+        class="screen hidden"
+    >
+
+        <div class="auth-container">
+
+            <div class="auth-logo">
+                SOLARIA
+            </div>
+
+            <h1>
+                SET UP YOUR PROFILE
+            </h1>
+
+            <p>
+                Choose your public Solaria username and display name.
+            </p>
+
+            <input
+                id="profileSetupUsername"
+                type="text"
+                placeholder="Username"
+                maxlength="20"
+                autocomplete="off"
+            >
+
+            <div
+                id="profileUsernameStatus"
+                class="username-status"
+            ></div>
+
+            <input
+                id="profileSetupDisplayName"
+                type="text"
+                placeholder="Display Name"
+                maxlength="30"
+                autocomplete="off"
+            >
+
+            <button
+                id="profileSetupButton"
+                class="primary-button"
+            >
+                CONTINUE
+            </button>
+
+            <div
+                id="profileSetupError"
+                class="error-message"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         HOME
+    ========================================== -->
+
+    <section
+        id="homeScreen"
+        class="screen hidden"
+    >
+
+        <header class="topbar">
+
+            <div class="topbar-logo">
+                SOLARIA
+            </div>
+
+
+            <nav class="main-navigation">
+
+                <button
+                    id="homeButton"
+                    class="nav-button active"
+                >
+                    HOME
+                </button>
+
+                <button
+                    id="gamesButton"
+                    class="nav-button"
+                >
+                    GAMES
+                </button>
+
+                <button
+                    id="avatarButton"
+                    class="nav-button"
+                >
+                    AVATAR
+                </button>
+
+                <button
+                    id="settingsButton"
+                    class="nav-button"
+                >
+                    SETTINGS
+                </button>
+
+            </nav>
+
+
+            <!-- =================================
+                 HOME SEARCH
+            ================================== -->
+
+            <div class="topbar-search">
+
+                <input
+                    id="topbarSearchInput"
+                    type="text"
+                    placeholder="Search..."
+                    maxlength="20"
+                    autocomplete="off"
+                >
+
+                <button
+                    id="topbarSearchButton"
+                    class="topbar-search-button"
+                    title="Search"
+                >
+                    🔍
+                </button>
+
+            </div>
+
+
+            <div class="account-area">
+
+                <span
+                    id="usernameDisplay"
+                    class="username-display"
+                >
+                    @username
+                </span>
+
+                <button
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    LOG OUT
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <main class="home-content">
+
+
+            <!-- =================================
+                 WELCOME
+            ================================== -->
+
+            <section class="welcome-section">
+
+                <h1>
+                    Welcome back,
+                    <span id="welcomeDisplayName">
+                        Player
+                    </span>
+                </h1>
+
+                <p>
+                    Welcome to Solaria.
+                </p>
+
+            </section>
+
+
+            <!-- =================================
+                 FRIENDS
+            ================================== -->
+
+            <section
+                id="homeFriendsSection"
+                class="friends-home-section"
+            >
+
+                <div class="friends-section-header">
+
+                    <div>
+
+                        <h2>
+                            FRIENDS
+                        </h2>
+
+                        <p>
+                            See who's playing Solaria.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="addFriendButton"
+                        class="primary-button friends-add-button"
+                    >
+                        ADD FRIEND
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="homeFriendsList"
+                    class="home-friends-list"
+                >
+
+                    <div class="friends-loading">
+                        Loading friends...
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="homeFriendsEmpty"
+                    class="friends-empty hidden"
+                >
+
+                    <div class="friends-empty-icon">
+                        👥
+                    </div>
+
+                    <h3>
+                        No friends yet
+                    </h3>
+
+                    <p>
+                        Search for a Solaria player and send them a friend request.
+                    </p>
+
+                    <button
+                        id="addFriendEmptyButton"
+                        class="secondary-button"
+                    >
+                        ADD FRIEND
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 FRIEND REQUESTS
+            ================================== -->
+
+            <section
+                id="friendRequestsSection"
+                class="friends-requests-section"
+            >
+
+                <div class="friends-section-header">
+
+                    <div>
+
+                        <h2>
+                            FRIEND REQUESTS
+                        </h2>
+
+                        <p>
+                            Requests from other Solaria players.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="friendRequestsList"
+                    class="friend-requests-list"
+                ></div>
+
+            </section>
+
+
+            <!-- =================================
+                 FEATURED GAME
+            ================================== -->
+
+            <section class="featured-game">
+
+                <div class="featured-game-content">
+
+                    <span class="featured-label">
+                        FEATURED
+                    </span>
+
+                    <h2>
+                        Build. Play. Explore.
+                    </h2>
+
+                    <p>
+                        Your Solaria adventure starts here.
+                    </p>
+
+                    <button
+                        id="playFeaturedButton"
+                        class="primary-button"
+                    >
+                        PLAY
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 DEVELOPER PANEL
+            ================================== -->
+
+            <section
+                id="developerPanel"
+                class="developer-panel"
+            >
+
+                <h2>
+                    DEVELOPER
+                </h2>
+
+                <p>
+                    Solaria development tools.
+                </p>
+
+                <button
+                    id="developerButton"
+                    class="secondary-button"
+                >
+                    OPEN DEVELOPER TOOLS
+                </button>
+
+            </section>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================================
+         SEARCH SCREEN
+    ========================================== -->
+
+    <section
+        id="searchScreen"
+        class="screen hidden"
+    >
+
+        <header class="topbar">
+
+            <div class="topbar-logo">
+                SOLARIA
+            </div>
+
+
+            <nav class="main-navigation">
+
+                <button
+                    id="searchHomeButton"
+                    class="nav-button"
+                >
+                    HOME
+                </button>
+
+                <button
+                    id="searchGamesButton"
+                    class="nav-button"
+                >
+                    GAMES
+                </button>
+
+                <button
+                    id="searchAvatarButton"
+                    class="nav-button"
+                >
+                    AVATAR
+                </button>
+
+                <button
+                    id="searchSettingsButton"
+                    class="nav-button"
+                >
+                    SETTINGS
+                </button>
+
+            </nav>
+
+
+            <div class="topbar-search">
+
+                <input
+                    id="playerSearchInput"
+                    type="text"
+                    placeholder="Search..."
+                    maxlength="20"
+                    autocomplete="off"
+                >
+
+                <button
+                    id="playerSearchButton"
+                    class="topbar-search-button"
+                    title="Search"
+                >
+                    🔍
+                </button>
+
+            </div>
+
+
+            <div class="account-area">
+
+                <span
+                    id="searchUsernameDisplay"
+                    class="username-display"
+                >
+                    @username
+                </span>
+
+                <button
+                    id="searchLogoutButton"
+                    class="logout-button"
+                >
+                    LOG OUT
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <main class="search-content">
+
+
+            <div class="search-header">
+
+                <button
+                    id="backFromSearchButton"
+                    class="back-button"
+                >
+                    ← BACK
+                </button>
+
+                <h1>
+                    SEARCH
+                </h1>
+
+            </div>
+
+
+            <p>
+                Find Solaria players.
+            </p>
+
+
+            <div
+                id="playerSearchError"
+                class="error-message"
+            ></div>
+
+
+            <div
+                id="playerSearchResults"
+                class="player-search-results"
+            ></div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================================
+         PLAYER PROFILE SCREEN
+    ========================================== -->
+
+    <section
+        id="playerProfileScreen"
+        class="screen hidden"
+    >
+
+        <header class="topbar">
+
+            <div class="topbar-logo">
+                SOLARIA
+            </div>
+
+
+            <nav class="main-navigation">
+
+                <button
+                    id="profileHomeButton"
+                    class="nav-button"
+                >
+                    HOME
+                </button>
+
+                <button
+                    id="profileGamesButton"
+                    class="nav-button"
+                >
+                    GAMES
+                </button>
+
+                <button
+                    id="profileAvatarButton"
+                    class="nav-button"
+                >
+                    AVATAR
+                </button>
+
+                <button
+                    id="profileSettingsButton"
+                    class="nav-button"
+                >
+                    SETTINGS
+                </button>
+
+            </nav>
+
+
+            <div class="account-area">
+
+                <span
+                    id="profileUsernameDisplay"
+                    class="username-display"
+                >
+                    @username
+                </span>
+
+                <button
+                    id="profileLogoutButton"
+                    class="logout-button"
+                >
+                    LOG OUT
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <main class="search-content">
+
+
+            <div class="search-header">
+
+                <button
+                    id="backToSearchFromProfileButton"
+                    class="back-button"
+                >
+                    ← BACK
+                </button>
+
+                <h1>
+                    PLAYER PROFILE
+                </h1>
+
+            </div>
+
+
+            <div
+                id="playerProfile"
+                class="player-profile"
+            >
+
+                <div
+                    id="playerDisplayName"
+                    class="player-display-name"
+                >
+                    Player
+                </div>
+
+
+                <div
+                    id="playerUsername"
+                    class="player-username"
+                >
+                    @player
+                </div>
+
+
+                <div class="player-currency">
+
+                    <span>
+                        Golden Blocks
+                    </span>
+
+                    <strong
+                        id="playerGoldenBlocks"
+                    >
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="player-profile-actions">
+
+                    <button
+                        id="playerAddFriendButton"
+                        class="primary-button"
+                    >
+                        ADD FRIEND
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="playerFriendStatus"
+                    class="player-friend-status"
+                ></div>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="./js/auth.js"></script>
+
+    <script src="./js/music.js"></script>
+
+    <script src="./js/app.js"></script>
+
+    <script src="./js/playerSearch.js"></script>
+
+    <script src="./js/friends.js"></script>
+
+</body>
+
+</html>

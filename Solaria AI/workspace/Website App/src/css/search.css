@@ -1,0 +1,1087 @@
+/* =========================================================
+   SOLARIA
+   AVATAR PAGE
+   WINDOWS XP STYLE
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #5b9bd5;
+    color: #000000;
+}
+
+body {
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   AVATAR PAGE
+   ========================================================= */
+
+.avatar-page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5b9bd5 0%,
+            #7eb9df 24%,
+            #d9edf7 48%,
+            #ece9d8 100%
+        );
+}
+
+
+/* =========================================================
+   TOP HEADER
+   ========================================================= */
+
+.avatar-header {
+    width: 100%;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 12px;
+
+    gap: 10px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #4b91d1 0%,
+            #1769b5 45%,
+            #0b4d99 100%
+        );
+
+    border-bottom:
+        1px solid #07396e;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.35);
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   HEADER TITLE
+   ========================================================= */
+
+.avatar-header h1 {
+    flex: 1;
+
+    margin: 0;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.back-button {
+    min-height: 29px;
+
+    padding: 5px 13px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius: 3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f5f4ee 45%,
+            #d7d5cc 100%
+        );
+
+    color: #000000;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #faf9f4 45%,
+            #e4e2da 100%
+        );
+}
+
+.back-button:active {
+    transform: translateY(1px);
+
+    box-shadow:
+        inset 0 2px 3px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   SAVE BUTTON
+   ========================================================= */
+
+.save-button {
+    min-height: 29px;
+
+    padding: 5px 15px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius: 3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f5f4ee 45%,
+            #d7d5cc 100%
+        );
+
+    color: #000000;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.save-button:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #faf9f4 45%,
+            #e4e2da 100%
+        );
+}
+
+.save-button:active {
+    transform: translateY(1px);
+
+    box-shadow:
+        inset 0 2px 3px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   SAVED BUTTON
+   ========================================================= */
+
+.save-button.saved {
+    border-color: #28662f;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #8ed18d 0%,
+            #63b967 45%,
+            #44994a 100%
+        );
+
+    color: #ffffff;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.25);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.save-button.saved:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #9bdd9a 0%,
+            #70c873 45%,
+            #4da452 100%
+        );
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.avatar-content {
+    width:
+        min(
+            1200px,
+            calc(100% - 40px)
+        );
+
+    margin: 0 auto;
+
+    padding:
+        28px 0 50px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(300px, 0.8fr);
+
+    gap: 20px;
+
+    flex: 1;
+}
+
+
+/* =========================================================
+   PREVIEW SECTION
+   ========================================================= */
+
+.preview-section {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   PREVIEW HEADER
+   ========================================================= */
+
+.preview-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    padding:
+        8px 10px;
+
+    border:
+        1px solid #7f9db9;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #e8f0f7 50%,
+            #c8d9e8 100%
+        );
+
+    border-radius:
+        3px 3px 0 0;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff;
+}
+
+.preview-header span {
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color:
+        #003399;
+
+    text-shadow:
+        0 1px 0 #ffffff;
+}
+
+
+/* =========================================================
+   SMALL BUTTON
+   ========================================================= */
+
+.small-button {
+    min-height: 27px;
+
+    padding:
+        4px 9px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius: 3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f4f3ed 45%,
+            #d5d3ca 100%
+        );
+
+    color: #000000;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.small-button:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #e4e2da
+        );
+}
+
+.small-button:active {
+    transform:
+        translateY(1px);
+}
+
+.small-button.active {
+    border-color:
+        #244f7b;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #cce7fa 0%,
+            #a7d0ed 50%,
+            #7fb3d9 100%
+        );
+
+    color:
+        #003399;
+}
+
+
+/* =========================================================
+   3D AVATAR PREVIEW
+   ========================================================= */
+
+.avatar-preview {
+    width: 100%;
+
+    height: 600px;
+
+    min-height: 400px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #75b5df 0%,
+            #b8dff0 43%,
+            #dceef5 64%,
+            #7fba6a 65%,
+            #5f9e4f 100%
+        );
+
+    border:
+        1px solid #6d91a8;
+
+    border-radius:
+        3px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.3);
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   XP SKY
+   ========================================================= */
+
+.avatar-preview::before {
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 65%;
+
+    background:
+        radial-gradient(
+            ellipse at 25% 28%,
+            rgba(255, 255, 255, 0.9) 0,
+            rgba(255, 255, 255, 0.9) 35px,
+            rgba(255, 255, 255, 0) 36px
+        ),
+        radial-gradient(
+            ellipse at 75% 22%,
+            rgba(255, 255, 255, 0.75) 0,
+            rgba(255, 255, 255, 0.75) 30px,
+            rgba(255, 255, 255, 0) 31px
+        ),
+        linear-gradient(
+            to bottom,
+            #5fa9d9,
+            #bfe3f1
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   XP GROUND
+   ========================================================= */
+
+.avatar-preview::after {
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 35%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #86c46d 0%,
+            #65a952 50%,
+            #4f8e42 100%
+        );
+
+    border-top:
+        2px solid rgba(65, 120, 55, 0.5);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   THREE.JS CANVAS
+   ========================================================= */
+
+.avatar-preview canvas {
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =========================================================
+   PREVIEW HELP
+   ========================================================= */
+
+.preview-help {
+    margin-top: 7px;
+
+    padding:
+        6px 8px;
+
+    border:
+        1px solid #a7b9c7;
+
+    background:
+        #ece9d8;
+
+    color:
+        #555555;
+
+    font-size:
+        10px;
+
+    text-align:
+        center;
+
+    border-radius:
+        2px;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff;
+}
+
+
+/* =========================================================
+   EDITOR SECTION
+   ========================================================= */
+
+.editor-section {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        12px;
+}
+
+
+/* =========================================================
+   EDITOR CARD
+   ========================================================= */
+
+.editor-card {
+    width:
+        100%;
+
+    padding:
+        14px;
+
+    background:
+        #ece9d8;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius:
+        3px;
+
+    box-shadow:
+        0 3px 9px rgba(0, 0, 0, 0.24);
+}
+
+
+/* =========================================================
+   EDITOR CARD TITLE
+   ========================================================= */
+
+.editor-card h2 {
+    margin:
+        0 0 12px;
+
+    padding:
+        7px 8px;
+
+    font-size:
+        13px;
+
+    font-weight:
+        bold;
+
+    color:
+        #003399;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #d8e6f1
+        );
+
+    border:
+        1px solid #9db4c8;
+
+    border-radius:
+        2px;
+
+    text-shadow:
+        0 1px 0 #ffffff;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.editor-card > label {
+    display:
+        block;
+
+    margin-bottom:
+        6px;
+
+    color:
+        #333333;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+}
+
+
+/* =========================================================
+   GENDER BUTTONS
+   ========================================================= */
+
+.gender-buttons {
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        6px;
+}
+
+.gender-button {
+    min-height:
+        31px;
+
+    padding:
+        5px 8px;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius:
+        2px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f3f2ec 45%,
+            #d7d5cc 100%
+        );
+
+    color:
+        #000000;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.gender-button:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #e4e2da
+        );
+}
+
+.gender-button:active {
+    transform:
+        translateY(1px);
+}
+
+.gender-button.active {
+    border-color:
+        #315f8e;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #d9ecfa 0%,
+            #b5d8f0 50%,
+            #8bb9d9 100%
+        );
+
+    color:
+        #003399;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   COLOR ROW
+   ========================================================= */
+
+.color-row {
+    width:
+        100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        8px 0;
+
+    border-bottom:
+        1px solid #c4c1b8;
+}
+
+.color-row:last-child {
+    border-bottom:
+        none;
+}
+
+.color-row label {
+    color:
+        #333333;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+}
+
+
+/* =========================================================
+   COLOR PICKER
+   ========================================================= */
+
+.color-row input[type="color"] {
+    width:
+        52px;
+
+    height:
+        29px;
+
+    padding:
+        2px;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius:
+        2px;
+
+    background:
+        #ffffff;
+
+    cursor:
+        pointer;
+
+    overflow:
+        hidden;
+}
+
+
+/* =========================================================
+   ACCESSORIES
+   ========================================================= */
+
+.coming-soon {
+    padding:
+        14px;
+
+    border:
+        1px dashed #7f9db9;
+
+    border-radius:
+        2px;
+
+    background:
+        #f7f6ef;
+
+    color:
+        #666666;
+
+    text-align:
+        center;
+
+    font-size:
+        11px;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff;
+}
+
+
+/* =========================================================
+   XP DIALOG DETAILS
+   ========================================================= */
+
+.editor-card::selection,
+.avatar-preview::selection,
+.avatar-header::selection {
+    background:
+        #316ac5;
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   FOCUS STATES
+   ========================================================= */
+
+.back-button:focus-visible,
+.save-button:focus-visible,
+.small-button:focus-visible,
+.gender-button:focus-visible,
+.color-row input[type="color"]:focus-visible {
+    outline:
+        1px dotted #000000;
+
+    outline-offset:
+        2px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.avatar-page::-webkit-scrollbar {
+    width:
+        16px;
+}
+
+.avatar-page::-webkit-scrollbar-track {
+    background:
+        #d8d7ce;
+
+    border-left:
+        1px solid #aaa9a2;
+}
+
+.avatar-page::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            to right,
+            #f7f6ef,
+            #d1cfc6 50%,
+            #aaa8a0
+        );
+
+    border:
+        1px solid #88867f;
+
+    border-radius:
+        2px;
+}
+
+.avatar-page::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            to right,
+            #ffffff,
+            #dedcd3 50%,
+            #b5b3aa
+        );
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .avatar-header {
+        height:
+            50px;
+
+        padding:
+            0 8px;
+
+        gap:
+            6px;
+    }
+
+    .avatar-header h1 {
+        font-size:
+            17px;
+    }
+
+    .back-button,
+    .save-button {
+        min-height:
+            27px;
+
+        padding:
+            4px 9px;
+
+        font-size:
+            10px;
+    }
+
+    .avatar-content {
+        width:
+            calc(100% - 20px);
+
+        padding:
+            18px 0 40px;
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            15px;
+    }
+
+    .avatar-preview {
+        height:
+            500px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+    .avatar-preview {
+        height:
+            400px;
+
+        min-height:
+            300px;
+    }
+
+    .preview-header {
+        flex-wrap:
+            wrap;
+
+        gap:
+            6px;
+    }
+
+    .preview-header span {
+        font-size:
+            12px;
+    }
+
+    .editor-card {
+        padding:
+            10px;
+    }
+
+    .editor-card h2 {
+        font-size:
+            12px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 350px) {
+
+    .avatar-header h1 {
+        font-size:
+            15px;
+    }
+
+    .back-button,
+    .save-button {
+        padding:
+            3px 6px;
+
+        font-size:
+            9px;
+    }
+
+    .avatar-content {
+        width:
+            calc(100% - 10px);
+    }
+
+    .avatar-preview {
+        height:
+            330px;
+    }
+}
+
+
+/* =========================================================
+   END SOLARIA XP AVATAR PAGE
+   ========================================================= */

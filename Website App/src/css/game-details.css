@@ -1,0 +1,1458 @@
+/* =========================================================
+   SOLARIA
+   GAME DETAILS
+   GAME PROFILE
+   WINDOWS XP STYLE
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+
+    box-sizing:
+        border-box;
+
+}
+
+
+html,
+body {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #5b9bd5;
+
+    color:
+        #000000;
+
+}
+
+
+button {
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    cursor:
+        pointer;
+
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.game-details-page {
+
+    width:
+        100%;
+
+    height:
+        100vh;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5b9bd5 0%,
+            #7eb9df 18%,
+            #d9edf7 42%,
+            #ece9d8 100%
+        );
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.game-details-header {
+
+    height:
+        52px;
+
+    min-height:
+        52px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    padding:
+        0 10px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #3f8ee8 0%,
+            #2f74c8 45%,
+            #2459a6 100%
+        );
+
+    border-top:
+        1px solid #75b8ff;
+
+    border-bottom:
+        1px solid #123b72;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        ),
+        0 2px 5px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+
+    color:
+        #ffffff;
+
+}
+
+
+.game-details-header h1 {
+
+    flex:
+        1;
+
+    margin:
+        0;
+
+    text-align:
+        center;
+
+    font-size:
+        18px;
+
+    font-weight:
+        bold;
+
+    color:
+        #ffffff;
+
+    text-shadow:
+        1px 1px 0 #17477d;
+
+}
+
+
+.header-spacer {
+
+    width:
+        82px;
+
+    min-width:
+        82px;
+
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.back-button {
+
+    min-height:
+        28px;
+
+    min-width:
+        72px;
+
+    padding:
+        4px 13px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius:
+        3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f4f3ed 45%,
+            #d5d3ca 100%
+        );
+
+    color:
+        #000000;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+
+}
+
+
+.back-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f5f4ee 45%,
+            #d8d6cd 100%
+        );
+
+}
+
+
+.back-button:active {
+
+    transform:
+        translateY(1px);
+
+    box-shadow:
+        inset 0 2px 3px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.game-details-content {
+
+    flex:
+        1;
+
+    min-height:
+        0;
+
+    padding:
+        10px;
+
+    overflow:
+        auto;
+
+    background:
+        #ece9d8;
+
+}
+
+
+/* =========================================================
+   WINDOWS
+   ========================================================= */
+
+.game-profile-window,
+.details-window {
+
+    width:
+        100%;
+
+    max-width:
+        1100px;
+
+    margin:
+        0 auto 10px;
+
+    background:
+        #f7f6ef;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius:
+        3px;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        1px 1px 4px
+        rgba(
+            0,
+            0,
+            0,
+            0.2
+        );
+
+}
+
+
+/* =========================================================
+   WINDOW TITLE
+   ========================================================= */
+
+.window-title {
+
+    height:
+        34px;
+
+    min-height:
+        34px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    padding:
+        0 8px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #4c9bea 0%,
+            #3178c9 48%,
+            #245ca7 100%
+        );
+
+    border-bottom:
+        1px solid #1b4f91;
+
+    color:
+        #ffffff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    text-shadow:
+        1px 1px 0 #17477d;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+
+}
+
+
+/* =========================================================
+   GAME HERO
+   ========================================================= */
+
+.game-hero {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        400px
+        minmax(
+            0,
+            1fr
+        );
+
+    min-height:
+        260px;
+
+}
+
+
+/* =========================================================
+   HERO THUMBNAIL
+   ========================================================= */
+
+.hero-thumbnail {
+
+    min-height:
+        260px;
+
+    padding:
+        9px;
+
+    border-right:
+        1px solid #b8b6ae;
+
+    background:
+        #d8d7ce;
+
+}
+
+
+.baseplate-preview {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    min-height:
+        240px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid #5f8db8;
+
+    background:
+        #72b5e7;
+
+}
+
+
+/* =========================================================
+   SKY
+   ========================================================= */
+
+.baseplate-sky {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5aa9e8 0%,
+            #a9d9f4 57%,
+            #d9edf7 58%,
+            #d9edf7 100%
+        );
+
+}
+
+
+/* =========================================================
+   GROUND
+   ========================================================= */
+
+.baseplate-ground {
+
+    position:
+        absolute;
+
+    left:
+        -10%;
+
+    right:
+        -10%;
+
+    bottom:
+        -20%;
+
+    height:
+        63%;
+
+    transform:
+        perspective(350px)
+        rotateX(55deg);
+
+    transform-origin:
+        center bottom;
+
+    background:
+        #66a94d;
+
+    border-top:
+        2px solid #3f7f32;
+
+}
+
+
+.grid-line {
+
+    position:
+        absolute;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.28
+        );
+
+}
+
+
+.grid-line.horizontal {
+
+    left:
+        0;
+
+    right:
+        0;
+
+    height:
+        1px;
+
+}
+
+
+.grid-line.vertical {
+
+    top:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        1px;
+
+}
+
+
+.grid-line.horizontal.one {
+    top: 25%;
+}
+
+.grid-line.horizontal.two {
+    top: 50%;
+}
+
+.grid-line.horizontal.three {
+    top: 75%;
+}
+
+.grid-line.vertical.one {
+    left: 25%;
+}
+
+.grid-line.vertical.two {
+    left: 50%;
+}
+
+.grid-line.vertical.three {
+    left: 75%;
+}
+
+
+/* =========================================================
+   BALL
+   ========================================================= */
+
+.game-ball {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        53%;
+
+    width:
+        62px;
+
+    height:
+        62px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border:
+        2px solid #6f6b54;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #fff9d6 0%,
+            #f6c453 40%,
+            #c99527 100%
+        );
+
+    box-shadow:
+        5px 8px 8px
+        rgba(
+            0,
+            0,
+            0,
+            0.28
+        );
+
+}
+
+
+/* =========================================================
+   HERO INFORMATION
+   ========================================================= */
+
+.hero-information {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    padding:
+        18px;
+
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.hero-title-row {
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+    gap:
+        12px;
+
+}
+
+
+.hero-title-row h2 {
+
+    margin:
+        0;
+
+    font-size:
+        20px;
+
+    font-weight:
+        bold;
+
+}
+
+
+#gameCreator {
+
+    margin:
+        4px 0 0;
+
+    color:
+        #666666;
+
+    font-size:
+        10px;
+
+}
+
+
+.online-label {
+
+    padding:
+        3px 6px;
+
+    border:
+        1px solid #5d874f;
+
+    border-radius:
+        2px;
+
+    background:
+        #dcefd4;
+
+    color:
+        #315d27;
+
+    font-size:
+        9px;
+
+    font-weight:
+        bold;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+
+    margin:
+        16px 0;
+
+    color:
+        #333333;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.hero-stats {
+
+    display:
+        flex;
+
+    gap:
+        6px;
+
+    margin-top:
+        auto;
+
+}
+
+
+.hero-stats > div {
+
+    min-width:
+        80px;
+
+    padding:
+        7px;
+
+    border:
+        1px solid #d0cec5;
+
+    background:
+        #ffffff;
+
+}
+
+
+.stat-label {
+
+    display:
+        block;
+
+    margin-bottom:
+        3px;
+
+    color:
+        #777777;
+
+    font-size:
+        8px;
+
+    font-weight:
+        bold;
+
+}
+
+
+.hero-stats strong {
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   PLAY BUTTON
+   ========================================================= */
+
+.play-button {
+
+    align-self:
+        flex-start;
+
+    min-width:
+        90px;
+
+    min-height:
+        30px;
+
+    margin-top:
+        14px;
+
+    padding:
+        4px 15px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius:
+        3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #d8eaff 0%,
+            #a9cff2 48%,
+            #78aee0 100%
+        );
+
+    color:
+        #000000;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px
+        rgba(
+            0,
+            0,
+            0,
+            0.2
+        );
+
+}
+
+
+.play-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #e5e3db 45%,
+            #c8c6bd 100%
+        );
+
+}
+
+
+.play-button:active {
+
+    transform:
+        translateY(1px);
+
+    box-shadow:
+        inset 0 2px 3px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+
+}
+
+
+.play-button:disabled {
+
+    cursor:
+        wait;
+
+    color:
+        #666666;
+
+}
+
+
+/* =========================================================
+   DETAILS BODY
+   ========================================================= */
+
+.details-body {
+
+    padding:
+        10px;
+
+}
+
+
+.details-body p {
+
+    margin:
+        0;
+
+    color:
+        #333333;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================================
+   SERVERS
+   ========================================================= */
+
+.server-list {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        5px;
+
+}
+
+
+.server-row {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(
+            0,
+            1fr
+        )
+        70px
+        65px;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    padding:
+        7px;
+
+    border:
+        1px solid #d0cec5;
+
+    background:
+        #ffffff;
+
+}
+
+
+.server-row:hover {
+
+    background:
+        #eef5fb;
+
+}
+
+
+.server-name {
+
+    min-width:
+        0;
+
+}
+
+
+.server-name strong {
+
+    display:
+        block;
+
+    font-size:
+        11px;
+
+}
+
+
+.server-name span {
+
+    display:
+        block;
+
+    margin-top:
+        2px;
+
+    color:
+        #777777;
+
+    font-size:
+        9px;
+
+}
+
+
+.server-players {
+
+    text-align:
+        center;
+
+    color:
+        #555555;
+
+    font-size:
+        10px;
+
+}
+
+
+.join-button {
+
+    min-height:
+        25px;
+
+    padding:
+        3px 8px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius:
+        2px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #f4f3ed 45%,
+            #d3d1c8
+        );
+
+    color:
+        #000000;
+
+    font-size:
+        10px;
+
+    font-weight:
+        bold;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff;
+
+}
+
+
+.join-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #e5e3db
+        );
+
+}
+
+
+.join-button:active {
+
+    transform:
+        translateY(1px);
+
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badges-list {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        6px;
+
+}
+
+
+.badge {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    min-height:
+        60px;
+
+    padding:
+        7px;
+
+    border:
+        1px solid #d0cec5;
+
+    background:
+        #ffffff;
+
+}
+
+
+.badge-icon {
+
+    width:
+        40px;
+
+    height:
+        40px;
+
+    min-width:
+        40px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        1px solid #8c7a3c;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff8c9,
+            #e5c94d
+        );
+
+    color:
+        #735d0c;
+
+    font-size:
+        19px;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff;
+
+}
+
+
+.badge strong {
+
+    display:
+        block;
+
+    font-size:
+        10px;
+
+}
+
+
+.badge span {
+
+    display:
+        block;
+
+    margin-top:
+        3px;
+
+    color:
+        #777777;
+
+    font-size:
+        9px;
+
+    line-height:
+        1.3;
+
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+button:focus-visible {
+
+    outline:
+        1px dotted #000000;
+
+    outline-offset:
+        1px;
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.game-details-content::-webkit-scrollbar {
+
+    width:
+        16px;
+
+}
+
+
+.game-details-content::-webkit-scrollbar-track {
+
+    background:
+        #d8d7ce;
+
+    border-left:
+        1px solid #aaa9a2;
+
+}
+
+
+.game-details-content::-webkit-scrollbar-thumb {
+
+    background:
+        linear-gradient(
+            to right,
+            #f7f6ef,
+            #d1cfc6 50%,
+            #aaa8a0
+        );
+
+    border:
+        1px solid #88867f;
+
+    border-radius:
+        2px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .game-details-page {
+
+        height:
+            auto;
+
+        min-height:
+            100vh;
+
+        overflow:
+            visible;
+
+    }
+
+
+    .game-details-content {
+
+        overflow:
+            visible;
+
+    }
+
+
+    .game-hero {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .hero-thumbnail {
+
+        border-right:
+            none;
+
+        border-bottom:
+            1px solid #b8b6ae;
+
+    }
+
+
+    .badges-list {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .game-details-header {
+
+        height:
+            48px;
+
+        min-height:
+            48px;
+
+        padding:
+            0 6px;
+
+    }
+
+
+    .game-details-header h1 {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .header-spacer {
+
+        width:
+            72px;
+
+        min-width:
+            72px;
+
+    }
+
+
+    .back-button {
+
+        min-width:
+            64px;
+
+        padding:
+            4px 8px;
+
+        font-size:
+            10px;
+
+    }
+
+
+    .game-details-content {
+
+        padding:
+            6px;
+
+    }
+
+
+    .hero-information {
+
+        padding:
+            11px;
+
+    }
+
+
+    .hero-stats {
+
+        flex-wrap:
+            wrap;
+
+    }
+
+
+    .server-row {
+
+        grid-template-columns:
+            1fr
+            auto;
+
+    }
+
+
+    .server-players {
+
+        grid-column:
+            2;
+
+        grid-row:
+            1;
+
+    }
+
+
+    .join-button {
+
+        grid-column:
+            1 / -1;
+
+        width:
+            100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   END SOLARIA XP GAME PROFILE
+   ========================================================= */

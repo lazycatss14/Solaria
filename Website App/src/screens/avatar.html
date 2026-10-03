@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <title>Solaria Avatar</title>
+
+
+    <!-- =================================================
+         SOLARIA GLOBAL THEME
+         ================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css"
+    >
+
+
+    <!-- =================================================
+         AVATAR CSS
+         ================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../css/avatar.css"
+    >
+
+
+    <!-- =================================================
+         SOLARIA THEME CONTROLLER
+         ================================================= -->
+
+    <script src="../js/theme.js"></script>
+
+</head>
+
+
+<body>
+
+    <div class="avatar-page">
+
+
+        <!-- =================================================
+             TOP BAR
+             ================================================= -->
+
+        <header class="avatar-header">
+
+            <button
+                id="backButton"
+                class="back-button"
+                type="button"
+            >
+                ← Back
+            </button>
+
+
+            <h1>
+                AVATAR
+            </h1>
+
+
+            <button
+                id="saveButton"
+                class="save-button"
+                type="button"
+            >
+                SAVE
+            </button>
+
+        </header>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+             ================================================= -->
+
+        <main class="avatar-content">
+
+
+            <!-- =================================================
+                 3D PREVIEW
+                 ================================================= -->
+
+            <section class="preview-section">
+
+                <div class="preview-header">
+
+                    <span>
+                        PREVIEW
+                    </span>
+
+
+                    <button
+                        id="spinButton"
+                        class="small-button"
+                        type="button"
+                    >
+                        AUTO SPIN
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="avatarPreview"
+                    class="avatar-preview"
+                ></div>
+
+
+                <div class="preview-help">
+
+                    Drag to rotate • Scroll to zoom
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 EDITOR
+                 ================================================= -->
+
+            <section class="editor-section">
+
+
+                <!-- =================================================
+                     BODY
+                     ================================================= -->
+
+                <div class="editor-card">
+
+                    <h2>
+                        BODY
+                    </h2>
+
+
+                    <label>
+                        Gender
+                    </label>
+
+
+                    <div class="gender-buttons">
+
+                        <button
+                            class="gender-button active"
+                            data-gender="masculine"
+                            type="button"
+                        >
+                            MASCULINE
+                        </button>
+
+
+                        <button
+                            class="gender-button"
+                            data-gender="feminine"
+                            type="button"
+                        >
+                            FEMININE
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     GAME AVATAR
+                     ================================================= -->
+
+                <div class="editor-card">
+
+                    <h2>
+                        GAME AVATAR
+                    </h2>
+
+
+                    <label>
+                        Choose how your avatar appears in games.
+                    </label>
+
+
+                    <div class="gender-buttons">
+
+                        <button
+                            id="renderBall"
+                            class="gender-button active"
+                            data-render-mode="ball"
+                            type="button"
+                        >
+                            BALL
+                        </button>
+
+
+                        <button
+                            id="renderCharacter"
+                            class="gender-button"
+                            data-render-mode="character"
+                            type="button"
+                        >
+                            CHARACTER
+                        </button>
+
+                    </div>
+
+
+                    <div class="preview-help">
+
+                        BALL is currently the playable game avatar.
+                        CHARACTER will use the full character later.
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     COLORS
+                     ================================================= -->
+
+                <div class="editor-card">
+
+                    <h2>
+                        COLORS
+                    </h2>
+
+
+                    <div class="color-row">
+
+                        <label
+                            for="headColor"
+                        >
+                            Head
+                        </label>
+
+
+                        <input
+                            type="color"
+                            id="headColor"
+                            value="#FFD6A0"
+                        >
+
+                    </div>
+
+
+                    <div class="color-row">
+
+                        <label
+                            for="torsoColor"
+                        >
+                            Torso
+                        </label>
+
+
+                        <input
+                            type="color"
+                            id="torsoColor"
+                            value="#3366FF"
+                        >
+
+                    </div>
+
+
+                    <div class="color-row">
+
+                        <label
+                            for="armsColor"
+                        >
+                            Arms
+                        </label>
+
+
+                        <input
+                            type="color"
+                            id="armsColor"
+                            value="#FFD6A0"
+                        >
+
+                    </div>
+
+
+                    <div class="color-row">
+
+                        <label
+                            for="legsColor"
+                        >
+                            Legs
+                        </label>
+
+
+                        <input
+                            type="color"
+                            id="legsColor"
+                            value="#222222"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ACCESSORIES
+                     ================================================= -->
+
+                <div class="editor-card">
+
+                    <h2>
+                        ACCESSORIES
+                    </h2>
+
+
+                    <div class="coming-soon">
+
+                        No accessories yet.
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         THREE.JS IMPORT MAP
+
+         This tells the browser what "three" means when
+         OrbitControls and GLTFLoader import it.
+         ===================================================== -->
+
+    <script type="importmap">
+
+        {
+            "imports": {
+                "three":
+                    "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+
+                "three/addons/":
+                    "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+            }
+        }
+
+    </script>
+
+
+    <!-- =====================================================
+         AVATAR EDITOR
+         ===================================================== -->
+
+    <script type="module">
+
+        console.log(
+            "[Solaria] Avatar HTML loaded."
+        );
+
+
+        /*
+         * Load the avatar editor.
+         *
+         * avatar.js will import Three.js,
+         * OrbitControls and GLTFLoader itself.
+         */
+
+        import "../js/avatar.js";
+
+
+        console.log(
+            "[Solaria] avatar.js requested."
+        );
+
+    </script>
+
+
+</body>
+
+</html>

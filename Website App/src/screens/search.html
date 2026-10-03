@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Solaria - Search</title>
+
+
+    <!-- =========================================
+         SOLARIA THEME
+    ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css"
+    >
+
+
+    <!-- =========================================
+         SOLARIA CSS
+    ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/search.css"
+    >
+
+
+    <!-- =========================================
+         SOLARIA THEME CONTROLLER
+    ========================================= -->
+
+    <script src="../js/theme.js"></script>
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         SEARCH SCREEN
+    ========================================= -->
+
+    <main
+        id="searchScreen"
+        class="screen"
+    >
+
+
+        <!-- =========================================
+             TOP BAR
+        ========================================= -->
+
+        <header class="topbar">
+
+
+            <!-- LOGO -->
+
+            <div
+                id="searchLogo"
+                class="topbar-brand"
+            >
+
+                <span class="topbar-logo">
+                    SOLARIA
+                </span>
+
+            </div>
+
+
+            <!-- =====================================
+                 NAVIGATION
+            ===================================== -->
+
+            <nav class="topbar-nav">
+
+
+                <button
+                    id="searchHomeButton"
+                    class="topbar-button"
+                    type="button"
+                >
+                    HOME
+                </button>
+
+
+                <button
+                    id="searchGamesButton"
+                    class="topbar-button"
+                    type="button"
+                >
+                    GAMES
+                </button>
+
+
+                <button
+                    id="searchAvatarButton"
+                    class="topbar-button"
+                    type="button"
+                >
+                    AVATAR
+                </button>
+
+
+                <button
+                    id="searchSettingsButton"
+                    class="topbar-button"
+                    type="button"
+                >
+                    SETTINGS
+                </button>
+
+            </nav>
+
+
+            <!-- =====================================
+                 ACCOUNT
+            ===================================== -->
+
+            <div class="topbar-account">
+
+
+                <span
+                    id="searchUsernameDisplay"
+                    class="topbar-username"
+                >
+                    @player
+                </span>
+
+
+                <button
+                    id="searchLogoutButton"
+                    class="topbar-logout"
+                    type="button"
+                >
+                    LOG OUT
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             SEARCH CONTENT
+        ========================================= -->
+
+        <section class="search-content">
+
+
+            <!-- =====================================
+                 SEARCH HEADER
+            ===================================== -->
+
+            <div class="search-header">
+
+
+                <button
+                    id="backFromSearchButton"
+                    class="back-button"
+                    type="button"
+                >
+                    ← BACK
+                </button>
+
+
+                <h1>
+                    SEARCH
+                </h1>
+
+            </div>
+
+
+            <p class="search-description">
+                Search for players and games on Solaria.
+            </p>
+
+
+            <!-- =====================================
+                 SEARCH BOX
+            ===================================== -->
+
+            <div class="player-search-box">
+
+
+                <input
+                    id="playerSearchInput"
+                    type="text"
+                    placeholder="Search players or games..."
+                    autocomplete="off"
+                    maxlength="50"
+                    spellcheck="false"
+                >
+
+
+                <button
+                    id="playerSearchButton"
+                    type="button"
+                >
+                    🔍
+                </button>
+
+            </div>
+
+
+            <!-- =====================================
+                 ERROR
+            ===================================== -->
+
+            <div
+                id="playerSearchError"
+                class="search-error"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- =====================================
+                 RESULTS
+            ===================================== -->
+
+            <section
+                id="playerSearchResults"
+                class="player-search-results"
+            >
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         SOLARIA JAVASCRIPT
+    ========================================= -->
+
+    <script src="../js/auth.js"></script>
+
+    <script src="../js/music.js"></script>
+
+    <script src="../js/playerSearch.js"></script>
+
+    <script src="../js/search.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,3592 @@
+/* ============================================================
+   SOLARIA XP
+   GLOBAL THEME SYSTEM
+   ============================================================
+
+   Windows XP-inspired visual system for Solaria.
+
+   IMPORTANT:
+   - Existing Solaria IDs/classes are preserved.
+   - Existing login/friend/search/profile layouts are preserved.
+   - This file replaces the old modern/glass theme.
+   - No JavaScript changes are required for the styling itself.
+
+   ============================================================ */
+
+
+/* ============================================================
+   GLOBAL RESET
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    color-scheme: light;
+}
+
+body {
+    overflow: hidden;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
+
+    background: #ece9d8;
+    color: #000000;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ============================================================
+   SOLARIA XP VARIABLES
+   ============================================================ */
+
+:root {
+
+    /* --------------------------------------------------------
+       XP DESKTOP
+       -------------------------------------------------------- */
+
+    --solaria-background: #3a6ea5;
+    --solaria-background-secondary: #5b9bd5;
+    --solaria-sky: #75b8e7;
+
+    /* --------------------------------------------------------
+       XP WINDOWS
+       -------------------------------------------------------- */
+
+    --solaria-surface: #ece9d8;
+    --solaria-surface-soft: #f7f6ef;
+    --solaria-surface-alt: #ffffff;
+
+    /* --------------------------------------------------------
+       XP TEXT
+       -------------------------------------------------------- */
+
+    --solaria-text: #000000;
+    --solaria-text-secondary: #404040;
+    --solaria-text-muted: #666666;
+    --solaria-text-light: #888888;
+
+    /* --------------------------------------------------------
+       XP BORDERS
+       -------------------------------------------------------- */
+
+    --solaria-border: #7f9db9;
+    --solaria-border-soft: #b8b8b0;
+    --solaria-border-strong: #4f6f8f;
+
+    /* --------------------------------------------------------
+       XP BLUE
+       -------------------------------------------------------- */
+
+    --solaria-blue: #3f8edb;
+    --solaria-blue-light: #6db5ef;
+    --solaria-blue-dark: #245a9b;
+    --solaria-blue-deep: #0a246a;
+
+    /* --------------------------------------------------------
+       XP GREEN
+       -------------------------------------------------------- */
+
+    --solaria-green: #3c8d40;
+    --solaria-green-light: #6dbd72;
+    --solaria-green-dark: #256b2a;
+
+    /* --------------------------------------------------------
+       XP GOLD
+       -------------------------------------------------------- */
+
+    --solaria-gold: #f6c453;
+    --solaria-gold-dark: #c78d16;
+    --solaria-orange: #ef9c28;
+    --solaria-gold-hover: #ffd76a;
+
+    /* --------------------------------------------------------
+       ERROR
+       -------------------------------------------------------- */
+
+    --solaria-danger: #c00000;
+
+    /* --------------------------------------------------------
+       XP SHADOWS
+       -------------------------------------------------------- */
+
+    --solaria-shadow:
+        rgba(0, 0, 0, 0.25);
+
+    --solaria-shadow-strong:
+        rgba(0, 0, 0, 0.45);
+
+    /* --------------------------------------------------------
+       XP FOCUS
+       -------------------------------------------------------- */
+
+    --solaria-focus:
+        rgba(49, 106, 173, 0.35);
+
+    /* --------------------------------------------------------
+       XP TOPBAR
+       -------------------------------------------------------- */
+
+    --solaria-topbar:
+        linear-gradient(
+            to bottom,
+            #3f8edb 0%,
+            #1767b4 48%,
+            #0b4f9c 100%
+        );
+
+    /* --------------------------------------------------------
+       XP WINDOW
+       -------------------------------------------------------- */
+
+    --solaria-window-title:
+        linear-gradient(
+            to bottom,
+            #3f8edb 0%,
+            #1767b4 50%,
+            #0b4f9c 100%
+        );
+
+    --solaria-window-title-active:
+        linear-gradient(
+            to bottom,
+            #3f8edb 0%,
+            #1767b4 50%,
+            #0b4f9c 100%
+        );
+
+    --solaria-window-title-inactive:
+        linear-gradient(
+            to bottom,
+            #9eb6cf 0%,
+            #7598b9 50%,
+            #6688a8 100%
+        );
+
+    /* --------------------------------------------------------
+       XP PANEL
+       -------------------------------------------------------- */
+
+    --solaria-panel-blue:
+        #d6e8f7;
+
+    --solaria-panel-blue-dark:
+        #b5d1e9;
+
+    /* --------------------------------------------------------
+       XP OVERLAY
+       -------------------------------------------------------- */
+
+    --solaria-overlay:
+        rgba(255, 255, 255, 0.94);
+}
+
+
+/* ============================================================
+   DARK THEME
+   ============================================================
+
+   Kept for compatibility with the existing theme.js.
+
+   The visual system is still XP-inspired rather than modern
+   dark-mode glass UI.
+   ============================================================ */
+
+html[data-theme="dark"] {
+
+    color-scheme: dark;
+
+    --solaria-background: #142d48;
+    --solaria-background-secondary: #21496d;
+    --solaria-sky: #315f83;
+
+    --solaria-surface: #d8d8d0;
+    --solaria-surface-soft: #eeeeea;
+    --solaria-surface-alt: #ffffff;
+
+    --solaria-text: #000000;
+    --solaria-text-secondary: #222222;
+    --solaria-text-muted: #555555;
+    --solaria-text-light: #777777;
+
+    --solaria-border: #57799a;
+    --solaria-border-soft: #999990;
+    --solaria-border-strong: #345a7d;
+
+    --solaria-blue: #377db8;
+    --solaria-blue-light: #5ca2dc;
+    --solaria-blue-dark: #194e84;
+    --solaria-blue-deep: #071b3f;
+
+    --solaria-green: #327238;
+    --solaria-green-light: #62a968;
+    --solaria-green-dark: #215225;
+
+    --solaria-gold: #e4b94d;
+    --solaria-gold-dark: #a97812;
+    --solaria-orange: #d98a1e;
+    --solaria-gold-hover: #f5ce69;
+
+    --solaria-danger: #a80000;
+
+    --solaria-shadow:
+        rgba(0, 0, 0, 0.45);
+
+    --solaria-shadow-strong:
+        rgba(0, 0, 0, 0.65);
+
+    --solaria-focus:
+        rgba(50, 110, 180, 0.35);
+
+    --solaria-topbar:
+        linear-gradient(
+            to bottom,
+            #377db8 0%,
+            #194f88 50%,
+            #123e6d 100%
+        );
+
+    --solaria-window-title:
+        linear-gradient(
+            to bottom,
+            #377db8 0%,
+            #194f88 50%,
+            #123e6d 100%
+        );
+
+    --solaria-window-title-active:
+        linear-gradient(
+            to bottom,
+            #377db8 0%,
+            #194f88 50%,
+            #123e6d 100%
+        );
+
+    --solaria-window-title-inactive:
+        linear-gradient(
+            to bottom,
+            #849bb1 0%,
+            #667f97 50%,
+            #566f87 100%
+        );
+
+    --solaria-panel-blue:
+        #c2d6e9;
+
+    --solaria-panel-blue-dark:
+        #a2bdd7;
+
+    --solaria-overlay:
+        rgba(236, 236, 228, 0.96);
+}
+
+
+/* ============================================================
+   SYSTEM DARK THEME
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+
+    html[data-theme="system"] {
+
+        color-scheme: dark;
+
+        --solaria-background: #142d48;
+        --solaria-background-secondary: #21496d;
+        --solaria-sky: #315f83;
+
+        --solaria-surface: #d8d8d0;
+        --solaria-surface-soft: #eeeeea;
+        --solaria-surface-alt: #ffffff;
+
+        --solaria-text: #000000;
+        --solaria-text-secondary: #222222;
+        --solaria-text-muted: #555555;
+        --solaria-text-light: #777777;
+
+        --solaria-border: #57799a;
+        --solaria-border-soft: #999990;
+        --solaria-border-strong: #345a7d;
+
+        --solaria-blue: #377db8;
+        --solaria-blue-light: #5ca2dc;
+        --solaria-blue-dark: #194e84;
+        --solaria-blue-deep: #071b3f;
+
+        --solaria-green: #327238;
+        --solaria-green-light: #62a968;
+        --solaria-green-dark: #215225;
+
+        --solaria-gold: #e4b94d;
+        --solaria-gold-dark: #a97812;
+        --solaria-orange: #d98a1e;
+        --solaria-gold-hover: #f5ce69;
+
+        --solaria-danger: #a80000;
+
+        --solaria-shadow:
+            rgba(0, 0, 0, 0.45);
+
+        --solaria-shadow-strong:
+            rgba(0, 0, 0, 0.65);
+
+        --solaria-focus:
+            rgba(50, 110, 180, 0.35);
+
+        --solaria-topbar:
+            linear-gradient(
+                to bottom,
+                #377db8 0%,
+                #194f88 50%,
+                #123e6d 100%
+            );
+
+        --solaria-window-title:
+            linear-gradient(
+                to bottom,
+                #377db8 0%,
+                #194f88 50%,
+                #123e6d 100%
+            );
+
+        --solaria-window-title-active:
+            linear-gradient(
+                to bottom,
+                #377db8 0%,
+                #194f88 50%,
+                #123e6d 100%
+            );
+
+        --solaria-window-title-inactive:
+            linear-gradient(
+                to bottom,
+                #849bb1 0%,
+                #667f97 50%,
+                #566f87 100%
+            );
+
+        --solaria-panel-blue:
+            #c2d6e9;
+
+        --solaria-panel-blue-dark:
+            #a2bdd7;
+
+        --solaria-overlay:
+            rgba(236, 236, 228, 0.96);
+    }
+}
+
+
+/* ============================================================
+   SCREEN
+   ============================================================ */
+
+.screen {
+    width: 100%;
+    height: 100vh;
+}
+
+
+/* ============================================================
+   AUTH SCREENS
+   ============================================================
+
+   Windows XP-style login background.
+   ============================================================ */
+
+#signInScreen,
+#loginScreen,
+#profileSetupScreen,
+#profileSetupDetailsScreen {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100vh;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5b9bd5 0%,
+            #3f8edb 35%,
+            #2867a8 70%,
+            #194f87 100%
+        );
+
+    transition:
+        background 0.2s ease;
+}
+
+#signInScreen.hidden,
+#loginScreen.hidden,
+#profileSetupScreen.hidden,
+#profileSetupDetailsScreen.hidden {
+    display: none !important;
+}
+
+
+/* ============================================================
+   XP LOGIN LIGHT EFFECT
+   ============================================================ */
+
+#signInScreen::before,
+#loginScreen::before,
+#profileSetupScreen::before,
+#profileSetupDetailsScreen::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 50%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0)
+        );
+}
+
+
+/* ============================================================
+   AUTH CONTAINER
+   ============================================================ */
+
+.auth-container {
+
+    position: relative;
+
+    width: 430px;
+    max-width: 100%;
+
+    padding: 24px 32px 28px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f9f8f0 0%,
+            #ece9d8 100%
+        );
+
+    border:
+        1px solid #315a82;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 16px 35px rgba(0, 0, 0, 0.42),
+        0 2px 4px rgba(0, 0, 0, 0.35);
+
+    text-align: center;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* ============================================================
+   XP AUTH TOP STRIPE
+   ============================================================ */
+
+.auth-container::before {
+
+    content: "";
+
+    display: block;
+
+    width: calc(100% + 64px);
+
+    height: 28px;
+
+    margin:
+        -24px -32px 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #3f8edb 0%,
+            #1767b4 50%,
+            #0b4f9c 100%
+        );
+
+    border-radius:
+        4px 4px 0 0;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+.auth-logo {
+
+    margin-bottom: 20px;
+
+    color:
+        #003399;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        1px 1px 0 #ffffff;
+}
+
+
+/* ============================================================
+   AUTH HEADINGS
+   ============================================================ */
+
+.auth-container h1 {
+
+    margin:
+        0 0 8px;
+
+    color:
+        #003399;
+
+    font-size: 23px;
+
+    font-weight: bold;
+}
+
+.auth-container p {
+
+    margin:
+        0 0 18px;
+
+    color:
+        #404040;
+
+    font-size: 13px;
+
+    line-height: 1.45;
+}
+
+
+/* ============================================================
+   AUTH INPUTS
+   ============================================================ */
+
+.auth-container input[type="email"],
+.auth-container input[type="password"],
+.auth-container input[type="text"] {
+
+    display: block;
+
+    width: 100%;
+    height: 30px;
+
+    margin:
+        0 0 9px;
+
+    padding:
+        3px 6px;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius: 2px;
+
+    outline: none;
+
+    background:
+        #ffffff;
+
+    color:
+        #000000;
+
+    font-size: 13px;
+
+    box-shadow:
+        inset 1px 1px 2px rgba(0, 0, 0, 0.12);
+
+    transition:
+        border-color 0.12s ease,
+        box-shadow 0.12s ease,
+        background 0.12s ease;
+}
+
+.auth-container input:focus {
+
+    border-color:
+        #316ac5;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 0 0 1px #316ac5;
+}
+
+.auth-container input::placeholder {
+    color:
+        #777777;
+}
+
+
+/* ============================================================
+   REMEMBER ME
+   ============================================================ */
+
+.checkbox-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin:
+        5px 0 12px;
+
+    color:
+        #404040;
+
+    font-size: 12px;
+
+    text-align: left;
+}
+
+.checkbox-row input {
+
+    width: auto !important;
+    height: auto !important;
+
+    margin: 0 !important;
+
+    accent-color:
+        #316ac5;
+}
+
+
+/* ============================================================
+   BUTTON BASE
+   ============================================================ */
+
+.primary-button,
+.secondary-button,
+.google-button {
+
+    display: block;
+
+    width: 100%;
+    min-height: 32px;
+
+    margin-top: 8px;
+
+    padding:
+        4px 14px;
+
+    border:
+        1px solid #003c74;
+
+    border-radius: 3px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    transition:
+        background 0.1s ease,
+        border-color 0.1s ease,
+        box-shadow 0.1s ease,
+        transform 0.05s ease;
+}
+
+
+/* ============================================================
+   PRIMARY BUTTON
+   ============================================================ */
+
+.primary-button {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #6bb5ed 0%,
+            #3c8ed1 45%,
+            #2368ad 100%
+        );
+
+    color:
+        #ffffff;
+
+    border-color:
+        #174f86;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.35);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.primary-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #82c5f3 0%,
+            #4ba0df 45%,
+            #2875ba 100%
+        );
+}
+
+.primary-button:active {
+
+    transform:
+        translateY(1px);
+
+    box-shadow:
+        inset 0 2px 3px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ============================================================
+   SECONDARY BUTTON
+   ============================================================ */
+
+.secondary-button {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f1f1ec 45%,
+            #d7d5cb 100%
+        );
+
+    color:
+        #000000;
+
+    border-color:
+        #7f7f78;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 2px rgba(0, 0, 0, 0.16);
+}
+
+.secondary-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #faf9f4 45%,
+            #e4e2d9 100%
+        );
+
+    border-color:
+        #315a82;
+}
+
+.secondary-button:active {
+
+    transform:
+        translateY(1px);
+}
+
+
+/* ============================================================
+   GOOGLE BUTTON
+   ============================================================ */
+
+.google-button {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f2f2ee 50%,
+            #dcdad0 100%
+        );
+
+    color:
+        #000000;
+
+    border-color:
+        #7f7f78;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.google-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #fafaf7 50%,
+            #e8e6dd 100%
+        );
+}
+
+.google-button:active {
+
+    transform:
+        translateY(1px);
+}
+
+
+/* ============================================================
+   TEXT BUTTON
+   ============================================================ */
+
+.text-button {
+
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding:
+        4px 8px;
+
+    border: none;
+
+    background:
+        transparent;
+
+    color:
+        #0645ad;
+
+    font-size: 12px;
+
+    font-weight: normal;
+
+    text-decoration:
+        underline;
+}
+
+.text-button:hover {
+
+    color:
+        #003399;
+}
+
+
+/* ============================================================
+   ERROR MESSAGE
+   ============================================================ */
+
+.error-message {
+
+    min-height: 20px;
+
+    margin-top: 10px;
+
+    color:
+        #c00000;
+
+    font-size: 12px;
+
+    line-height: 1.35;
+}
+
+
+/* ============================================================
+   USERNAME STATUS
+   ============================================================ */
+
+.username-status {
+
+    min-height: 18px;
+
+    margin:
+        -3px 0 7px;
+
+    color:
+        #555555;
+
+    font-size: 12px;
+
+    text-align: left;
+}
+
+
+/* ============================================================
+   HOME SCREEN
+   ============================================================ */
+
+#homeScreen,
+#searchScreen {
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5fa9dc 0%,
+            #8bc6e9 30%,
+            #7dbd72 72%,
+            #62a85a 100%
+        );
+
+    overflow-y: auto;
+
+    transition:
+        background 0.2s ease;
+}
+
+#homeScreen.hidden,
+#searchScreen.hidden {
+
+    display: none !important;
+}
+
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+
+.topbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 54px;
+
+    padding:
+        0 12px;
+
+    background:
+        var(--solaria-topbar);
+
+    color:
+        #ffffff;
+
+    border-bottom:
+        1px solid #083b75;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.35);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* ============================================================
+   TOP BAR LOGO
+   ============================================================ */
+
+.topbar-logo {
+
+    flex-shrink: 0;
+
+    color:
+        #ffffff;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.45);
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+.main-navigation {
+
+    display: flex;
+
+    align-items: center;
+
+    flex: 1;
+
+    height: 54px;
+
+    margin-left: 20px;
+
+    gap: 2px;
+}
+
+.nav-button {
+
+    height: 54px;
+
+    padding:
+        0 13px;
+
+    border:
+        none;
+
+    border-left:
+        1px solid transparent;
+
+    border-right:
+        1px solid transparent;
+
+    background:
+        transparent;
+
+    color:
+        #ffffff;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.35);
+
+    transition:
+        background 0.1s ease,
+        color 0.1s ease,
+        border-color 0.1s ease;
+}
+
+.nav-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.05)
+        );
+
+    border-color:
+        rgba(255, 255, 255, 0.2);
+}
+
+.nav-button.active {
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.22),
+            rgba(255, 255, 255, 0.08)
+        );
+
+    color:
+        #ffffff;
+
+    border-bottom:
+        3px solid #ffd45c;
+}
+
+
+/* ============================================================
+   TOP BAR SEARCH
+   ============================================================ */
+
+.topbar-search {
+
+    display: flex;
+
+    align-items: center;
+
+    width: 230px;
+
+    height: 30px;
+
+    margin-right: 12px;
+}
+
+.topbar-search input {
+
+    flex: 1;
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 30px;
+
+    padding:
+        0 7px;
+
+    border:
+        1px solid #6f8ca7;
+
+    border-right: none;
+
+    border-radius:
+        2px 0 0 2px;
+
+    outline: none;
+
+    background:
+        #ffffff;
+
+    color:
+        #000000;
+
+    font-size: 12px;
+}
+
+.topbar-search input::placeholder {
+
+    color:
+        #777777;
+}
+
+.topbar-search input:focus {
+
+    border-color:
+        #316ac5;
+
+    box-shadow:
+        0 0 0 1px #316ac5;
+}
+
+.topbar-search-button {
+
+    width: 38px;
+
+    height: 30px;
+
+    padding: 0;
+
+    border:
+        1px solid #164d80;
+
+    border-radius:
+        0 2px 2px 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #75b9ed,
+            #327dbd
+        );
+
+    color:
+        #ffffff;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.topbar-search-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #8cc8f2,
+            #408bd0
+        );
+}
+
+
+/* ============================================================
+   ACCOUNT AREA
+   ============================================================ */
+
+.account-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    white-space: nowrap;
+}
+
+.username-display {
+
+    color:
+        #ffffff;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+.logout-button {
+
+    padding:
+        6px 10px;
+
+    border:
+        1px solid #154b7c;
+
+    border-radius: 3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #d8d7ce
+        );
+
+    color:
+        #000000;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+.logout-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #eeeeea
+        );
+}
+
+
+/* ============================================================
+   HOME CONTENT
+   ============================================================ */
+
+.home-content {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin:
+        0 auto;
+
+    padding:
+        24px;
+}
+
+
+/* ============================================================
+   WELCOME
+   ============================================================ */
+
+.welcome-section {
+
+    padding:
+        35px 20px;
+
+    text-align:
+        center;
+}
+
+.welcome-section h1 {
+
+    margin:
+        0 0 8px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        34px;
+
+    font-weight:
+        bold;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.welcome-section p {
+
+    margin:
+        0 0 22px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        14px;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+
+/* ============================================================
+   XP PANEL BASE
+   ============================================================ */
+
+.friends-home-section,
+.friends-requests-section,
+.player-profile {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f9f8f0 0%,
+            #ece9d8 100%
+        );
+
+    border:
+        1px solid #315a82;
+
+    border-radius:
+        3px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.3);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* ============================================================
+   FRIENDS HOME SECTION
+   ============================================================ */
+
+.friends-home-section {
+
+    width: 100%;
+
+    margin-top:
+        10px;
+
+    margin-bottom:
+        24px;
+
+    padding:
+        18px;
+}
+
+
+/* ============================================================
+   FRIENDS HEADER
+   ============================================================ */
+
+.friends-section-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom:
+        14px;
+
+    padding-bottom:
+        10px;
+
+    border-bottom:
+        1px solid #b8b8b0;
+}
+
+.friends-section-header h2 {
+
+    margin:
+        0 0 4px;
+
+    color:
+        #003399;
+
+    font-size:
+        18px;
+
+    font-weight:
+        bold;
+}
+
+.friends-section-header p {
+
+    margin:
+        0;
+
+    color:
+        #555555;
+
+    font-size:
+        11px;
+}
+
+
+/* ============================================================
+   ADD FRIEND BUTTON
+   ============================================================ */
+
+.friends-add-button {
+
+    flex-shrink:
+        0;
+
+    width:
+        auto;
+
+    min-width:
+        110px;
+
+    min-height:
+        30px;
+
+    margin-top:
+        0;
+
+    padding:
+        0 13px;
+
+    font-size:
+        11px;
+}
+
+
+/* ============================================================
+   HOME FRIEND LIST
+   ============================================================ */
+
+.home-friends-list {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    width:
+        100%;
+
+    gap:
+        5px;
+}
+
+
+/* ============================================================
+   FRIEND CARD
+   ============================================================ */
+
+.friend-card {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    width:
+        100%;
+
+    min-height:
+        54px;
+
+    padding:
+        7px 9px;
+
+    border:
+        1px solid #c3c3bb;
+
+    border-radius:
+        2px;
+
+    background:
+        #ffffff;
+
+    transition:
+        background 0.1s ease,
+        border-color 0.1s ease;
+}
+
+.friend-card:hover {
+
+    background:
+        #edf5fc;
+
+    border-color:
+        #7f9db9;
+}
+
+
+/* ============================================================
+   FRIEND AVATAR
+   ============================================================ */
+
+.friend-avatar {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-shrink:
+        0;
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    margin-right:
+        9px;
+
+    border:
+        1px solid #6e8eaa;
+
+    border-radius:
+        3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #70b9e9,
+            #367db6
+        );
+
+    color:
+        #ffffff;
+
+    font-size:
+        15px;
+
+    font-weight:
+        bold;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+
+/* ============================================================
+   FRIEND INFO
+   ============================================================ */
+
+.friend-info {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+}
+
+.friend-display-name {
+
+    overflow:
+        hidden;
+
+    margin-bottom:
+        2px;
+
+    color:
+        #003399;
+
+    font-size:
+        13px;
+
+    font-weight:
+        bold;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+.friend-username {
+
+    overflow:
+        hidden;
+
+    color:
+        #666666;
+
+    font-size:
+        11px;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+/* ============================================================
+   FRIEND STATUS
+   ============================================================ */
+
+.friend-status {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    flex-shrink:
+        0;
+
+    gap:
+        5px;
+
+    margin-left:
+        10px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+}
+
+.friend-status-dot {
+
+    width:
+        8px;
+
+    height:
+        8px;
+
+    border-radius:
+        50%;
+
+    background:
+        #999999;
+
+    border:
+        1px solid rgba(0, 0, 0, 0.25);
+}
+
+.friend-status.online {
+
+    color:
+        #28732d;
+}
+
+.friend-status.online .friend-status-dot {
+
+    background:
+        #43a047;
+
+    box-shadow:
+        0 0 3px rgba(67, 160, 71, 0.55);
+}
+
+.friend-status.offline {
+
+    color:
+        #777777;
+}
+
+.friend-status.offline .friend-status-dot {
+
+    background:
+        #999999;
+}
+
+
+/* ============================================================
+   FRIEND LOADING
+   ============================================================ */
+
+.friends-loading {
+
+    width:
+        100%;
+
+    padding:
+        20px;
+
+    color:
+        #666666;
+
+    font-size:
+        12px;
+
+    text-align:
+        center;
+}
+
+
+/* ============================================================
+   EMPTY FRIENDS
+   ============================================================ */
+
+.friends-empty {
+
+    padding:
+        25px 18px;
+
+    border:
+        1px dashed #8f8f87;
+
+    border-radius:
+        2px;
+
+    background:
+        #f7f6ef;
+
+    text-align:
+        center;
+}
+
+.friends-empty-icon {
+
+    margin-bottom:
+        6px;
+
+    font-size:
+        28px;
+}
+
+.friends-empty h3 {
+
+    margin:
+        0 0 5px;
+
+    color:
+        #003399;
+
+    font-size:
+        15px;
+
+    font-weight:
+        bold;
+}
+
+.friends-empty p {
+
+    max-width:
+        500px;
+
+    margin:
+        0 auto 13px;
+
+    color:
+        #555555;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.45;
+}
+
+.friends-empty .secondary-button {
+
+    display:
+        inline-block;
+
+    width:
+        auto;
+
+    min-width:
+        110px;
+
+    padding:
+        0 14px;
+}
+
+
+/* ============================================================
+   FRIEND REQUESTS
+   ============================================================ */
+
+.friends-requests-section {
+
+    width:
+        100%;
+
+    margin-bottom:
+        24px;
+
+    padding:
+        18px;
+}
+
+.friend-requests-list {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        5px;
+}
+
+
+/* ============================================================
+   FRIEND REQUEST CARD
+   ============================================================ */
+
+.friend-request-card {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    width:
+        100%;
+
+    min-height:
+        54px;
+
+    padding:
+        7px 9px;
+
+    border:
+        1px solid #c3c3bb;
+
+    border-radius:
+        2px;
+
+    background:
+        #ffffff;
+}
+
+.friend-request-info {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+}
+
+.friend-request-display {
+
+    margin-bottom:
+        2px;
+
+    color:
+        #003399;
+
+    font-size:
+        13px;
+
+    font-weight:
+        bold;
+}
+
+.friend-request-username {
+
+    color:
+        #666666;
+
+    font-size:
+        11px;
+}
+
+.friend-request-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        5px;
+
+    margin-left:
+        10px;
+}
+
+.friend-request-actions button {
+
+    min-height:
+        28px;
+
+    padding:
+        0 10px;
+
+    border:
+        1px solid #7f7f78;
+
+    border-radius:
+        2px;
+
+    font-size:
+        10px;
+
+    font-weight:
+        bold;
+}
+
+.friend-accept-button {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #d9efd5
+        );
+
+    color:
+        #23672a;
+
+    border-color:
+        #669366 !important;
+}
+
+.friend-accept-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #c8e8c3
+        );
+}
+
+.friend-decline-button {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #e3e2dc
+        );
+
+    color:
+        #333333;
+}
+
+.friend-decline-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #f1f0ea
+        );
+}
+
+
+/* ============================================================
+   NO REQUESTS
+   ============================================================ */
+
+.friend-requests-empty {
+
+    padding:
+        12px;
+
+    color:
+        #777777;
+
+    font-size:
+        12px;
+
+    text-align:
+        center;
+}
+
+
+/* ============================================================
+   FEATURED GAME
+   ============================================================ */
+
+.featured-game {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    min-height:
+        210px;
+
+    margin-top:
+        18px;
+
+    padding:
+        28px;
+
+    overflow:
+        hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5ca9df 0%,
+            #3985c2 48%,
+            #327e45 49%,
+            #5b9e52 100%
+        );
+
+    color:
+        #ffffff;
+
+    border:
+        1px solid #285b82;
+
+    border-radius:
+        3px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.featured-game::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        150px;
+
+    height:
+        150px;
+
+    right:
+        45px;
+
+    top:
+        -50px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    pointer-events:
+        none;
+}
+
+.featured-game-content {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    max-width:
+        600px;
+}
+
+.featured-label {
+
+    display:
+        inline-block;
+
+    margin-bottom:
+        8px;
+
+    padding:
+        4px 7px;
+
+    border:
+        1px solid #7f7f78;
+
+    border-radius:
+        2px;
+
+    background:
+        #ece9d8;
+
+    color:
+        #003399;
+
+    font-size:
+        9px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        0.5px;
+}
+
+.featured-game h2 {
+
+    margin:
+        0 0 8px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        28px;
+
+    font-weight:
+        bold;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.featured-game p {
+
+    margin:
+        0 0 17px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        13px;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.featured-game .primary-button {
+
+    display:
+        inline-block;
+
+    width:
+        auto;
+
+    min-width:
+        110px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #dcdad0
+        );
+
+    color:
+        #000000;
+
+    border-color:
+        #555555;
+
+    text-shadow:
+        none;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.featured-game .primary-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #f1f0eb
+        );
+}
+
+
+/* ============================================================
+   DEVELOPER PANEL
+   ============================================================ */
+
+.developer-panel {
+
+    margin-top:
+        28px;
+
+    padding:
+        18px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #dceefc,
+            #c2dcef
+        );
+
+    color:
+        #000000;
+
+    border:
+        1px solid #6e8eaa;
+
+    border-radius:
+        3px;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.developer-panel h2 {
+
+    margin:
+        0 0 6px;
+
+    color:
+        #003399;
+
+    font-size:
+        18px;
+
+    font-weight:
+        bold;
+}
+
+.developer-panel p {
+
+    margin:
+        0 0 14px;
+
+    color:
+        #404040;
+
+    font-size:
+        12px;
+}
+
+.developer-panel .secondary-button {
+
+    display:
+        inline-block;
+
+    width:
+        auto;
+
+    min-width:
+        180px;
+}
+
+.developer-panel .secondary-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #eeeeea
+        );
+}
+
+
+/* ============================================================
+   SEARCH SCREEN
+   ============================================================ */
+
+.search-content {
+
+    width:
+        100%;
+
+    max-width:
+        900px;
+
+    margin:
+        0 auto;
+
+    padding:
+        24px;
+}
+
+.search-header {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    margin-bottom:
+        20px;
+}
+
+.search-header h1 {
+
+    margin:
+        0;
+
+    color:
+        #ffffff;
+
+    font-size:
+        28px;
+
+    font-weight:
+        bold;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+
+/* ============================================================
+   BACK BUTTON
+   ============================================================ */
+
+.back-button {
+
+    min-width:
+        82px;
+
+    height:
+        30px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid #7f7f78;
+
+    border-radius:
+        2px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #d8d7ce
+        );
+
+    color:
+        #000000;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    transition:
+        background 0.1s ease,
+        border-color 0.1s ease,
+        transform 0.05s ease;
+}
+
+.back-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #eeeeea
+        );
+
+    border-color:
+        #315a82;
+}
+
+.back-button:active {
+
+    transform:
+        translateY(1px);
+}
+
+
+/* ============================================================
+   SEARCH BOX
+   ============================================================ */
+
+.search-content .player-search {
+
+    display:
+        flex;
+
+    width:
+        100%;
+
+    max-width:
+        700px;
+
+    margin:
+        0 auto 20px;
+
+    gap:
+        6px;
+}
+
+.search-content #playerSearchInput {
+
+    flex:
+        1;
+
+    width:
+        100%;
+
+    min-width:
+        0;
+
+    height:
+        32px;
+
+    padding:
+        0 7px;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius:
+        2px;
+
+    outline:
+        none;
+
+    background:
+        #ffffff;
+
+    color:
+        #000000;
+
+    font-size:
+        12px;
+
+    box-shadow:
+        inset 1px 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.search-content #playerSearchInput:focus {
+
+    border-color:
+        #316ac5;
+
+    box-shadow:
+        0 0 0 1px #316ac5;
+}
+
+.search-content #playerSearchInput::placeholder {
+
+    color:
+        #777777;
+}
+
+.search-content #playerSearchButton {
+
+    width:
+        90px;
+
+    height:
+        32px;
+
+    padding:
+        0 12px;
+
+    border:
+        1px solid #174f86;
+
+    border-radius:
+        2px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #75b9ed,
+            #327dbd
+        );
+
+    color:
+        #ffffff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.search-content #playerSearchButton:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #8cc8f2,
+            #408bd0
+        );
+}
+
+
+/* ============================================================
+   SEARCH ERROR
+   ============================================================ */
+
+#playerSearchError {
+
+    min-height:
+        18px;
+
+    margin:
+        4px 0 12px;
+
+    color:
+        #ffd6d6;
+
+    font-size:
+        12px;
+
+    text-align:
+        center;
+
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+
+/* ============================================================
+   SEARCH RESULTS
+   ============================================================ */
+
+.player-search-results {
+
+    width:
+        100%;
+
+    max-width:
+        700px;
+
+    margin:
+        0 auto;
+}
+
+.player-search-result {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    width:
+        100%;
+
+    min-height:
+        60px;
+
+    margin-bottom:
+        5px;
+
+    padding:
+        8px 10px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius:
+        2px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f9f8f0,
+            #ece9d8
+        );
+
+    color:
+        #000000;
+
+    text-align:
+        left;
+
+    transition:
+        background 0.1s ease,
+        border-color 0.1s ease,
+        box-shadow 0.1s ease;
+}
+
+.player-search-result:hover {
+
+    background:
+        #edf5fc;
+
+    border-color:
+        #316ac5;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.22);
+}
+
+.player-search-result:active {
+
+    transform:
+        translateY(1px);
+}
+
+.player-search-result-number {
+
+    flex-shrink:
+        0;
+
+    width:
+        30px;
+
+    color:
+        #777777;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    text-align:
+        center;
+}
+
+.player-search-result-info {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+
+    padding:
+        0 9px;
+}
+
+.player-search-result-display {
+
+    overflow:
+        hidden;
+
+    margin-bottom:
+        2px;
+
+    color:
+        #003399;
+
+    font-size:
+        14px;
+
+    font-weight:
+        bold;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+.player-search-result-username {
+
+    overflow:
+        hidden;
+
+    color:
+        #666666;
+
+    font-size:
+        11px;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+.player-search-result-arrow {
+
+    flex-shrink:
+        0;
+
+    color:
+        #315a82;
+
+    font-size:
+        18px;
+
+    font-weight:
+        bold;
+
+    transition:
+        color 0.1s ease,
+        transform 0.1s ease;
+}
+
+.player-search-result:hover
+.player-search-result-arrow {
+
+    color:
+        #003399;
+
+    transform:
+        translateX(2px);
+}
+
+
+/* ============================================================
+   SEARCH EMPTY STATE
+   ============================================================ */
+
+.search-empty {
+
+    width:
+        100%;
+
+    max-width:
+        700px;
+
+    margin:
+        16px auto;
+
+    padding:
+        24px;
+
+    border:
+        1px dashed #315a82;
+
+    border-radius:
+        3px;
+
+    background:
+        #ece9d8;
+
+    color:
+        #555555;
+
+    text-align:
+        center;
+}
+
+.search-empty strong {
+
+    display:
+        block;
+
+    margin-bottom:
+        5px;
+
+    color:
+        #003399;
+
+    font-size:
+        14px;
+}
+
+
+/* ============================================================
+   PLAYER PROFILE
+   ============================================================ */
+
+.player-profile {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    max-width:
+        650px;
+
+    margin:
+        18px auto 22px;
+
+    padding:
+        18px;
+
+    text-align:
+        left;
+}
+
+.player-profile.hidden {
+
+    display:
+        none !important;
+}
+
+
+/* ============================================================
+   CLOSE BUTTON
+   ============================================================ */
+
+.close-button {
+
+    position:
+        absolute;
+
+    top:
+        7px;
+
+    right:
+        7px;
+
+    width:
+        25px;
+
+    height:
+        25px;
+
+    border:
+        1px solid #7f7f78;
+
+    border-radius:
+        2px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #d8d7ce
+        );
+
+    color:
+        #000000;
+
+    font-size:
+        15px;
+
+    font-weight:
+        bold;
+}
+
+.close-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #eeeeea
+        );
+}
+
+
+/* ============================================================
+   PLAYER DISPLAY NAME
+   ============================================================ */
+
+.player-display-name {
+
+    margin:
+        0 0 4px;
+
+    color:
+        #003399;
+
+    font-size:
+        23px;
+
+    font-weight:
+        bold;
+}
+
+
+/* ============================================================
+   PLAYER USERNAME
+   ============================================================ */
+
+.player-username {
+
+    margin-bottom:
+        18px;
+
+    color:
+        #666666;
+
+    font-size:
+        12px;
+}
+
+
+/* ============================================================
+   PLAYER CURRENCY
+   ============================================================ */
+
+.player-currency {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding-top:
+        12px;
+
+    border-top:
+        1px solid #b8b8b0;
+}
+
+.player-currency span {
+
+    color:
+        #555555;
+
+    font-size:
+        12px;
+}
+
+.player-currency strong {
+
+    color:
+        #a86f00;
+
+    font-size:
+        16px;
+}
+
+
+/* ============================================================
+   PLAYER PROFILE ACTIONS
+   ============================================================ */
+
+.player-profile-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    margin-top:
+        16px;
+
+    padding-top:
+        14px;
+
+    border-top:
+        1px solid #b8b8b0;
+}
+
+.player-profile-actions .primary-button {
+
+    display:
+        inline-block;
+
+    width:
+        auto;
+
+    min-width:
+        125px;
+
+    min-height:
+        30px;
+
+    margin-top:
+        0;
+
+    padding:
+        0 14px;
+}
+
+
+/* ============================================================
+   PLAYER FRIEND STATUS
+   ============================================================ */
+
+.player-friend-status {
+
+    min-height:
+        18px;
+
+    margin-top:
+        8px;
+
+    color:
+        #555555;
+
+    font-size:
+        12px;
+
+    font-weight:
+        bold;
+}
+
+.player-friend-status.success {
+
+    color:
+        #28732d;
+}
+
+.player-friend-status.error {
+
+    color:
+        #c00000;
+}
+
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+
+    width:
+        16px;
+
+    height:
+        16px;
+}
+
+::-webkit-scrollbar-track {
+
+    background:
+        #d8d7ce;
+
+    border-left:
+        1px solid #b0afa8;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background:
+        linear-gradient(
+            to right,
+            #f7f6ef 0%,
+            #d0cec5 45%,
+            #b8b6ad 100%
+        );
+
+    border:
+        1px solid #8c8a82;
+
+    border-radius:
+        2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background:
+        linear-gradient(
+            to right,
+            #ffffff 0%,
+            #d8d6cd 45%,
+            #aaa8a0 100%
+        );
+}
+
+::-webkit-scrollbar-button {
+
+    height:
+        16px;
+
+    width:
+        16px;
+
+    background:
+        #d8d7ce;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1000px) {
+
+    .topbar {
+
+        padding:
+            0 9px;
+    }
+
+    .main-navigation {
+
+        margin-left:
+            12px;
+    }
+
+    .nav-button {
+
+        padding:
+            0 9px;
+    }
+
+    .topbar-search {
+
+        width:
+            180px;
+
+        margin-right:
+            8px;
+    }
+
+    .username-display {
+
+        display:
+            none;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .topbar {
+
+        gap:
+            5px;
+    }
+
+    .topbar-logo {
+
+        font-size:
+            17px;
+    }
+
+    .main-navigation {
+
+        margin-left:
+            3px;
+
+        gap:
+            1px;
+    }
+
+    .nav-button {
+
+        padding:
+            0 6px;
+
+        font-size:
+            10px;
+    }
+
+    .topbar-search {
+
+        flex:
+            1;
+
+        width:
+            auto;
+
+        min-width:
+            100px;
+
+        margin-right:
+            4px;
+    }
+
+    .account-area {
+
+        display:
+            none;
+    }
+
+    .home-content {
+
+        padding:
+            18px 12px 35px;
+    }
+
+    .search-content {
+
+        padding:
+            18px 12px 35px;
+    }
+
+    .welcome-section h1 {
+
+        font-size:
+            29px;
+    }
+
+    .search-header {
+
+        flex-wrap:
+            wrap;
+    }
+
+    .friends-section-header {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+    .friends-add-button {
+
+        width:
+            100%;
+    }
+
+    .friend-card {
+
+        flex-wrap:
+            wrap;
+    }
+
+    .friend-status {
+
+        margin-left:
+            47px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .topbar {
+
+        flex-wrap:
+            wrap;
+
+        min-height:
+            auto;
+
+        padding:
+            7px;
+    }
+
+    .topbar-logo {
+
+        width:
+            100%;
+
+        height:
+            28px;
+
+        line-height:
+            28px;
+    }
+
+    .main-navigation {
+
+        order:
+            3;
+
+        width:
+            100%;
+
+        height:
+            40px;
+
+        margin:
+            0;
+    }
+
+    .nav-button {
+
+        flex:
+            1;
+
+        height:
+            40px;
+
+        padding:
+            0 4px;
+    }
+
+    .topbar-search {
+
+        order:
+            2;
+
+        width:
+            100%;
+
+        height:
+            30px;
+
+        margin:
+            4px 0;
+    }
+
+    .topbar-search input,
+    .topbar-search-button {
+
+        height:
+            30px;
+    }
+
+    .search-content .player-search {
+
+        flex-direction:
+            column;
+    }
+
+    .search-content #playerSearchButton {
+
+        width:
+            100%;
+    }
+
+    .search-header h1 {
+
+        font-size:
+            25px;
+    }
+
+    .friends-home-section,
+    .friends-requests-section {
+
+        padding:
+            14px;
+    }
+
+    .friend-request-card {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            9px;
+    }
+
+    .friend-request-actions {
+
+        width:
+            100%;
+
+        margin-left:
+            0;
+    }
+
+    .friend-request-actions button {
+
+        flex:
+            1;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    #signInScreen,
+    #loginScreen,
+    #profileSetupScreen,
+    #profileSetupDetailsScreen {
+
+        padding:
+            15px 8px;
+    }
+
+    .auth-container {
+
+        padding:
+            20px;
+    }
+
+    .auth-container::before {
+
+        width:
+            calc(100% + 40px);
+
+        margin:
+            -20px -20px 17px;
+    }
+
+    .auth-logo {
+
+        font-size:
+            25px;
+    }
+
+    .welcome-section {
+
+        padding:
+            25px 8px;
+    }
+
+    .welcome-section h1 {
+
+        font-size:
+            25px;
+    }
+
+    .featured-game {
+
+        min-height:
+            185px;
+
+        padding:
+            22px;
+    }
+
+    .featured-game h2 {
+
+        font-size:
+            23px;
+    }
+
+    .featured-game .primary-button {
+
+        width:
+            100%;
+    }
+
+    .player-search-result {
+
+        min-height:
+            58px;
+
+        padding:
+            8px;
+    }
+
+    .player-search-result-number {
+
+        width:
+            23px;
+    }
+
+    .player-search-result-info {
+
+        padding:
+            0 6px;
+    }
+
+    .player-profile-actions {
+
+        flex-direction:
+            column;
+    }
+
+    .player-profile-actions .primary-button {
+
+        width:
+            100%;
+    }
+}
+
+
+/* ============================================================
+   XP-SPECIFIC SELECTION
+   ============================================================ */
+
+::selection {
+
+    background:
+        #316ac5;
+
+    color:
+        #ffffff;
+}
+
+
+/* ============================================================
+   XP-LIKE LINKS
+   ============================================================ */
+
+a {
+
+    color:
+        #0645ad;
+
+    text-decoration:
+        underline;
+}
+
+a:hover {
+
+    color:
+        #003399;
+}
+
+
+/* ============================================================
+   XP-LIKE FOCUS
+   ============================================================ */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+
+    outline:
+        1px dotted #000000;
+
+    outline-offset:
+        1px;
+}
+
+
+/* ============================================================
+   END SOLARIA XP
+   ============================================================ */

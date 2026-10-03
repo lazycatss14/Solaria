@@ -1,0 +1,1259 @@
+/* =========================================================
+   SOLARIA
+   GAMES PAGE
+   WINDOWS XP STYLE
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+html,
+body {
+
+    width: 100%;
+
+    height: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #5b9bd5;
+
+    color:
+        #000000;
+
+}
+
+
+button {
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    cursor:
+        pointer;
+
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.games-page {
+
+    width: 100%;
+
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5b9bd5 0%,
+            #7eb9df 18%,
+            #d9edf7 42%,
+            #ece9d8 100%
+        );
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.games-header {
+
+    height:
+        52px;
+
+    min-height:
+        52px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    padding:
+        0 10px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #3f8ee8 0%,
+            #2f74c8 45%,
+            #2459a6 100%
+        );
+
+    border-top:
+        1px solid #75b8ff;
+
+    border-bottom:
+        1px solid #123b72;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        ),
+        0 2px 5px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+
+    color:
+        #ffffff;
+
+}
+
+
+.games-header h1 {
+
+    flex:
+        1;
+
+    margin:
+        0;
+
+    text-align:
+        center;
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size:
+        18px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        0;
+
+    color:
+        #ffffff;
+
+    text-shadow:
+        1px 1px 0 #17477d;
+
+}
+
+
+.header-spacer {
+
+    width:
+        82px;
+
+    min-width:
+        82px;
+
+}
+
+
+/* =========================================================
+   HEADER BUTTON
+   ========================================================= */
+
+.back-button {
+
+    min-height:
+        28px;
+
+    min-width:
+        72px;
+
+    padding:
+        4px 13px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius:
+        3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f4f3ed 45%,
+            #d5d3ca 100%
+        );
+
+    color:
+        #000000;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+
+    transition:
+        background 0.1s,
+        border-color 0.1s,
+        transform 0.05s;
+
+}
+
+
+.back-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f5f4ee 45%,
+            #d8d6cd 100%
+        );
+
+}
+
+
+.back-button:active {
+
+    transform:
+        translateY(1px);
+
+    box-shadow:
+        inset 0 2px 3px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.games-content {
+
+    flex:
+        1;
+
+    min-height:
+        0;
+
+    padding:
+        10px;
+
+    background:
+        #ece9d8;
+
+    overflow:
+        auto;
+
+}
+
+
+/* =========================================================
+   GAMES SECTION
+   ========================================================= */
+
+.games-list-section {
+
+    width:
+        100%;
+
+    max-width:
+        1100px;
+
+    margin:
+        0 auto;
+
+    background:
+        #ece9d8;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius:
+        3px;
+
+    box-shadow:
+        1px 1px 4px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.section-header {
+
+    height:
+        34px;
+
+    min-height:
+        34px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    padding:
+        0 8px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #4c9bea 0%,
+            #3178c9 48%,
+            #245ca7 100%
+        );
+
+    border-bottom:
+        1px solid #1b4f91;
+
+    color:
+        #ffffff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    text-shadow:
+        1px 1px 0 #17477d;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+
+}
+
+
+/* =========================================================
+   GAMES LIST
+   ========================================================= */
+
+.games-list {
+
+    padding:
+        10px;
+
+}
+
+
+/* =========================================================
+   GAME CARD
+   ========================================================= */
+
+.game-card {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        330px
+        minmax(
+            0,
+            1fr
+        );
+
+    min-height:
+        230px;
+
+    background:
+        #f7f6ef;
+
+    border:
+        1px solid #7f9db9;
+
+    border-radius:
+        3px;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        1px 1px 3px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+
+    cursor:
+        pointer;
+
+    transition:
+        border-color 0.1s,
+        box-shadow 0.1s;
+
+}
+
+
+.game-card:hover {
+
+    border-color:
+        #315a82;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 0 0 1px
+        rgba(
+            49,
+            90,
+            130,
+            0.2
+        ),
+        1px 2px 5px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+
+}
+
+
+.game-card:focus-visible {
+
+    outline:
+        1px dotted #000000;
+
+    outline-offset:
+        2px;
+
+}
+
+
+/* =========================================================
+   THUMBNAIL
+   ========================================================= */
+
+.game-thumbnail {
+
+    min-width:
+        0;
+
+    min-height:
+        230px;
+
+    padding:
+        8px;
+
+    border-right:
+        1px solid #b8b6ae;
+
+    background:
+        #d8d7ce;
+
+}
+
+
+/* =========================================================
+   BASEPLATE PREVIEW
+   ========================================================= */
+
+.baseplate-preview {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    min-height:
+        212px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid #5f8db8;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.5
+        );
+
+    background:
+        #72b5e7;
+
+}
+
+
+/* =========================================================
+   SKY
+   ========================================================= */
+
+.baseplate-sky {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5aa9e8 0%,
+            #a9d9f4 57%,
+            #d9edf7 58%,
+            #d9edf7 100%
+        );
+
+}
+
+
+/* =========================================================
+   GROUND
+   ========================================================= */
+
+.baseplate-ground {
+
+    position:
+        absolute;
+
+    left:
+        -10%;
+
+    right:
+        -10%;
+
+    bottom:
+        -20%;
+
+    height:
+        63%;
+
+    transform:
+        perspective(350px)
+        rotateX(55deg);
+
+    transform-origin:
+        center bottom;
+
+    background:
+        #66a94d;
+
+    border-top:
+        2px solid #3f7f32;
+
+}
+
+
+/* =========================================================
+   GRID LINES
+   ========================================================= */
+
+.grid-line {
+
+    position:
+        absolute;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.28
+        );
+
+}
+
+
+.grid-line.horizontal {
+
+    left:
+        0;
+
+    right:
+        0;
+
+    height:
+        1px;
+
+}
+
+
+.grid-line.vertical {
+
+    top:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        1px;
+
+}
+
+
+.grid-line.horizontal.one {
+
+    top:
+        25%;
+
+}
+
+
+.grid-line.horizontal.two {
+
+    top:
+        50%;
+
+}
+
+
+.grid-line.horizontal.three {
+
+    top:
+        75%;
+
+}
+
+
+.grid-line.vertical.one {
+
+    left:
+        25%;
+
+}
+
+
+.grid-line.vertical.two {
+
+    left:
+        50%;
+
+}
+
+
+.grid-line.vertical.three {
+
+    left:
+        75%;
+
+}
+
+
+/* =========================================================
+   BALL
+   ========================================================= */
+
+.game-ball {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        53%;
+
+    width:
+        58px;
+
+    height:
+        58px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border:
+        2px solid #6f6b54;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #fff9d6 0%,
+            #f6c453 40%,
+            #c99527 100%
+        );
+
+    box-shadow:
+        5px 8px 8px
+        rgba(
+            0,
+            0,
+            0,
+            0.28
+        );
+
+}
+
+
+/* =========================================================
+   GAME INFORMATION
+   ========================================================= */
+
+.game-info {
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    padding:
+        16px;
+
+}
+
+
+/* =========================================================
+   TITLE ROW
+   ========================================================= */
+
+.game-title-row {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+}
+
+
+.game-title-row h2 {
+
+    margin:
+        0;
+
+    color:
+        #000000;
+
+    font-size:
+        17px;
+
+    font-weight:
+        bold;
+
+}
+
+
+.online-label {
+
+    padding:
+        2px 5px;
+
+    border:
+        1px solid #5d874f;
+
+    border-radius:
+        2px;
+
+    background:
+        #dcefd4;
+
+    color:
+        #315d27;
+
+    font-size:
+        9px;
+
+    font-weight:
+        bold;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.game-description {
+
+    margin:
+        13px 0 10px;
+
+    color:
+        #333333;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================================
+   INFORMATION
+   ========================================================= */
+
+.game-information {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+
+    margin-bottom:
+        auto;
+
+    padding:
+        7px;
+
+    border:
+        1px solid #d0cec5;
+
+    background:
+        #ffffff;
+
+    color:
+        #555555;
+
+    font-size:
+        10px;
+
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.game-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+    margin-top:
+        14px;
+
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.play-button,
+.details-button {
+
+    min-height:
+        28px;
+
+    padding:
+        4px 13px;
+
+    border:
+        1px solid #315a82;
+
+    border-radius:
+        3px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    color:
+        #000000;
+
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 1px 2px
+        rgba(
+            0,
+            0,
+            0,
+            0.2
+        );
+
+}
+
+
+.play-button {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #d8eaff 0%,
+            #a9cff2 48%,
+            #78aee0 100%
+        );
+
+}
+
+
+.details-button {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f4f3ed 45%,
+            #d5d3ca 100%
+        );
+
+}
+
+
+.play-button:hover,
+.details-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #e5e3db 45%,
+            #c8c6bd 100%
+        );
+
+}
+
+
+.play-button:active,
+.details-button:active {
+
+    transform:
+        translateY(1px);
+
+    box-shadow:
+        inset 0 2px 3px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+
+}
+
+
+/* =========================================================
+   DISABLED
+   ========================================================= */
+
+.play-button:disabled {
+
+    cursor:
+        wait;
+
+    color:
+        #666666;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #eeeeee,
+            #d6d4cc
+        );
+
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+button:focus-visible {
+
+    outline:
+        1px dotted #000000;
+
+    outline-offset:
+        1px;
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.games-content::-webkit-scrollbar {
+
+    width:
+        16px;
+
+}
+
+
+.games-content::-webkit-scrollbar-track {
+
+    background:
+        #d8d7ce;
+
+    border-left:
+        1px solid #aaa9a2;
+
+}
+
+
+.games-content::-webkit-scrollbar-thumb {
+
+    background:
+        linear-gradient(
+            to right,
+            #f7f6ef,
+            #d1cfc6 50%,
+            #aaa8a0
+        );
+
+    border:
+        1px solid #88867f;
+
+    border-radius:
+        2px;
+
+}
+
+
+.games-content::-webkit-scrollbar-thumb:hover {
+
+    background:
+        linear-gradient(
+            to right,
+            #ffffff,
+            #dedcd3 50%,
+            #b5b3aa
+        );
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .games-page {
+
+        height:
+            auto;
+
+        min-height:
+            100vh;
+
+        overflow:
+            visible;
+
+    }
+
+
+    .games-content {
+
+        overflow:
+            visible;
+
+    }
+
+
+    .game-card {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .game-thumbnail {
+
+        min-height:
+            220px;
+
+        border-right:
+            none;
+
+        border-bottom:
+            1px solid #b8b6ae;
+
+    }
+
+
+    .baseplate-preview {
+
+        min-height:
+            200px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .games-header {
+
+        height:
+            48px;
+
+        min-height:
+            48px;
+
+        padding:
+            0 6px;
+
+    }
+
+
+    .games-header h1 {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .header-spacer {
+
+        width:
+            72px;
+
+        min-width:
+            72px;
+
+    }
+
+
+    .back-button {
+
+        min-width:
+            64px;
+
+        padding:
+            4px 8px;
+
+        font-size:
+            10px;
+
+    }
+
+
+    .games-content {
+
+        padding:
+            6px;
+
+    }
+
+
+    .games-list {
+
+        padding:
+            6px;
+
+    }
+
+
+    .game-info {
+
+        padding:
+            11px;
+
+    }
+
+
+    .game-actions {
+
+        flex-wrap:
+            wrap;
+
+    }
+
+}
+
+
+/* =========================================================
+   END SOLARIA XP GAMES PAGE
+   ========================================================= */

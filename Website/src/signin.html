@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sign In - Solaria</title>
+
+    <link
+        rel="stylesheet"
+        href="./signin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         SOLARIA SIGN IN
+    ========================================== -->
+
+
+    <header class="topbar">
+
+        <div class="logo">
+            SOLARIA
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="./index.html">
+                Home
+            </a>
+
+            <a
+                href="./signin.html"
+                class="current"
+            >
+                Sign In
+            </a>
+
+            <a href="./signup.html">
+                Sign Up
+            </a>
+
+            <a href="./download.html">
+                Download
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="auth-page">
+
+
+        <section class="auth-section">
+
+            <div class="auth-window">
+
+
+                <div class="window-titlebar">
+
+                    <span>
+                        Solaria Sign In
+                    </span>
+
+                </div>
+
+
+                <div class="auth-content">
+
+
+                    <div class="auth-logo">
+                        SOLARIA
+                    </div>
+
+
+                    <h1>
+                        Sign In
+                    </h1>
+
+
+                    <p class="auth-subtitle">
+                        Welcome back to Solaria.
+                    </p>
+
+
+                    <form
+                        class="auth-form"
+                        id="signInForm"
+                    >
+
+
+                        <div class="form-group">
+
+                            <label for="username">
+                                Username or Email
+                            </label>
+
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="button primary"
+                        >
+                            SIGN IN
+                        </button>
+
+
+                        <p
+                            class="form-message"
+                            id="signInMessage"
+                            aria-live="polite"
+                        ></p>
+
+                    </form>
+
+
+                    <div class="auth-divider">
+                        <span>OR</span>
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="button google-button"
+                        id="googleSignInButton"
+                    >
+                        SIGN IN WITH GOOGLE
+                    </button>
+
+
+                    <p class="account-link">
+
+                        Don't have a Solaria account?
+
+                        <a href="./signup.html">
+                            Create one
+                        </a>
+
+                    </p>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            SOLARIA
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="./index.html">
+                Home
+            </a>
+
+            <a href="./signin.html">
+                Sign In
+            </a>
+
+            <a href="./signup.html">
+                Sign Up
+            </a>
+
+            <a href="./download.html">
+                Download
+            </a>
+
+        </div>
+
+
+        <p>
+            © 2026 Solaria
+        </p>
+
+    </footer>
+
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+
+    <!-- =====================================================
+         CONTENT SECURITY POLICY
+    ====================================================== -->
+
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="
+            default-src 'self';
+            script-src 'self';
+            style-src 'self' 'unsafe-inline';
+            img-src 'self' data: https:;
+            connect-src 'self' https://*.supabase.co wss://*.supabase.co;
+            font-src 'self' data:;
+        "
+    >
+
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <title>Solaria - Friends</title>
+
+
+    <!-- =====================================================
+         SOLARIA GLOBAL THEME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css"
+    >
+
+
+    <!-- =====================================================
+         FRIENDS CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/friends.css"
+    >
+
+
+    <!-- =====================================================
+         SOLARIA THEME CONTROLLER
+    ====================================================== -->
+
+    <script src="../js/theme.js"></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <header class="friends-topbar">
+
+        <div class="friends-topbar-left">
+
+
+            <!-- BACK -->
+
+            <button
+                id="backButton"
+                class="back-button"
+                type="button"
+            >
+                ← BACK
+            </button>
+
+
+            <!-- SOLARIA LOGO -->
+
+            <div class="blockworld-logo">
+                SOLARIA
+            </div>
+
+        </div>
+
+
+        <div class="friends-topbar-right">
+
+
+            <!-- SEARCH -->
+
+            <button
+                id="searchButton"
+                class="topbar-button"
+                type="button"
+            >
+                SEARCH
+            </button>
+
+
+            <!-- HOME -->
+
+            <button
+                id="homeButton"
+                class="topbar-button"
+                type="button"
+            >
+                HOME
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="friends-page">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="friends-page-header">
+
+            <div>
+
+                <div class="section-label">
+                    SOCIAL
+                </div>
+
+
+                <h1>
+                    FRIENDS
+                </h1>
+
+
+                <p>
+                    Add players, accept requests, and see who's online.
+                </p>
+
+            </div>
+
+
+            <!-- ADD FRIEND -->
+
+            <button
+                id="addFriendHomeButton"
+                class="friends-add-button"
+                type="button"
+            >
+                + ADD FRIEND
+            </button>
+
+        </section>
+
+
+        <!-- =================================================
+             FRIENDS LIST
+        ================================================== -->
+
+        <section class="friends-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        MY FRIENDS
+                    </h2>
+
+
+                    <span id="friendCount">
+                        0 FRIENDS
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="friendsList"
+                class="friends-list"
+            ></div>
+
+
+            <!-- EMPTY FRIENDS STATE -->
+
+            <div
+                id="friendsEmpty"
+                class="friends-empty"
+                style="display: none;"
+            >
+
+                <div class="empty-icon">
+                    👥
+                </div>
+
+
+                <h3>
+                    No friends yet
+                </h3>
+
+
+                <p>
+                    Find some Solaria players and add them.
+                </p>
+
+
+                <button
+                    id="addFriendEmptyButton"
+                    class="empty-add-button"
+                    type="button"
+                >
+                    ADD FRIEND
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             INCOMING REQUESTS
+        ================================================== -->
+
+        <section class="friends-panel requests-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        FRIEND REQUESTS
+                    </h2>
+
+
+                    <span>
+                        PEOPLE WHO WANT TO BE YOUR FRIEND
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="incomingRequestsList"
+                class="requests-list"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================================
+             SENT REQUESTS
+        ================================================== -->
+
+        <section class="friends-panel requests-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        SENT REQUESTS
+                    </h2>
+
+
+                    <span>
+                        FRIEND REQUESTS YOU SENT
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="outgoingRequestsList"
+                class="requests-list"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FRIENDS JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/friends.js"></script>
+
+
+    <!-- =====================================================
+         PAGE NAVIGATION
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const backButton =
+                document.getElementById("backButton");
+
+            const homeButton =
+                document.getElementById("homeButton");
+
+            const searchButton =
+                document.getElementById("searchButton");
+
+            const addFriendButton =
+                document.getElementById("addFriendHomeButton");
+
+            const emptyAddButton =
+                document.getElementById("addFriendEmptyButton");
+
+
+            /* =============================================
+               BACK
+            ============================================= */
+
+            if (backButton) {
+
+                backButton.addEventListener(
+                    "click",
+                    () => {
+
+                        window.location.href =
+                            "../index.html";
+
+                    }
+                );
+
+            }
+
+
+            /* =============================================
+               HOME
+            ============================================= */
+
+            if (homeButton) {
+
+                homeButton.addEventListener(
+                    "click",
+                    () => {
+
+                        window.location.href =
+                            "../index.html";
+
+                    }
+                );
+
+            }
+
+
+            /* =============================================
+               SEARCH
+            ============================================= */
+
+            if (searchButton) {
+
+                searchButton.addEventListener(
+                    "click",
+                    () => {
+
+                        window.location.href =
+                            "./search.html";
+
+                    }
+                );
+
+            }
+
+
+            /* =============================================
+               OPEN SEARCH
+            ============================================= */
+
+            function openSearch() {
+
+                window.location.href =
+                    "./search.html";
+
+            }
+
+
+            /* =============================================
+               ADD FRIEND
+            ============================================= */
+
+            if (addFriendButton) {
+
+                addFriendButton.addEventListener(
+                    "click",
+                    openSearch
+                );
+
+            }
+
+
+            /* =============================================
+               EMPTY FRIENDS ADD BUTTON
+            ============================================= */
+
+            if (emptyAddButton) {
+
+                emptyAddButton.addEventListener(
+                    "click",
+                    openSearch
+                );
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

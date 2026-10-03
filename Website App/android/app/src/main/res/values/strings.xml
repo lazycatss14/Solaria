@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Solaria</string>
+    <string name="title_activity_main">Solaria</string>
+    <string name="package_name">com.solaria.browser</string>
+    <string name="custom_url_scheme">com.solaria.browser</string>
+</resources>

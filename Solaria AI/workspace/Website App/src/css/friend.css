@@ -1,0 +1,1097 @@
+/* ============================================================
+   SOLARIA FRIENDS PAGE
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background:
+        linear-gradient(
+            135deg,
+            #eaf7fa 0%,
+            #f4fbf5 55%,
+            #fff9ed 100%
+        );
+
+    color: #315344;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* ============================================================
+   NIGHT THEME
+============================================================ */
+
+html[data-theme="dark"] body {
+    background:
+        linear-gradient(
+            135deg,
+            #10182b 0%,
+            #18223a 55%,
+            #24213a 100%
+        );
+
+    color: #e8eefc;
+}
+
+
+/* ============================================================
+   TOP BAR
+============================================================ */
+
+.friends-topbar {
+    width: 100%;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff9ed 0%,
+            #fffdf8 50%,
+            #e8f6f7 100%
+        );
+
+    border-bottom: 2px solid #d5e6dc;
+
+    color: #315344;
+
+    box-shadow:
+        0 2px 10px rgba(49, 83, 68, 0.08);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* ============================================================
+   NIGHT TOP BAR
+============================================================ */
+
+html[data-theme="dark"] .friends-topbar {
+    background:
+        linear-gradient(
+            90deg,
+            #151d32 0%,
+            #1b2540 50%,
+            #20213b 100%
+        );
+
+    border-bottom-color: #303b58;
+
+    color: #e8eefc;
+
+    box-shadow:
+        0 2px 14px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ============================================================
+   TOP BAR LAYOUT
+============================================================ */
+
+.friends-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.friends-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blockworld-logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #315344;
+
+    transition: color 0.3s ease;
+}
+
+html[data-theme="dark"] .blockworld-logo {
+    color: #f1e9c9;
+}
+
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+.back-button,
+.topbar-button {
+    height: 34px;
+
+    padding: 0 13px;
+
+    border: 1px solid #c9dfd5;
+    border-radius: 8px;
+
+    background: #e8f4ef;
+    color: #315344;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.1s ease,
+        box-shadow 0.15s ease;
+}
+
+.back-button:hover,
+.topbar-button:hover {
+    background: #dcefe7;
+
+    box-shadow:
+        0 3px 8px rgba(49, 83, 68, 0.08);
+}
+
+.back-button:active,
+.topbar-button:active {
+    background: #cfe6dc;
+    transform: translateY(1px);
+}
+
+
+/* ============================================================
+   NIGHT BUTTONS
+============================================================ */
+
+html[data-theme="dark"] .back-button,
+html[data-theme="dark"] .topbar-button {
+    border-color: #3a4868;
+    background: #252f49;
+    color: #e8eefc;
+}
+
+html[data-theme="dark"] .back-button:hover,
+html[data-theme="dark"] .topbar-button:hover {
+    background: #303b59;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme="dark"] .back-button:active,
+html[data-theme="dark"] .topbar-button:active {
+    background: #394665;
+}
+
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+.friends-page {
+    width: min(1100px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 38px 0 70px;
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.friends-page-header {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 25px;
+}
+
+.section-label {
+    margin-bottom: 5px;
+
+    color: #789285;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.friends-page-header h1 {
+    margin: 0;
+
+    color: #315344;
+
+    font-size: 38px;
+    font-weight: 900;
+
+    letter-spacing: -1px;
+}
+
+.friends-page-header p {
+    margin: 8px 0 0;
+
+    color: #6f8b7d;
+
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   NIGHT HEADER
+============================================================ */
+
+html[data-theme="dark"] .section-label {
+    color: #91a2c4;
+}
+
+html[data-theme="dark"] .friends-page-header h1 {
+    color: #f0f4ff;
+}
+
+html[data-theme="dark"] .friends-page-header p {
+    color: #9eacc7;
+}
+
+
+/* ============================================================
+   ADD FRIEND BUTTON
+============================================================ */
+
+.friends-add-button {
+    min-width: 145px;
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: 1px solid #e5b73d;
+    border-radius: 9px;
+
+    background: #f6c453;
+    color: #315344;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px rgba(246, 196, 83, 0.2);
+
+    transition:
+        background 0.15s ease,
+        transform 0.1s ease,
+        box-shadow 0.15s ease;
+}
+
+.friends-add-button:hover {
+    background: #f8ca68;
+
+    box-shadow:
+        0 5px 13px rgba(246, 196, 83, 0.28);
+}
+
+.friends-add-button:active {
+    transform: translateY(1px);
+}
+
+
+/* ============================================================
+   NIGHT ADD FRIEND
+============================================================ */
+
+html[data-theme="dark"] .friends-add-button {
+    border-color: #d7ae45;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e4c15b,
+            #c99d43
+        );
+
+    color: #202638;
+
+    box-shadow:
+        0 4px 14px rgba(228, 193, 91, 0.16);
+}
+
+html[data-theme="dark"] .friends-add-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #efd06d,
+            #d8ad4f
+        );
+}
+
+
+/* ============================================================
+   PANELS
+============================================================ */
+
+.friends-panel {
+    width: 100%;
+
+    margin-bottom: 22px;
+
+    background: #fffdf8;
+
+    border: 1px solid #d8e8df;
+    border-radius: 14px;
+
+    box-shadow:
+        0 6px 20px rgba(49, 83, 68, 0.07);
+
+    overflow: hidden;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.panel-header {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 15px 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff9ed,
+            #f7fcf8
+        );
+
+    border-bottom: 1px solid #dfebe3;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.panel-header h2 {
+    margin: 0 0 4px;
+
+    color: #315344;
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.panel-header span {
+    color: #789285;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 0.7px;
+}
+
+
+/* ============================================================
+   NIGHT PANELS
+============================================================ */
+
+html[data-theme="dark"] .friends-panel {
+    background: #1b2439;
+
+    border-color: #303b58;
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme="dark"] .panel-header {
+    background:
+        linear-gradient(
+            90deg,
+            #202940,
+            #1b2c3d
+        );
+
+    border-bottom-color: #303b58;
+}
+
+html[data-theme="dark"] .panel-header h2 {
+    color: #f0f4ff;
+}
+
+html[data-theme="dark"] .panel-header span {
+    color: #91a2c4;
+}
+
+
+/* ============================================================
+   FRIEND LIST
+============================================================ */
+
+.friends-list {
+    width: 100%;
+}
+
+.friend-card {
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 14px 20px;
+
+    border-bottom: 1px solid #e5eee8;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.3s ease;
+}
+
+.friend-card:last-child {
+    border-bottom: none;
+}
+
+.friend-card:hover {
+    background: #f4faf6;
+}
+
+
+/* ============================================================
+   NIGHT FRIEND LIST
+============================================================ */
+
+html[data-theme="dark"] .friend-card {
+    border-bottom-color: #2d3853;
+}
+
+html[data-theme="dark"] .friend-card:hover {
+    background: #222d45;
+}
+
+
+/* ============================================================
+   AVATAR
+============================================================ */
+
+.friend-avatar {
+    width: 50px;
+    height: 50px;
+
+    flex: 0 0 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 15px;
+
+    border: 2px solid #d3e5db;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e4f5f2,
+            #fff4d7
+        );
+
+    color: #315344;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    box-shadow:
+        0 2px 7px rgba(49, 83, 68, 0.08);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* ============================================================
+   NIGHT AVATAR
+============================================================ */
+
+html[data-theme="dark"] .friend-avatar {
+    border-color: #3d4b69;
+
+    background:
+        linear-gradient(
+            145deg,
+            #293754,
+            #3a344c
+        );
+
+    color: #e9edf8;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ============================================================
+   FRIEND INFO
+============================================================ */
+
+.friend-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.friend-display-name {
+    margin-bottom: 3px;
+
+    color: #315344;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.friend-username {
+    margin-bottom: 5px;
+
+    color: #789285;
+
+    font-size: 12px;
+}
+
+.friend-status {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: #6f8b7d;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.friend-status-dot {
+    width: 8px;
+    height: 8px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    background: #aabbb2;
+}
+
+.friend-status-dot.online {
+    background: #53b878;
+
+    box-shadow:
+        0 0 0 3px rgba(83, 184, 120, 0.12);
+}
+
+.friend-status-dot.offline {
+    background: #aabbb2;
+}
+
+
+/* ============================================================
+   NIGHT FRIEND INFO
+============================================================ */
+
+html[data-theme="dark"] .friend-display-name {
+    color: #eef2ff;
+}
+
+html[data-theme="dark"] .friend-username {
+    color: #91a2c4;
+}
+
+html[data-theme="dark"] .friend-status {
+    color: #9eacc7;
+}
+
+html[data-theme="dark"] .friend-status-dot.offline {
+    background: #64708b;
+}
+
+
+/* ============================================================
+   REMOVE FRIEND
+============================================================ */
+
+.friend-remove-button {
+    height: 32px;
+
+    padding: 0 12px;
+
+    border: 1px solid #c9dfd5;
+    border-radius: 8px;
+
+    background: #f7fcf8;
+    color: #617d70;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.friend-remove-button:hover {
+    border-color: #b7d3c5;
+
+    background: #eaf4ef;
+
+    color: #315344;
+}
+
+
+/* ============================================================
+   NIGHT REMOVE FRIEND
+============================================================ */
+
+html[data-theme="dark"] .friend-remove-button {
+    border-color: #3a4868;
+
+    background: #252f49;
+
+    color: #aab7d0;
+}
+
+html[data-theme="dark"] .friend-remove-button:hover {
+    border-color: #536382;
+
+    background: #303b59;
+
+    color: #eef2ff;
+}
+
+
+/* ============================================================
+   EMPTY STATE
+============================================================ */
+
+.friends-empty {
+    padding: 42px 20px;
+
+    text-align: center;
+
+    color: #789285;
+}
+
+.empty-icon {
+    margin-bottom: 12px;
+
+    font-size: 35px;
+}
+
+.friends-empty h3 {
+    margin: 0 0 6px;
+
+    color: #315344;
+
+    font-size: 17px;
+}
+
+.friends-empty p {
+    margin: 0 0 18px;
+
+    color: #789285;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   NIGHT EMPTY STATE
+============================================================ */
+
+html[data-theme="dark"] .friends-empty {
+    color: #91a2c4;
+}
+
+html[data-theme="dark"] .friends-empty h3 {
+    color: #eef2ff;
+}
+
+html[data-theme="dark"] .friends-empty p {
+    color: #91a2c4;
+}
+
+
+/* ============================================================
+   EMPTY ADD BUTTON
+============================================================ */
+
+.empty-add-button {
+    height: 35px;
+
+    padding: 0 16px;
+
+    border: 1px solid #e5b73d;
+    border-radius: 8px;
+
+    background: #f6c453;
+    color: #315344;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.1s ease;
+}
+
+.empty-add-button:hover {
+    background: #f8ca68;
+}
+
+.empty-add-button:active {
+    transform: translateY(1px);
+}
+
+
+/* ============================================================
+   NIGHT EMPTY BUTTON
+============================================================ */
+
+html[data-theme="dark"] .empty-add-button {
+    border-color: #d7ae45;
+
+    background: #d8b34e;
+
+    color: #202638;
+}
+
+html[data-theme="dark"] .empty-add-button:hover {
+    background: #e8c55f;
+}
+
+
+/* ============================================================
+   REQUESTS
+============================================================ */
+
+.requests-list {
+    width: 100%;
+}
+
+.friend-request-card {
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 12px 20px;
+
+    border-bottom: 1px solid #e5eee8;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.3s ease;
+}
+
+.friend-request-card:last-child {
+    border-bottom: none;
+}
+
+.friend-request-card:hover {
+    background: #f4faf6;
+}
+
+.friend-request-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.friend-request-display {
+    margin-bottom: 4px;
+
+    color: #315344;
+
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.friend-request-username {
+    color: #789285;
+
+    font-size: 11px;
+}
+
+.friend-request-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+/* ============================================================
+   NIGHT REQUESTS
+============================================================ */
+
+html[data-theme="dark"] .friend-request-card {
+    border-bottom-color: #2d3853;
+}
+
+html[data-theme="dark"] .friend-request-card:hover {
+    background: #222d45;
+}
+
+html[data-theme="dark"] .friend-request-display {
+    color: #eef2ff;
+}
+
+html[data-theme="dark"] .friend-request-username {
+    color: #91a2c4;
+}
+
+
+/* ============================================================
+   REQUEST BUTTONS
+============================================================ */
+
+.friend-accept-button,
+.friend-decline-button {
+    height: 31px;
+
+    padding: 0 11px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.1s ease;
+}
+
+.friend-accept-button {
+    border: 1px solid #e5b73d;
+
+    background: #f6c453;
+    color: #315344;
+}
+
+.friend-accept-button:hover {
+    background: #f8ca68;
+}
+
+.friend-decline-button {
+    border: 1px solid #c9dfd5;
+
+    background: #f7fcf8;
+    color: #617d70;
+}
+
+.friend-decline-button:hover {
+    background: #eaf4ef;
+    color: #315344;
+}
+
+
+/* ============================================================
+   NIGHT REQUEST BUTTONS
+============================================================ */
+
+html[data-theme="dark"] .friend-accept-button {
+    border-color: #d7ae45;
+
+    background: #d8b34e;
+
+    color: #202638;
+}
+
+html[data-theme="dark"] .friend-accept-button:hover {
+    background: #e8c55f;
+}
+
+html[data-theme="dark"] .friend-decline-button {
+    border-color: #3a4868;
+
+    background: #252f49;
+
+    color: #aab7d0;
+}
+
+html[data-theme="dark"] .friend-decline-button:hover {
+    background: #303b59;
+
+    color: #eef2ff;
+}
+
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+.friends-loading {
+    padding: 30px 20px;
+
+    text-align: center;
+
+    color: #789285;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+html[data-theme="dark"] .friends-loading {
+    color: #91a2c4;
+}
+
+
+/* ============================================================
+   MOBILE / SMALL WINDOW
+============================================================ */
+
+@media (max-width: 700px) {
+
+    .friends-topbar {
+        padding: 0 12px;
+    }
+
+    .friends-topbar-right {
+        gap: 4px;
+    }
+
+    .blockworld-logo {
+        font-size: 16px;
+    }
+
+    .friends-page {
+        width: calc(100% - 20px);
+
+        padding-top: 25px;
+    }
+
+    .friends-page-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .friends-page-header h1 {
+        font-size: 30px;
+    }
+
+    .friends-add-button {
+        width: 100%;
+    }
+
+    .friend-card {
+        padding: 13px;
+    }
+
+    .friend-remove-button {
+        padding: 0 8px;
+    }
+
+    .friend-request-card {
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+
+        padding: 13px;
+    }
+
+    .friend-request-actions {
+        width: 100%;
+
+        margin-top: 10px;
+
+        padding-left: 65px;
+    }
+}
+
+
+/* ============================================================
+   VERY SMALL WINDOW
+============================================================ */
+
+@media (max-width: 500px) {
+
+    .back-button {
+        font-size: 0;
+
+        width: 38px;
+
+        padding: 0;
+    }
+
+    .back-button::before {
+        content: "←";
+
+        font-size: 18px;
+    }
+
+    .topbar-button {
+        font-size: 9px;
+
+        padding: 0 8px;
+    }
+
+    .friend-avatar {
+        width: 43px;
+        height: 43px;
+
+        flex-basis: 43px;
+
+        margin-right: 10px;
+    }
+
+    .friend-display-name {
+        font-size: 13px;
+    }
+}

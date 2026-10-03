@@ -1,0 +1,30 @@
+{
+    "application": {
+        "name": "BlockWorld",
+        "version": "0.0.5",
+        "publisher": "BlockWorld",
+        "description": "BlockWorld Browser"
+    },
+
+    "installation": {
+        "defaultDirectory": "%LOCALAPPDATA%\\BlockWorld",
+        "allowCustomDirectory": true
+    },
+
+    "shortcuts": {
+        "desktop": true,
+        "startMenu": true
+    },
+
+    "afterInstall": {
+        "askToLaunch": true,
+        "launchByDefault": true
+    },
+
+    "updates": {
+        "enabled": true,
+        "checkOnLaunch": true,
+        "askBeforeDownloading": true,
+        "automaticDownload": false
+    }
+}

@@ -1,0 +1,54 @@
+{
+    "name": "solaria",
+    "version": "0.7.2",
+    "description": "Solaria Browser",
+    "author": "LazyCatss",
+    "main": "main.js",
+
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder --win nsis",
+        "build-installer": "electron-builder --win nsis"
+    },
+
+    "dependencies": {
+        "@supabase/supabase-js": "^2.57.0"
+    },
+
+    "devDependencies": {
+        "electron": "^44.0.0",
+        "electron-builder": "^26.15.3"
+    },
+
+    "build": {
+        "appId": "com.solaria.browser",
+        "productName": "Solaria",
+        "icon": "build/icon.ico",
+
+        "directories": {
+            "output": "dist"
+        },
+
+        "files": [
+            "src/**/*",
+            "main.js",
+            "preload.js",
+            "installer/**/*",
+            "package.json"
+        ],
+
+        "win": {
+            "target": "nsis",
+            "artifactName": "Solaria-Setup.exe"
+        },
+
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true,
+            "shortcutName": "Solaria",
+            "runAfterFinish": false
+        }
+    }
+}
