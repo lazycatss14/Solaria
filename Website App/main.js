@@ -7,14 +7,20 @@ const {
     BrowserWindow,
     ipcMain,
     shell,
-    nativeTheme
+    nativeTheme,
+    dialog
 } = require("electron");
 
 const path = require("path");
 const fs = require("fs");
+
 const {
     spawn
 } = require("child_process");
+
+const {
+    autoUpdater
+} = require("electron-updater");
 
 const supabase =
     require("./src/js/supabase");
@@ -87,6 +93,495 @@ const THEME_FILE_NAME =
 
 let solariaThemePreference =
     "system";
+
+
+// ============================================================
+// AUTO UPDATER
+// ============================================================
+
+let updateDownloadStarted =
+    false;
+
+let updateDownloaded =
+    false;
+
+
+/*
+    electron-updater gets its GitHub repository information
+    from the "publish" section of package.json.
+
+    Development mode is intentionally excluded.
+
+    This means:
+
+        npm.cmd start
+
+    will NOT try to update your development copy.
+
+    A packaged Solaria installation WILL check for updates.
+*/
+
+function setupAutoUpdater() {
+
+    if (!app.isPackaged) {
+
+        console.log(
+            "[Solaria] Auto updater disabled in development mode."
+        );
+
+        return;
+
+    }
+
+
+    console.log(
+        "[Solaria] Auto updater enabled."
+    );
+
+
+    autoUpdater.autoDownload =
+        true;
+
+    autoUpdater.autoInstallOnAppQuit =
+        true;
+
+
+    autoUpdater.on(
+        "checking-for-update",
+        () => {
+
+            console.log(
+                "[Solaria] Checking for updates..."
+            );
+
+        }
+    );
+
+
+    autoUpdater.on(
+        "update-available",
+        (info) => {
+
+            console.log(
+                "[Solaria] Update available:",
+                info.version
+            );
+
+
+            if (
+                mainWindow &&
+                !mainWindow.isDestroyed()
+            ) {
+
+                mainWindow.webContents.send(
+                    "solaria-update-available",
+                    {
+                        version:
+                            info.version
+                    }
+                );
+
+            }
+
+
+            if (
+                updateDownloadStarted
+            ) {
+
+                return;
+
+            }
+
+
+            updateDownloadStarted =
+                true;
+
+
+            console.log(
+                "[Solaria] Downloading update..."
+            );
+
+        }
+    );
+
+
+    autoUpdater.on(
+        "update-not-available",
+        (info) => {
+
+            console.log(
+                "[Solaria] Solaria is up to date.",
+                info?.version || ""
+            );
+
+
+            if (
+                mainWindow &&
+                !mainWindow.isDestroyed()
+            ) {
+
+                mainWindow.webContents.send(
+                    "solaria-update-not-available",
+                    {
+                        version:
+                            info?.version ||
+                            app.getVersion()
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    autoUpdater.on(
+        "download-progress",
+        (progress) => {
+
+            console.log(
+                "[Solaria] Update download:",
+                `${Math.round(progress.percent)}%`
+            );
+
+
+            if (
+                mainWindow &&
+                !mainWindow.isDestroyed()
+            ) {
+
+                mainWindow.webContents.send(
+                    "solaria-update-progress",
+                    {
+                        percent:
+                            progress.percent,
+
+                        transferred:
+                            progress.transferred,
+
+                        total:
+                            progress.total,
+
+                        bytesPerSecond:
+                            progress.bytesPerSecond
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    autoUpdater.on(
+        "update-downloaded",
+        async (info) => {
+
+            updateDownloaded =
+                true;
+
+
+            console.log(
+                "[Solaria] Update downloaded:",
+                info.version
+            );
+
+
+            if (
+                mainWindow &&
+                !mainWindow.isDestroyed()
+            ) {
+
+                mainWindow.webContents.send(
+                    "solaria-update-downloaded",
+                    {
+                        version:
+                            info.version
+                    }
+                );
+
+            }
+
+
+            const result =
+                await dialog.showMessageBox({
+
+                    type:
+                        "info",
+
+                    title:
+                        "Solaria Update Ready",
+
+                    message:
+                        `Solaria ${info.version} is ready to install.`,
+
+                    detail:
+                        "Restart Solaria now to install the update.",
+
+                    buttons: [
+                        "Restart and Update",
+                        "Later"
+                    ],
+
+                    defaultId:
+                        0,
+
+                    cancelId:
+                        1
+
+                });
+
+
+            if (
+                result.response ===
+                0
+            ) {
+
+                console.log(
+                    "[Solaria] Installing downloaded update..."
+                );
+
+
+                autoUpdater.quitAndInstall(
+                    false,
+                    true
+                );
+
+            }
+
+        }
+    );
+
+
+    autoUpdater.on(
+        "error",
+        (error) => {
+
+            console.error(
+                "[Solaria] Auto updater error:",
+                error
+            );
+
+
+            if (
+                mainWindow &&
+                !mainWindow.isDestroyed()
+            ) {
+
+                mainWindow.webContents.send(
+                    "solaria-update-error",
+                    {
+                        message:
+                            error?.message ||
+                            "Unable to check for updates."
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    /*
+        Wait a little after startup before checking.
+
+        This gives the application time to finish loading
+        before the updater contacts GitHub.
+    */
+
+    setTimeout(
+        () => {
+
+            checkForSolariaUpdate();
+
+        },
+        10000
+    );
+
+}
+
+
+// ============================================================
+// CHECK FOR SOLARIA UPDATE
+// ============================================================
+
+async function checkForSolariaUpdate() {
+
+    if (!app.isPackaged) {
+
+        console.log(
+            "[Solaria] Update check skipped because Solaria is not packaged."
+        );
+
+        return {
+
+            success: false,
+
+            skipped:
+                true,
+
+            message:
+                "Updates are disabled in development mode."
+
+        };
+
+    }
+
+
+    try {
+
+        console.log(
+            "[Solaria] Starting update check..."
+        );
+
+
+        const result =
+            await autoUpdater.checkForUpdates();
+
+
+        if (
+            !result ||
+            !result.updateInfo
+        ) {
+
+            return {
+
+                success: true,
+
+                updateAvailable:
+                    false
+
+            };
+
+        }
+
+
+        const currentVersion =
+            app.getVersion();
+
+        const latestVersion =
+            result.updateInfo.version;
+
+
+        console.log(
+            "[Solaria] Current version:",
+            currentVersion
+        );
+
+        console.log(
+            "[Solaria] Latest version:",
+            latestVersion
+        );
+
+
+        return {
+
+            success: true,
+
+            updateAvailable:
+                latestVersion !== currentVersion,
+
+            currentVersion,
+
+            latestVersion
+
+        };
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "[Solaria] Update check failed:",
+            error
+        );
+
+
+        return {
+
+            success: false,
+
+            message:
+                error.message ||
+                "Unable to check for updates."
+
+        };
+
+    }
+
+}
+
+
+// ============================================================
+// UPDATE IPC
+// ============================================================
+
+ipcMain.handle(
+    "solaria-update-check",
+    async () => {
+
+        return await checkForSolariaUpdate();
+
+    }
+);
+
+
+ipcMain.handle(
+    "solaria-update-install",
+    async () => {
+
+        if (
+            !app.isPackaged
+        ) {
+
+            return {
+
+                success: false,
+
+                message:
+                    "Updates are disabled in development mode."
+
+            };
+
+        }
+
+
+        if (
+            !updateDownloaded
+        ) {
+
+            return {
+
+                success: false,
+
+                message:
+                    "No downloaded update is ready."
+
+            };
+
+        }
+
+
+        console.log(
+            "[Solaria] Installing update..."
+        );
+
+
+        autoUpdater.quitAndInstall(
+            false,
+            true
+        );
+
+
+        return {
+
+            success: true
+
+        };
+
+    }
+);
 
 
 // ============================================================
@@ -914,10 +1409,6 @@ function launchSolariaGame(
             );
 
 
-            // ------------------------------------------------
-            // CURRENTLY AVAILABLE GAME
-            // ------------------------------------------------
-
             if (
                 gameId !== "test"
             ) {
@@ -935,10 +1426,6 @@ function launchSolariaGame(
 
             }
 
-
-            // ------------------------------------------------
-            // ALREADY RUNNING
-            // ------------------------------------------------
 
             if (
                 isSolariaGameRunning()
@@ -962,10 +1449,6 @@ function launchSolariaGame(
 
             }
 
-
-            // ------------------------------------------------
-            // CHECK FILE
-            // ------------------------------------------------
 
             if (
                 !fs.existsSync(
@@ -1038,10 +1521,6 @@ function launchSolariaGame(
                     );
 
 
-                // ------------------------------------------------
-                // ENGINE STARTED
-                // ------------------------------------------------
-
                 solariaGameProcess.once(
                     "spawn",
                     () => {
@@ -1063,10 +1542,6 @@ function launchSolariaGame(
                     }
                 );
 
-
-                // ------------------------------------------------
-                // ENGINE ERROR
-                // ------------------------------------------------
 
                 solariaGameProcess.once(
                     "error",
@@ -1097,10 +1572,6 @@ function launchSolariaGame(
                     }
                 );
 
-
-                // ------------------------------------------------
-                // ENGINE CLOSED
-                // ------------------------------------------------
 
                 solariaGameProcess.once(
                     "exit",
@@ -1281,10 +1752,6 @@ app.whenReady()
             );
 
 
-            // ------------------------------------------------
-            // LOAD THEME BEFORE CREATING THE WINDOW
-            // ------------------------------------------------
-
             loadSolariaTheme();
 
             applySolariaTheme();
@@ -1328,6 +1795,13 @@ app.whenReady()
 
 
             createWindow();
+
+
+            /*
+                Start the updater only after the window exists.
+            */
+
+            setupAutoUpdater();
 
 
             if (

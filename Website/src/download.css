@@ -1,243 +1,8 @@
 /* =========================================================
-   SOLARIA
-   DOWNLOAD PAGE CSS
+   SOLARIA WEBSITE
+   DOWNLOAD PAGE
+   XP-INSPIRED SOFTWARE DOWNLOAD
 ========================================================= */
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-
-html {
-    margin: 0;
-    padding: 0;
-}
-
-
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    font-family:
-        Tahoma,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    color: #000000;
-
-    line-height: 1.5;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #3b8edb 0%,
-            #76c9f2 38%,
-            #a9ddf5 54%,
-            #65a936 55%,
-            #3f8d28 72%,
-            #28731f 100%
-        );
-
-    background-attachment: fixed;
-}
-
-
-/* =========================================================
-   XP SKY LIGHT
-========================================================= */
-
-body::before {
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at 72% 18%,
-            rgba(255, 255, 255, 0.65),
-            transparent 20%
-        ),
-        radial-gradient(
-            circle at 25% 10%,
-            rgba(255, 255, 255, 0.35),
-            transparent 18%
-        );
-
-    z-index: -2;
-}
-
-
-/* =========================================================
-   XP GREEN HILLS
-========================================================= */
-
-body::after {
-    content: "";
-
-    position: fixed;
-
-    left: -10%;
-    right: -10%;
-    bottom: -18%;
-
-    height: 55%;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            ellipse at 20% 100%,
-            #2f7d24 0%,
-            #3f8d28 48%,
-            transparent 49%
-        ),
-        radial-gradient(
-            ellipse at 75% 100%,
-            #357f24 0%,
-            #4d942c 52%,
-            transparent 53%
-        );
-
-    z-index: -1;
-}
-
-
-/* =========================================================
-   TOP BAR
-========================================================= */
-
-.topbar {
-    width: 100%;
-
-    min-height: 58px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    padding: 8px 18px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #5fa8e5 0%,
-            #3f8edb 45%,
-            #245a9b 100%
-        );
-
-    border-bottom:
-        2px solid #173f70;
-
-    box-shadow:
-        0 2px 5px rgba(0, 0, 0, 0.35);
-
-    color: white;
-}
-
-
-/* =========================================================
-   SOLARIA LOGO
-========================================================= */
-
-.logo {
-    font-size: 24px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-    color: #ffffff;
-
-    text-shadow:
-        1px 1px 0 #245a9b;
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.navigation {
-    display: flex;
-
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 6px;
-}
-
-
-.navigation a {
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 34px;
-
-    padding: 6px 13px;
-
-    color: #000000;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff 0%,
-            #ece9d8 45%,
-            #d8d5c7 100%
-        );
-
-    border:
-        1px solid #6f6f6f;
-
-    border-radius: 3px;
-
-    box-shadow:
-        inset 1px 1px 0 #ffffff;
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    font-weight: bold;
-}
-
-
-.navigation a:hover {
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff 0%,
-            #dceeff 45%,
-            #b8d8f5 100%
-        );
-}
-
-
-.navigation a.current {
-    background:
-        linear-gradient(
-            to bottom,
-            #c8e2fa 0%,
-            #9fc8eb 100%
-        );
-}
 
 
 /* =========================================================
@@ -247,24 +12,33 @@ body::after {
 .download-page {
     width: 100%;
 
-    padding-bottom: 45px;
+    padding-bottom: 20px;
 }
 
 
 /* =========================================================
-   DOWNLOAD HEADER
+   DOWNLOAD HERO
 ========================================================= */
 
-.download-header {
+.download-hero {
     width: 100%;
 
     max-width: 1000px;
 
-    margin: 50px auto 25px;
+    margin:
+        45px
+        auto
+        30px;
 
-    padding: 0 20px;
+    padding:
+        0
+        20px;
 }
 
+
+/* =========================================================
+   MAIN DOWNLOAD WINDOW
+========================================================= */
 
 .download-window {
     overflow: hidden;
@@ -272,221 +46,380 @@ body::after {
     background: #ece9d8;
 
     border:
-        1px solid #245a9b;
+        1px solid
+        #245a9b;
 
     border-radius: 6px;
 
     box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.35);
+        0 8px 25px
+        rgba(0, 0, 0, 0.35);
 }
 
 
-.window-titlebar {
-    min-height: 34px;
+/* =========================================================
+   DOWNLOAD MAIN
+========================================================= */
+
+.download-main {
+    padding:
+        42px
+        35px
+        45px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.97),
+            rgba(236, 233, 216, 0.98)
+        );
+}
+
+
+/* =========================================================
+   WINDOWS ICON
+========================================================= */
+
+.windows-icon {
+    width: 72px;
+
+    height: 72px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    grid-template-rows:
+        1fr
+        1fr;
+
+    gap: 3px;
+
+    margin:
+        0
+        auto
+        20px;
+
+    padding: 3px;
+
+    transform:
+        skewY(-3deg);
+
+    filter:
+        drop-shadow(
+            2px
+            3px
+            2px
+            rgba(0, 0, 0, 0.25)
+        );
+}
+
+
+.windows-pane {
+    min-width: 0;
+
+    min-height: 0;
+
+    border:
+        1px solid
+        rgba(0, 0, 0, 0.25);
+
+    box-shadow:
+        inset 1px 1px 0
+        rgba(255, 255, 255, 0.55);
+}
+
+
+.pane-blue {
+    background:
+        linear-gradient(
+            to bottom right,
+            #62afe9,
+            #2d72b9
+        );
+}
+
+
+.pane-green {
+    background:
+        linear-gradient(
+            to bottom right,
+            #82c94c,
+            #4c942d
+        );
+}
+
+
+.pane-yellow {
+    background:
+        linear-gradient(
+            to bottom right,
+            #ffe27b,
+            #d5a92f
+        );
+}
+
+
+.pane-red {
+    background:
+        linear-gradient(
+            to bottom right,
+            #e97768,
+            #b94236
+        );
+}
+
+
+/* =========================================================
+   DOWNLOAD HEADING
+========================================================= */
+
+.download-heading {
+    max-width: 700px;
+
+    margin:
+        0
+        auto
+        30px;
+
+    text-align: center;
+}
+
+
+.download-label {
+    margin-bottom: 5px;
+
+    color: #245a9b;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+.download-heading h1 {
+    margin:
+        0
+        0
+        8px;
+
+    color: #000000;
+
+    font-size:
+        clamp(
+            30px,
+            6vw,
+            46px
+        );
+}
+
+
+.download-heading p {
+    max-width: 600px;
+
+    margin:
+        0
+        auto;
+
+    color: #333333;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   DOWNLOAD BOX
+========================================================= */
+
+.download-box {
+    max-width: 700px;
+
+    margin:
+        0
+        auto
+        25px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #7c7c7c;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.2),
+
+        inset 1px 1px 0
+        #ffffff;
+}
+
+
+/* =========================================================
+   DOWNLOAD BOX HEADER
+========================================================= */
+
+.download-box-header {
+    min-height: 58px;
 
     display: flex;
 
     align-items: center;
 
-    padding: 6px 12px;
+    justify-content: space-between;
 
-    color: #ffffff;
+    gap: 15px;
 
-    font-size: 14px;
-
-    font-weight: bold;
+    padding:
+        10px
+        15px;
 
     background:
         linear-gradient(
             to bottom,
-            #5b9bd5 0%,
-            #3f8edb 45%,
-            #245a9b 100%
+            #ffffff 0%,
+            #ece9d8 48%,
+            #d6d3c6 100%
         );
 
     border-bottom:
-        1px solid #173f70;
-
-    text-shadow:
-        1px 1px 0 #245a9b;
+        1px solid
+        #8f8f8f;
 }
 
 
-.download-header-content {
-    padding: 45px 25px 50px;
+.download-box-header strong {
+    display: block;
+
+    color: #245a9b;
+
+    font-size: 17px;
+}
+
+
+.download-box-header span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #444444;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   VERSION BADGE
+========================================================= */
+
+.version-badge {
+    flex-shrink: 0;
+
+    padding:
+        5px
+        9px;
+
+    color: #000000;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fffdf0,
+            #e8e2bd
+        );
+
+    border:
+        1px solid
+        #999477;
+
+    border-radius: 3px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   DOWNLOAD BOX BODY
+========================================================= */
+
+.download-box-body {
+    padding:
+        25px
+        20px;
 
     text-align: center;
 
     background:
         linear-gradient(
             to bottom,
-            #ffffff 0%,
-            #ece9d8 100%
+            #ffffff,
+            #f4f2e8
         );
 }
 
 
-.download-logo {
-    margin-bottom: 8px;
+/* =========================================================
+   DOWNLOAD DETAILS
+========================================================= */
 
-    color: #245a9b;
+.download-details {
+    display: grid;
 
-    font-size: clamp(38px, 8vw, 68px);
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 10px;
+
+    margin-bottom: 24px;
+}
+
+
+.detail {
+    padding:
+        12px
+        8px;
+
+    background: #f1f0e8;
+
+    border:
+        1px solid
+        #c0c0c0;
+
+    border-radius: 3px;
+}
+
+
+.detail-label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #666666;
+
+    font-size: 10px;
 
     font-weight: bold;
 
-    letter-spacing: 5px;
-
-    text-shadow:
-        2px 2px 0 #ffffff;
+    letter-spacing: 1px;
 }
 
 
-.download-header-content h1 {
-    margin: 0 0 8px;
-
-    font-size: clamp(25px, 5vw, 40px);
-}
-
-
-.download-header-content p {
-    margin: 0;
-
-    color: #333333;
-
-    font-size: 16px;
-}
-
-
-/* =========================================================
-   PLATFORM SECTION
-========================================================= */
-
-.download-platform {
-    width: 100%;
-
-    max-width: 1000px;
-
-    margin: 0 auto 25px;
-
-    padding: 0 20px;
-}
-
-
-/* =========================================================
-   PLATFORM WINDOW
-========================================================= */
-
-.platform-window {
-    overflow: hidden;
-
-    background: #ece9d8;
-
-    border:
-        1px solid #8f8f8f;
-
-    border-radius: 5px;
-
-    box-shadow:
-        0 5px 14px rgba(0, 0, 0, 0.28);
-}
-
-
-/* =========================================================
-   PLATFORM CONTENT
-========================================================= */
-
-.platform-content {
-    display: flex;
-
-    align-items: center;
-
-    gap: 28px;
-
-    padding: 30px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff 0%,
-            #f7f6ef 100%
-        );
-}
-
-
-.platform-icon {
-    width: 105px;
-
-    min-width: 105px;
-
-    height: 105px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 58px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff,
-            #dcd9cc
-        );
-
-    border:
-        1px solid #8f8f8f;
-
-    border-radius: 5px;
-
-    box-shadow:
-        inset 1px 1px 0 #ffffff,
-        0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-
-/* =========================================================
-   PLATFORM INFORMATION
-========================================================= */
-
-.platform-info {
-    flex: 1;
-
-    min-width: 0;
-}
-
-
-.platform-info h2 {
-    margin: 0 0 6px;
-
+.detail strong {
     color: #245a9b;
-
-    font-size: 25px;
-}
-
-
-.platform-info p {
-    margin: 4px 0;
-
-    color: #333333;
 
     font-size: 14px;
-}
-
-
-.platform-version {
-    font-weight: bold;
-
-    color: #555555 !important;
-}
-
-
-.platform-requirements {
-    margin-bottom: 18px !important;
-
-    color: #666666 !important;
 }
 
 
@@ -495,11 +428,67 @@ body::after {
 ========================================================= */
 
 .download-button {
+    min-height: 54px;
+
     display: inline-flex;
 
-    width: auto;
+    align-items: center;
 
-    min-width: 230px;
+    justify-content: center;
+
+    gap: 10px;
+
+    width: min(
+        100%,
+        360px
+    );
+
+    padding:
+        10px
+        20px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #67b0ec 0%,
+            #438fd3 44%,
+            #245a9b 100%
+        );
+
+    border:
+        2px solid
+        #173f70;
+
+    border-radius: 4px;
+
+    box-shadow:
+        inset 1px 1px 0
+        rgba(255, 255, 255, 0.7),
+
+        0 2px 4px
+        rgba(0, 0, 0, 0.25);
+
+    font-family:
+        Tahoma,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    text-shadow:
+        1px 1px 0
+        #245a9b;
+
+    cursor: pointer;
+
+    transition:
+        filter 0.1s ease,
+        transform 0.05s ease;
 }
 
 
@@ -510,62 +499,199 @@ body::after {
 
 .download-button:active {
     transform: translateY(1px);
+
+    box-shadow:
+        inset 1px 2px 3px
+        rgba(0, 0, 0, 0.3);
+}
+
+
+.download-button-icon {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 25px;
+
+    height: 25px;
+
+    font-size: 22px;
+
+    line-height: 1;
 }
 
 
 /* =========================================================
-   INFORMATION SECTION
+   DOWNLOAD STATUS
+========================================================= */
+
+.download-status {
+    min-height: 20px;
+
+    margin:
+        10px
+        0
+        0;
+
+    color: #555555;
+
+    font-size: 12px;
+}
+
+
+.download-status.ready {
+    color: #276a21;
+
+    font-weight: bold;
+}
+
+
+.download-status.error {
+    color: #9b2222;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   INFORMATION PANELS
 ========================================================= */
 
 .download-information {
-    width: 100%;
+    display: grid;
 
-    max-width: 1000px;
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
 
-    margin: 10px auto 25px;
+    gap: 15px;
 
-    padding: 0 20px;
+    max-width: 700px;
+
+    margin:
+        0
+        auto;
 }
 
 
-.information-window {
-    overflow: hidden;
-
-    background: #ece9d8;
-
-    border:
-        1px solid #8f8f8f;
-
-    border-radius: 5px;
-
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.22);
-}
-
-
-.information-content {
-    padding: 25px;
+.information-panel {
+    padding:
+        16px
+        18px;
 
     background:
         linear-gradient(
             to bottom,
             #ffffff,
-            #f7f6ef
+            #f2f1e9
+        );
+
+    border:
+        1px solid
+        #9a9a9a;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 2px 6px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+.information-title {
+    margin-bottom: 6px;
+
+    color: #245a9b;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.information-panel p {
+    margin: 0;
+
+    color: #333333;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RELEASE SECTION
+========================================================= */
+
+.release-section {
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin:
+        0
+        auto
+        30px;
+
+    padding:
+        0
+        20px;
+}
+
+
+.release-window {
+    overflow: hidden;
+
+    background: #ece9d8;
+
+    border:
+        1px solid
+        #245a9b;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 5px 16px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.release-content {
+    padding:
+        25px
+        30px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #ece9d8
         );
 }
 
 
-.information-content h2 {
-    margin: 0 0 8px;
+.release-content h2 {
+    margin:
+        0
+        0
+        5px;
 
     color: #245a9b;
 
-    font-size: 21px;
+    font-size: 22px;
 }
 
 
-.information-content p {
-    margin: 7px 0;
+.release-content > p {
+    margin:
+        0
+        0
+        18px;
 
     color: #333333;
 
@@ -574,258 +700,179 @@ body::after {
 
 
 /* =========================================================
-   BACK BUTTON
+   RELEASE LIST
 ========================================================= */
 
-.download-back {
-    display: flex;
-
-    justify-content: center;
-
-    padding: 10px 20px 30px;
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.button {
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 38px;
-
-    padding: 8px 18px;
-
+.release-list {
     border:
-        1px solid #6f6f6f;
+        1px solid
+        #9a9a9a;
 
     border-radius: 3px;
 
-    font-family:
-        Tahoma,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+
+.release-row {
+    min-height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding:
+        8px
+        12px;
+
+    border-bottom:
+        1px solid
+        #d1d1d1;
 
     font-size: 13px;
-
-    font-weight: bold;
-
-    text-decoration: none;
-
-    cursor: pointer;
-
-    box-shadow:
-        inset 1px 1px 0 #ffffff;
-
-    transition:
-        transform 0.05s ease,
-        filter 0.1s ease;
 }
 
 
-.button:hover {
-    filter: brightness(1.05);
+.release-row:last-child {
+    border-bottom: none;
 }
 
 
-.button:active {
-    transform: translateY(1px);
+.release-row span {
+    color: #555555;
 }
 
 
-.button.primary {
-    color: #ffffff;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #5fa8e5 0%,
-            #3f8edb 45%,
-            #245a9b 100%
-        );
-
-    border-color: #173f70;
+.release-row strong {
+    color: #245a9b;
 }
 
 
-.button.secondary {
-    color: #000000;
+.release-note {
+    margin:
+        15px
+        0
+        0 !important;
 
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff 0%,
-            #ece9d8 45%,
-            #d4d1c3 100%
-        );
+    font-size: 12px !important;
+
+    color: #666666 !important;
 }
 
 
 /* =========================================================
-   FOOTER
+   RETURN SECTION
 ========================================================= */
 
-.footer {
-    width: 100%;
-
-    padding: 30px 20px;
-
-    text-align: center;
-
-    color: #ffffff;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(36, 90, 155, 0.96),
-            rgba(23, 63, 112, 0.98)
-        );
-
-    border-top:
-        2px solid #173f70;
-
-    box-shadow:
-        0 -3px 8px rgba(0, 0, 0, 0.25);
-}
-
-
-.footer-logo {
-    margin-bottom: 10px;
-
-    font-size: 22px;
-
-    font-weight: bold;
-
-    letter-spacing: 3px;
-}
-
-
-.footer-links {
+.return-section {
     display: flex;
 
     justify-content: center;
 
-    align-items: center;
+    width: 100%;
 
-    flex-wrap: wrap;
-
-    gap: 14px;
-
-    margin-bottom: 12px;
-}
-
-
-.footer-links a {
-    color: #ffffff;
-
-    font-size: 13px;
-
-    text-decoration: underline;
-}
-
-
-.footer-links a:hover {
-    color: #dceeff;
-}
-
-
-.footer p {
-    margin: 0;
-
-    color: #e5f2ff;
-
-    font-size: 12px;
+    padding:
+        0
+        20px
+        35px;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
 
-    .topbar {
+    .download-hero {
+        margin-top: 25px;
+    }
+
+
+    .download-main {
+        padding:
+            32px
+            20px
+            35px;
+    }
+
+
+    .download-details {
+        grid-template-columns: 1fr;
+    }
+
+
+    .download-information {
+        grid-template-columns: 1fr;
+    }
+
+
+    .release-content {
+        padding:
+            22px
+            18px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .download-main {
+        padding:
+            28px
+            14px
+            30px;
+    }
+
+
+    .download-box-body {
+        padding:
+            20px
+            12px;
+    }
+
+
+    .download-box-header {
+        align-items: flex-start;
+
         flex-direction: column;
-
-        align-items: stretch;
-
-        text-align: center;
     }
 
 
-    .navigation {
-        justify-content: center;
-    }
-
-
-    .platform-content {
-        flex-direction: column;
-
-        text-align: center;
-
-        padding: 25px 20px;
-    }
-
-
-    .platform-icon {
-        width: 90px;
-
-        min-width: 90px;
-
-        height: 90px;
-
-        font-size: 48px;
-    }
-
-
-    .platform-info {
-        width: 100%;
+    .version-badge {
+        align-self: flex-start;
     }
 
 
     .download-button {
         width: 100%;
-
-        min-width: 0;
-    }
-
-}
-
-
-@media (max-width: 500px) {
-
-    .download-header {
-        margin-top: 25px;
     }
 
 
-    .download-header-content {
-        padding:
-            35px 18px
-            40px;
+    .release-row {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 2px;
     }
 
 
-    .navigation a {
-        flex: 1 1 auto;
-    }
+    .windows-icon {
+        width: 62px;
 
-
-    .platform-content {
-        padding:
-            22px 15px;
-    }
-
-
-    .information-content {
-        padding:
-            20px 16px;
+        height: 62px;
     }
 
 }
@@ -837,14 +884,8 @@ body::after {
 
 @media (prefers-reduced-motion: reduce) {
 
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-
-        transition: none !important;
-
-        animation: none !important;
+    .download-button {
+        transition: none;
     }
 
 }

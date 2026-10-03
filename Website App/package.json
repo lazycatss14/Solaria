@@ -1,6 +1,6 @@
 {
     "name": "solaria",
-    "version": "0.7.2",
+    "version": "0.8.1",
     "description": "Solaria Browser",
     "author": "LazyCatss",
     "main": "main.js",
@@ -12,7 +12,8 @@
     "dependencies": {
         "@capacitor/android": "^8.5.2",
         "@capacitor/core": "^8.5.2",
-        "@supabase/supabase-js": "^2.57.0"
+        "@supabase/supabase-js": "^2.57.0",
+        "electron-updater": "^6.8.9"
     },
     "devDependencies": {
         "@capacitor/cli": "^8.5.2",
@@ -23,9 +24,11 @@
         "appId": "com.solaria.browser",
         "productName": "Solaria",
         "icon": "build/icon.ico",
+
         "directories": {
             "output": "dist"
         },
+
         "files": [
             "src/**/*",
             "main.js",
@@ -33,10 +36,19 @@
             "installer/**/*",
             "package.json"
         ],
+
+        "publish": {
+            "provider": "github",
+            "owner": "lazycatss14",
+            "repo": "Solaria",
+            "releaseType": "release"
+        },
+
         "win": {
             "target": "nsis",
             "artifactName": "Solaria-Setup.exe"
         },
+
         "nsis": {
             "oneClick": false,
             "allowToChangeInstallationDirectory": true,

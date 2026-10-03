@@ -1,0 +1,29 @@
+directories:
+  output: release-test
+  buildResources: build
+appId: com.solaria.browser
+productName: Solaria
+icon: build/icon.ico
+files:
+  - filter:
+      - src/**/*
+      - main.js
+      - preload.js
+      - installer/**/*
+      - package.json
+publish:
+  provider: github
+  owner: lazycatss14
+  repo: Solaria
+  releaseType: release
+win:
+  target: nsis
+  artifactName: Solaria-Setup.exe
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Solaria
+  runAfterFinish: false
+electronVersion: 44.0.0
