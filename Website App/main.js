@@ -57,48 +57,44 @@ let isAppQuitting =
 
 
 /*
-    The Electron website lives here:
-
-        Solaria/
-        â””â”€â”€ Website App/
-            â””â”€â”€ main.js
-
-    The C++ engine lives here:
-
-        Solaria/
-        â””â”€â”€ Engine/
-            â””â”€â”€ Build/
-                â””â”€â”€ Debug/
-                    â””â”€â”€ SolariaGame.exe
-
-    Therefore we go one folder upward from __dirname.
+    Packaged builds use the Engine folder inside Electron resources.
+    Development builds use the local Release build.
 */
+
+const SOLARIA_ENGINE_DIRECTORY =
+    app.isPackaged
+        ? path.join(process.resourcesPath, "Engine")
+        : path.resolve(
+            __dirname,
+            "..",
+            "Engine",
+            "Build-Solaria",
+            "Release"
+        );
 
 const SOLARIA_ENGINE_PATH =
     path.join(
-        __dirname,
-        "..",
-        "Engine",
-        "Build-Solaria",
-        "Debug",
+        SOLARIA_ENGINE_DIRECTORY,
         "SolariaGame.exe"
     );
 
-
-const SOLARIA_ENGINE_DIRECTORY =
-    path.dirname(
-        SOLARIA_ENGINE_PATH
-    );
-
 const SOLARIA_SERVER_PATH =
-    path.join(
-        __dirname,
-        "..",
-        "Engine",
-        "Network",
-        "Server",
-        "server.js"
-    );
+    app.isPackaged
+        ? path.join(
+            process.resourcesPath,
+            "Engine",
+            "Network",
+            "Server",
+            "server.js"
+        )
+        : path.resolve(
+            __dirname,
+            "..",
+            "Engine",
+            "Network",
+            "Server",
+            "server.js"
+        );
 
 const SOLARIA_SERVER_DIRECTORY =
     path.dirname(SOLARIA_SERVER_PATH);
@@ -784,7 +780,7 @@ function applySolariaTheme() {
     console.log(
         "[Solaria] Theme:",
         solariaThemePreference,
-        "â†’",
+        "Ã¢â€ â€™",
         getSolariaTheme()
     );
 
@@ -5411,5 +5407,3 @@ console.log(
     "[Solaria] Engine path:",
     SOLARIA_ENGINE_PATH
 );
-
-
