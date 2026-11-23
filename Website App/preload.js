@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // SOLARIA PRELOAD
 // ============================================================
 
@@ -563,11 +563,12 @@ contextBridge.exposeInMainWorld(
         // ----------------------------------------------------
 
         launch:
-            gameId =>
+            (gameId, playerData) =>
                 ipcRenderer.invoke(
                     "solaria-engine-launch",
                     {
-                        gameId
+                        gameId,
+                        playerData
                     }
                 ),
 

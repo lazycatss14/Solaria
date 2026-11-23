@@ -1,22 +1,17 @@
-#pragma once
+﻿#pragma once
 
 #include "raylib.h"
 
 /*
     ============================================================
     SOLARIA - GAME 01
-    Basic playable game
+    Floating baseplate world + animated avatar
     ============================================================
 */
 
 class Game01
 {
 public:
-
-    // --------------------------------------------------------
-    // Game lifecycle
-    // --------------------------------------------------------
-
     Game01();
 
     void Initialize();
@@ -24,68 +19,41 @@ public:
     void Render(bool firstPerson);
     void Shutdown();
 
-
-    // --------------------------------------------------------
-    // Player
-    // --------------------------------------------------------
-
     Vector3 GetPlayerPosition() const;
-
+    void SetMovementKeys(int forward, int backward, int left, int right, int jump);
+    void SetAvatarColors(const Color colors[6]);
+    void SetMovementEnabled(bool enabled);
 
 private:
-
-    // --------------------------------------------------------
-    // Game state
-    // --------------------------------------------------------
-
     bool m_initialized;
+    bool m_movementEnabled;
 
-
-    // --------------------------------------------------------
-    // Player position
-    // --------------------------------------------------------
+    int m_keyForward;
+    int m_keyBackward;
+    int m_keyLeft;
+    int m_keyRight;
+    int m_keyJump;
 
     Vector3 m_playerPosition;
 
-
-    // --------------------------------------------------------
-    // Player physics
-    // --------------------------------------------------------
-
     float m_playerVelocityY;
-
     bool m_onGround;
 
-
-    // --------------------------------------------------------
-    // Player rotation
-    // --------------------------------------------------------
-
-    /*
-        Rotation in degrees.
-
-        0 degrees = facing -Z.
-    */
-
+    // 0 degrees = +Z, 180 degrees = -Z.
     float m_playerRotation;
 
-
-    // --------------------------------------------------------
-    // Walking animation state
-    // --------------------------------------------------------
-
-    /*
-        Current position in the walking animation cycle.
-    */
-
     float m_walkTime;
-
-    /*
-        How strongly the walking animation is active.
-
-        0.0 = standing still
-        1.0 = fully walking
-    */
-
     float m_walkAmount;
+
+    // Animation state.
+    int m_currentAnimation;
+    int m_previousAnimation;
+
+    float m_animationTime;
+    float m_previousAnimationTime;
+    float m_animationBlend;
+    float m_animationDuration;
 };
+
+
+

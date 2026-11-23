@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+﻿cmake_minimum_required(VERSION 3.20)
 
 project(SolariaEngine LANGUAGES C CXX)
 
@@ -40,6 +40,7 @@ add_executable(SolariaGame
 
     # Network
     Network/BlockWorldAPI.cpp
+    Network/GameNetwork.cpp
 )
 
 
@@ -79,3 +80,32 @@ if(WIN32)
     )
 
 endif()
+
+# ============================================================
+# SOLARIA MULTIPLAYER NETWORKING
+# ============================================================
+
+set(USE_TLS OFF CACHE BOOL "" FORCE)
+set(USE_ZLIB OFF CACHE BOOL "" FORCE)
+set(BUILD_DEMO OFF CACHE BOOL "" FORCE)
+set(BUILD_TESTS OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+    ixwebsocket
+    GIT_REPOSITORY https://github.com/machinezone/IXWebSocket.git
+    GIT_TAG v11.4.6
+)
+
+FetchContent_Declare(
+    nlohmann_json
+    GIT_REPOSITORY https://github.com/nlohmann/json.git
+    GIT_TAG v3.12.0
+)
+
+FetchContent_MakeAvailable(ixwebsocket nlohmann_json)
+
+target_link_libraries(SolariaGame PRIVATE
+    ixwebsocket
+    nlohmann_json::nlohmann_json
+)
+

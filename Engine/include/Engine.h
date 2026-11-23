@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "raylib.h"
 
@@ -24,6 +24,9 @@ public:
     bool IsFirstPerson() const;
 
     float GetCameraYaw() const;
+    void SetShiftLockEnabled(bool enabled);
+    bool IsShiftLockEnabled() const;
+    void SetMenuOpen(bool open);
 
 private:
     int m_width;
@@ -38,4 +41,8 @@ private:
     float m_cameraDistance;
 
     bool m_lookMode;
+    bool m_shiftLockEnabled;
+    bool m_menuOpen;
 };
+
+

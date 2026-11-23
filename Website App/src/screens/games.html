@@ -1,10 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
@@ -16,18 +14,15 @@
         rel="stylesheet"
         href="../css/games.css"
     >
-
 </head>
-
 
 <body>
 
     <div class="games-page">
 
-
-        <!-- =====================================================
+        <!-- =========================================
              HEADER
-             ===================================================== -->
+        ========================================== -->
 
         <header class="games-header">
 
@@ -36,165 +31,177 @@
                 class="back-button"
                 type="button"
             >
-                ← Back
+                â† Back
             </button>
 
-
-            <h1>
-                SOLARIA GAMES
-            </h1>
-
+            <div class="header-title">
+                <h1>SOLARIA</h1>
+                <span>GAMES</span>
+            </div>
 
             <div class="header-spacer"></div>
 
         </header>
 
 
-        <!-- =====================================================
-             MAIN CONTENT
-             ===================================================== -->
+        <!-- =========================================
+             MAIN
+        ========================================== -->
 
         <main class="games-content">
 
+            <section class="games-section">
 
-            <!-- =================================================
-                 GAMES LIST
-                 ================================================= -->
+                <div class="section-heading">
 
-            <section class="games-list-section">
+                    <div>
+                        <span class="section-label">
+                            SOLARIA
+                        </span>
 
-
-                <div class="section-header">
-
-                    <span>
-                        GAMES
-                    </span>
+                        <h2>
+                            Games
+                        </h2>
+                    </div>
 
                 </div>
 
 
-                <div class="games-list">
+                <!-- =====================================
+                     GAME CARD
+                ====================================== -->
 
+                <article class="game-card">
 
-                    <!-- =============================================
-                         TEST BASEPLATE
-                         ============================================= -->
+                    <!-- THUMBNAIL -->
 
-                    <article
-                        class="game-card"
-                        data-game="test"
-                        tabindex="0"
-                        role="button"
-                        aria-label="Open Test Baseplate game"
-                    >
+                    <div class="game-thumbnail">
 
+                        <div class="sky"></div>
 
-                        <!-- GAME IMAGE -->
+                        <div class="sun"></div>
 
-                        <div class="game-thumbnail">
+                        <div class="mountains"></div>
 
-                            <div class="baseplate-preview">
+                        <div class="baseplate">
 
-                                <div class="baseplate-sky"></div>
-
-                                <div class="baseplate-ground">
-
-                                    <div class="grid-line horizontal one"></div>
-                                    <div class="grid-line horizontal two"></div>
-                                    <div class="grid-line horizontal three"></div>
-
-                                    <div class="grid-line vertical one"></div>
-                                    <div class="grid-line vertical two"></div>
-                                    <div class="grid-line vertical three"></div>
-
-                                </div>
-
-
-                                <div class="game-ball"></div>
-
-                            </div>
+                            <div class="grid grid-one"></div>
+                            <div class="grid grid-two"></div>
+                            <div class="grid grid-three"></div>
+                            <div class="grid grid-four"></div>
+                            <div class="grid grid-five"></div>
 
                         </div>
 
+                        <div class="preview-ball"></div>
 
-                        <!-- GAME INFORMATION -->
-
-                        <div class="game-info">
+                    </div>
 
 
-                            <div class="game-title-row">
+                    <!-- GAME INFORMATION -->
 
-                                <h2>
+                    <div class="game-body">
+
+                        <div class="game-title-line">
+
+                            <div>
+
+                                <h3>
                                     Test Baseplate
-                                </h2>
+                                </h3>
 
-                                <span class="online-label">
-                                    ONLINE
-                                </span>
-
-                            </div>
-
-
-                            <p class="game-description">
-
-                                Test the Solaria game engine.
-
-                            </p>
-
-
-                            <div class="game-information">
-
-                                <span>
-                                    Players: 0
-                                </span>
-
-                                <span>
+                                <p class="creator">
                                     Created by Solaria
-                                </span>
+                                </p>
 
                             </div>
 
-
-                            <div class="game-actions">
-
-                                <button
-                                    id="playTestGame"
-                                    class="play-button"
-                                    type="button"
-                                >
-                                    PLAY
-                                </button>
-
-
-                                <button
-                                    id="detailsTestGame"
-                                    class="details-button"
-                                    type="button"
-                                >
-                                    GAME DETAILS
-                                </button>
-
-                            </div>
-
+                            <span class="online">
+                                ONLINE
+                            </span>
 
                         </div>
 
-                    </article>
 
+                        <p class="description">
+                            Test the Solaria game environment
+                            on a simple baseplate.
+                        </p>
+
+
+                        <div class="game-stats">
+
+                            <span>
+                                ðŸ‘¤ 0 Players
+                            </span>
+
+                            <span>
+                                ðŸŒŽ 2 Servers
+                            </span>
+
+                        </div>
+
+
+                        <div class="game-buttons">
+
+                            <button
+                                id="playTestGame"
+                                class="play-button"
+                                type="button"
+                            >
+                                â–¶ PLAY
+                            </button>
+
+                            <button
+                                id="detailsTestGame"
+                                class="details-button"
+                                type="button"
+                            >
+                                GAME DETAILS
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =====================================
+                     FUTURE GAMES
+                ====================================== -->
+
+                <div class="coming-soon">
+
+                    <div class="coming-soon-icon">
+                        +
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            More games coming soon
+                        </h3>
+
+                        <p>
+                            New Solaria experiences will
+                            appear here.
+                        </p>
+
+                    </div>
 
                 </div>
 
             </section>
 
-
         </main>
-
 
     </div>
 
 
     <script src="../js/games.js"></script>
 
+<script src="../js/solaria-game-launcher.js"></script>
 </body>
 
 </html>

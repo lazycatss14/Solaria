@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Solaria Game</title>
+    <title>Game Details - Solaria</title>
 
     <link
         rel="stylesheet"
@@ -19,255 +19,207 @@
 
 </head>
 
-
 <body>
 
-    <div class="game-details-page">
+    <div class="details-page">
 
 
-        <!-- =====================================================
+        <!-- =========================================
              HEADER
-             ===================================================== -->
+        ========================================== -->
 
-        <header class="game-details-header">
+        <header class="details-header">
 
             <button
                 id="backButton"
                 class="back-button"
                 type="button"
             >
-                ← Back
+                â† Back
             </button>
 
+            <div class="header-title">
 
-            <h1 id="headerTitle">
-                GAME
-            </h1>
+                <h1>SOLARIA</h1>
 
+                <span>GAME DETAILS</span>
+
+            </div>
 
             <div class="header-spacer"></div>
 
         </header>
 
 
-        <!-- =====================================================
+        <!-- =========================================
              MAIN
-             ===================================================== -->
+        ========================================== -->
 
-        <main class="game-details-content">
-
-
-            <!-- =================================================
-                 GAME INFORMATION
-                 ================================================= -->
-
-            <section class="game-profile-window">
+        <main class="details-content">
 
 
-                <!-- =============================================
-                     WINDOW HEADER
-                     ============================================= -->
+            <!-- =====================================
+                 HERO
+            ====================================== -->
 
-                <div class="window-title">
+            <section class="game-hero">
 
-                    <span>
-                        GAME INFORMATION
+                <div class="hero-thumbnail">
+
+                    <div class="hero-sky"></div>
+
+                    <div class="hero-sun"></div>
+
+                    <div class="hero-mountains"></div>
+
+                    <div class="hero-baseplate">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <div class="hero-ball"></div>
+
+                </div>
+
+
+                <div class="hero-info">
+
+                    <span class="game-status">
+                        ONLINE
                     </span>
 
-                </div>
+                    <h2 id="gameName">
+                        Test Baseplate
+                    </h2>
+
+                    <p
+                        id="gameCreator"
+                        class="creator"
+                    >
+                        Created by Solaria
+                    </p>
+
+                    <p
+                        id="gameDescription"
+                        class="hero-description"
+                    >
+                        Test the Solaria game environment
+                        on a simple baseplate.
+                    </p>
 
 
-                <!-- =============================================
-                     GAME HERO
-                     ============================================= -->
-
-                <div class="game-hero">
-
-
-                    <div class="hero-thumbnail">
-
-                        <div class="baseplate-preview">
-
-                            <div class="baseplate-sky"></div>
-
-                            <div class="baseplate-ground">
-
-                                <div class="grid-line horizontal one"></div>
-                                <div class="grid-line horizontal two"></div>
-                                <div class="grid-line horizontal three"></div>
-
-                                <div class="grid-line vertical one"></div>
-                                <div class="grid-line vertical two"></div>
-                                <div class="grid-line vertical three"></div>
-
-                            </div>
-
-
-                            <div class="game-ball"></div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="hero-information">
-
-
-                        <div class="hero-title-row">
-
-                            <div>
-
-                                <h2 id="gameName">
-                                    Test Baseplate
-                                </h2>
-
-                                <p id="gameCreator">
-                                    Created by Solaria
-                                </p>
-
-                            </div>
-
-
-                            <span class="online-label">
-                                ONLINE
-                            </span>
-
-                        </div>
-
-
-                        <p
-                            id="gameDescription"
-                            class="hero-description"
-                        >
-                            Test the Solaria game engine.
-                        </p>
-
-
-                        <div class="hero-stats">
-
-                            <div>
-
-                                <span class="stat-label">
-                                    PLAYERS
-                                </span>
-
-                                <strong id="playerCount">
-                                    0
-                                </strong>
-
-                            </div>
-
-
-                            <div>
-
-                                <span class="stat-label">
-                                    SERVERS
-                                </span>
-
-                                <strong id="serverCount">
-                                    2
-                                </strong>
-
-                            </div>
-
-
-                            <div>
-
-                                <span class="stat-label">
-                                    BADGES
-                                </span>
-
-                                <strong>
-                                    2
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-
-                        <button
-                            id="playGameButton"
-                            class="play-button"
-                            type="button"
-                        >
-                            PLAY
-                        </button>
-
-
-                    </div>
+                    <button
+                        id="playGameButton"
+                        class="play-button"
+                        type="button"
+                    >
+                        â–¶ PLAY
+                    </button>
 
                 </div>
-
 
             </section>
 
 
-            <!-- =================================================
-                 DESCRIPTION
-                 ================================================= -->
+            <!-- =====================================
+                 STATS
+            ====================================== -->
 
-            <section class="details-window">
+            <section class="stats-section">
 
+                <div class="stat">
 
-                <div class="window-title">
-
-                    <span>
-                        DESCRIPTION
+                    <span class="stat-label">
+                        PLAYERS
                     </span>
+
+                    <strong id="playerCount">
+                        0
+                    </strong>
 
                 </div>
 
 
-                <div class="details-body">
+                <div class="stat">
+
+                    <span class="stat-label">
+                        SERVERS
+                    </span>
+
+                    <strong id="serverCount">
+                        2
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <span class="stat-label">
+                        STATUS
+                    </span>
+
+                    <strong>
+                        ONLINE
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 DESCRIPTION
+            ====================================== -->
+
+            <section class="information-section">
+
+                <div class="section-title">
+                    ABOUT THIS GAME
+                </div>
+
+                <div class="information-card">
 
                     <p id="descriptionText">
-                        Test the Solaria game engine on
-                        the default baseplate.
+                        Test the Solaria game environment
+                        on a simple baseplate.
                     </p>
 
                 </div>
 
-
             </section>
 
 
-            <!-- =================================================
+            <!-- =====================================
                  SERVERS
-                 ================================================= -->
+            ====================================== -->
 
-            <section class="details-window">
+            <section class="servers-section">
 
-
-                <div class="window-title">
-
-                    <span>
-                        SERVERS
-                    </span>
-
+                <div class="section-title">
+                    SERVERS
                 </div>
 
 
-                <div class="details-body server-list">
+                <div class="server-list">
 
 
-                    <div class="server-row">
+                    <article class="server-card">
 
-                        <div class="server-name">
+                        <div>
 
                             <strong>
-                                Test Server 1
+                                Server 1
                             </strong>
 
                             <span>
-                                Solaria Test Server
+                                0 / 20 players
                             </span>
 
-                        </div>
-
-
-                        <div class="server-players">
-                            0 / 20
                         </div>
 
 
@@ -279,26 +231,21 @@
                             JOIN
                         </button>
 
-                    </div>
+                    </article>
 
 
-                    <div class="server-row">
+                    <article class="server-card">
 
-                        <div class="server-name">
+                        <div>
 
                             <strong>
-                                Test Server 2
+                                Server 2
                             </strong>
 
                             <span>
-                                Solaria Test Server
+                                0 / 20 players
                             </span>
 
-                        </div>
-
-
-                        <div class="server-players">
-                            0 / 20
                         </div>
 
 
@@ -310,90 +257,22 @@
                             JOIN
                         </button>
 
-                    </div>
+                    </article>
 
 
                 </div>
-
-
-            </section>
-
-
-            <!-- =================================================
-                 BADGES
-                 ================================================= -->
-
-            <section class="details-window">
-
-
-                <div class="window-title">
-
-                    <span>
-                        BADGES
-                    </span>
-
-                </div>
-
-
-                <div class="details-body badges-list">
-
-
-                    <div class="badge">
-
-                        <div class="badge-icon">
-                            ★
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                First Launch
-                            </strong>
-
-                            <span>
-                                Launch the game for the first time.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="badge">
-
-                        <div class="badge-icon">
-                            ◆
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Explorer
-                            </strong>
-
-                            <span>
-                                Visit the Test Baseplate.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
 
             </section>
 
 
         </main>
 
-
     </div>
 
 
     <script src="../js/game-details.js"></script>
 
+<script src="../js/solaria-game-launcher.js"></script>
 </body>
 
 </html>

@@ -1,1259 +1,520 @@
-/* =========================================================
-   SOLARIA
+
+/* ============================================================
+   SOLARIA XP
    GAMES PAGE
-   WINDOWS XP STYLE
-   ========================================================= */
+   Windows XP-inspired styling
+   ============================================================ */
 
-
-/* =========================================================
-   GLOBAL
-   ========================================================= */
+/* RESET */
 
 * {
-
     box-sizing: border-box;
-
+    margin: 0;
+    padding: 0;
 }
-
 
 html,
 body {
-
     width: 100%;
-
-    height: 100%;
-
-    margin: 0;
-
-    padding: 0;
-
-    font-family:
-        Tahoma,
-        "Segoe UI",
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background:
-        #5b9bd5;
-
-    color:
-        #000000;
-
+    min-height: 100%;
 }
 
+body {
+    font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    background: #ece9d8;
+    color: #000000;
+}
 
 button {
-
-    font-family:
-        Tahoma,
-        "Segoe UI",
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    cursor:
-        pointer;
-
+    font-family: inherit;
+    cursor: pointer;
 }
 
+.hidden {
+    display: none !important;
+}
 
-/* =========================================================
-   PAGE
-   ========================================================= */
+/* PAGE */
 
 .games-page {
-
-    width: 100%;
-
-    height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
-
+    min-height: 100vh;
     background:
         linear-gradient(
             to bottom,
-            #5b9bd5 0%,
-            #7eb9df 18%,
-            #d9edf7 42%,
-            #ece9d8 100%
+            #5fa9dc 0%,
+            #8bc6e9 30%,
+            #7dbd72 72%,
+            #62a85a 100%
         );
-
-    overflow: hidden;
-
 }
 
-
-/* =========================================================
-   HEADER
-   ========================================================= */
+/* HEADER */
 
 .games-header {
-
-    height:
-        52px;
-
-    min-height:
-        52px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    padding:
-        0 10px;
-
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    border-bottom: 1px solid #083b75;
     background:
         linear-gradient(
             to bottom,
-            #3f8ee8 0%,
-            #2f74c8 45%,
-            #2459a6 100%
+            #3f8edb 0%,
+            #1767b4 50%,
+            #0b4f9c 100%
         );
-
-    border-top:
-        1px solid #75b8ff;
-
-    border-bottom:
-        1px solid #123b72;
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(
-            255,
-            255,
-            255,
-            0.45
-        ),
-        0 2px 5px
-        rgba(
-            0,
-            0,
-            0,
-            0.25
-        );
-
-    color:
-        #ffffff;
-
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    position: sticky;
+    top: 0;
+    z-index: 20;
 }
-
-
-.games-header h1 {
-
-    flex:
-        1;
-
-    margin:
-        0;
-
-    text-align:
-        center;
-
-    font-family:
-        Tahoma,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    font-size:
-        18px;
-
-    font-weight:
-        bold;
-
-    letter-spacing:
-        0;
-
-    color:
-        #ffffff;
-
-    text-shadow:
-        1px 1px 0 #17477d;
-
-}
-
-
-.header-spacer {
-
-    width:
-        82px;
-
-    min-width:
-        82px;
-
-}
-
-
-/* =========================================================
-   HEADER BUTTON
-   ========================================================= */
 
 .back-button {
-
-    min-height:
-        28px;
-
-    min-width:
-        72px;
-
-    padding:
-        4px 13px;
-
-    border:
-        1px solid #315a82;
-
-    border-radius:
-        3px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff 0%,
-            #f4f3ed 45%,
-            #d5d3ca 100%
-        );
-
-    color:
-        #000000;
-
-    font-size:
-        11px;
-
-    font-weight:
-        bold;
-
-    box-shadow:
-        inset 0 1px 0 #ffffff,
-        0 1px 2px
-        rgba(
-            0,
-            0,
-            0,
-            0.25
-        );
-
-    transition:
-        background 0.1s,
-        border-color 0.1s,
-        transform 0.05s;
-
+    min-width: 90px;
+    height: 30px;
+    padding: 0 12px;
+    border: 1px solid #7f7f78;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, #ffffff, #d8d7ce);
+    color: #000000;
+    font-size: 11px;
+    font-weight: bold;
+    transition: background 0.1s ease, transform 0.05s ease;
 }
-
 
 .back-button:hover {
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff 0%,
-            #f5f4ee 45%,
-            #d8d6cd 100%
-        );
-
+    background: linear-gradient(to bottom, #ffffff, #eeeeea);
+    border-color: #315a82;
 }
-
 
 .back-button:active {
-
-    transform:
-        translateY(1px);
-
-    box-shadow:
-        inset 0 2px 3px
-        rgba(
-            0,
-            0,
-            0,
-            0.18
-        );
-
+    transform: translateY(1px);
 }
 
+.header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    line-height: 1;
+}
 
-/* =========================================================
-   MAIN CONTENT
-   ========================================================= */
+.header-title h1 {
+    font-size: 17px;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.header-title span {
+    display: block;
+    margin-top: 5px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #d7eaff;
+}
+
+.header-spacer {
+    margin-left: auto;
+    width: 90px;
+}
+
+/* CONTENT */
 
 .games-content {
-
-    flex:
-        1;
-
-    min-height:
-        0;
-
-    padding:
-        10px;
-
-    background:
-        #ece9d8;
-
-    overflow:
-        auto;
-
+    width: 100%;
+    padding: 35px 24px 70px;
 }
 
-
-/* =========================================================
-   GAMES SECTION
-   ========================================================= */
-
-.games-list-section {
-
-    width:
-        100%;
-
-    max-width:
-        1100px;
-
-    margin:
-        0 auto;
-
-    background:
-        #ece9d8;
-
-    border:
-        1px solid #7f9db9;
-
-    border-radius:
-        3px;
-
-    box-shadow:
-        1px 1px 4px
-        rgba(
-            0,
-            0,
-            0,
-            0.25
-        );
-
+.games-section {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
 }
 
+/* SECTION HEADING */
 
-/* =========================================================
-   SECTION HEADER
-   ========================================================= */
-
-.section-header {
-
-    height:
-        34px;
-
-    min-height:
-        34px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    padding:
-        0 8px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #4c9bea 0%,
-            #3178c9 48%,
-            #245ca7 100%
-        );
-
-    border-bottom:
-        1px solid #1b4f91;
-
-    color:
-        #ffffff;
-
-    font-size:
-        11px;
-
-    font-weight:
-        bold;
-
-    text-shadow:
-        1px 1px 0 #17477d;
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(
-            255,
-            255,
-            255,
-            0.35
-        );
-
+.section-heading {
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    border: 1px solid #315a82;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, #f9f8f0, #ece9d8);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-/* =========================================================
-   GAMES LIST
-   ========================================================= */
-
-.games-list {
-
-    padding:
-        10px;
-
+.section-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #a86f00;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
+.section-heading h2 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #003399;
+}
 
-/* =========================================================
-   GAME CARD
-   ========================================================= */
+/* GAME CARD */
 
 .game-card {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        330px
-        minmax(
-            0,
-            1fr
-        );
-
-    min-height:
-        230px;
-
-    background:
-        #f7f6ef;
-
-    border:
-        1px solid #7f9db9;
-
-    border-radius:
-        3px;
-
-    box-shadow:
-        inset 0 1px 0 #ffffff,
-        1px 1px 3px
-        rgba(
-            0,
-            0,
-            0,
-            0.15
-        );
-
-    cursor:
-        pointer;
-
-    transition:
-        border-color 0.1s,
-        box-shadow 0.1s;
-
+    display: grid;
+    grid-template-columns: 390px 1fr;
+    min-height: 265px;
+    overflow: hidden;
+    border: 1px solid #315a82;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, #f9f8f0, #ece9d8);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-
-.game-card:hover {
-
-    border-color:
-        #315a82;
-
-    box-shadow:
-        inset 0 1px 0 #ffffff,
-        0 0 0 1px
-        rgba(
-            49,
-            90,
-            130,
-            0.2
-        ),
-        1px 2px 5px
-        rgba(
-            0,
-            0,
-            0,
-            0.18
-        );
-
-}
-
-
-.game-card:focus-visible {
-
-    outline:
-        1px dotted #000000;
-
-    outline-offset:
-        2px;
-
-}
-
-
-/* =========================================================
-   THUMBNAIL
-   ========================================================= */
+/* THUMBNAIL */
 
 .game-thumbnail {
-
-    min-width:
-        0;
-
-    min-height:
-        230px;
-
-    padding:
-        8px;
-
-    border-right:
-        1px solid #b8b6ae;
-
-    background:
-        #d8d7ce;
-
+    position: relative;
+    min-height: 265px;
+    overflow: hidden;
+    background: #7dbbd5;
+    border-right: 1px solid #6e8eaa;
 }
 
-
-/* =========================================================
-   BASEPLATE PREVIEW
-   ========================================================= */
-
-.baseplate-preview {
-
-    position:
-        relative;
-
-    width:
-        100%;
-
-    height:
-        100%;
-
-    min-height:
-        212px;
-
-    overflow:
-        hidden;
-
-    border:
-        1px solid #5f8db8;
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(
-            255,
-            255,
-            255,
-            0.5
-        );
-
-    background:
-        #72b5e7;
-
+.sky {
+    position: absolute;
+    inset: 0 0 42% 0;
+    background: linear-gradient(180deg, #78c7e8 0%, #b9e5ef 100%);
 }
 
-
-/* =========================================================
-   SKY
-   ========================================================= */
-
-.baseplate-sky {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #5aa9e8 0%,
-            #a9d9f4 57%,
-            #d9edf7 58%,
-            #d9edf7 100%
-        );
-
+.sun {
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    right: 42px;
+    top: 30px;
+    border-radius: 50%;
+    background: #f6c453;
+    box-shadow: 0 0 28px rgba(246, 196, 83, 0.45);
 }
 
-
-/* =========================================================
-   GROUND
-   ========================================================= */
-
-.baseplate-ground {
-
-    position:
-        absolute;
-
-    left:
-        -10%;
-
-    right:
-        -10%;
-
-    bottom:
-        -20%;
-
-    height:
-        63%;
-
-    transform:
-        perspective(350px)
-        rotateX(55deg);
-
-    transform-origin:
-        center bottom;
-
-    background:
-        #66a94d;
-
-    border-top:
-        2px solid #3f7f32;
-
+.mountains {
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    bottom: 38%;
+    height: 75px;
+    background: #83aa7a;
+    clip-path: polygon(
+        0% 100%,
+        12% 55%,
+        22% 78%,
+        36% 30%,
+        50% 73%,
+        63% 43%,
+        75% 70%,
+        88% 35%,
+        100% 72%,
+        100% 100%
+    );
 }
 
-
-/* =========================================================
-   GRID LINES
-   ========================================================= */
-
-.grid-line {
-
-    position:
-        absolute;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.28
-        );
-
+.baseplate {
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    bottom: -5%;
+    height: 48%;
+    transform: perspective(280px) rotateX(55deg);
+    transform-origin: center bottom;
+    background: #66a34f;
+    overflow: hidden;
 }
 
-
-.grid-line.horizontal {
-
-    left:
-        0;
-
-    right:
-        0;
-
-    height:
-        1px;
-
+.grid {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
 }
 
-
-.grid-line.vertical {
-
-    top:
-        0;
-
-    bottom:
-        0;
-
-    width:
-        1px;
-
+.grid-one,
+.grid-two,
+.grid-three,
+.grid-four,
+.grid-five {
+    height: 1px;
+    left: 0;
+    right: 0;
 }
 
+.grid-one { top: 18%; }
+.grid-two { top: 38%; }
+.grid-three { top: 58%; }
+.grid-four { top: 78%; }
+.grid-five { top: 92%; }
 
-.grid-line.horizontal.one {
-
-    top:
-        25%;
-
+.grid::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    height: 600px;
+    top: -300px;
+    background: rgba(255, 255, 255, 0.2);
 }
 
-
-.grid-line.horizontal.two {
-
-    top:
-        50%;
-
+.preview-ball {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #f1f1f1;
+    border: 2px solid rgba(0, 0, 0, 0.18);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
 }
 
+/* GAME BODY */
 
-.grid-line.horizontal.three {
-
-    top:
-        75%;
-
+.game-body {
+    display: flex;
+    flex-direction: column;
+    padding: 26px;
+    color: #000000;
 }
 
-
-.grid-line.vertical.one {
-
-    left:
-        25%;
-
+.game-title-line {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
 }
 
-
-.grid-line.vertical.two {
-
-    left:
-        50%;
-
+.game-title-line h3 {
+    font-size: 23px;
+    color: #003399;
 }
 
-
-.grid-line.vertical.three {
-
-    left:
-        75%;
-
+.creator {
+    margin-top: 5px;
+    color: #666666;
+    font-size: 12px;
 }
 
-
-/* =========================================================
-   BALL
-   ========================================================= */
-
-.game-ball {
-
-    position:
-        absolute;
-
-    left:
-        50%;
-
-    top:
-        53%;
-
-    width:
-        58px;
-
-    height:
-        58px;
-
-    transform:
-        translate(
-            -50%,
-            -50%
-        );
-
-    border:
-        2px solid #6f6b54;
-
-    border-radius:
-        50%;
-
-    background:
-        radial-gradient(
-            circle at 30% 25%,
-            #fff9d6 0%,
-            #f6c453 40%,
-            #c99527 100%
-        );
-
-    box-shadow:
-        5px 8px 8px
-        rgba(
-            0,
-            0,
-            0,
-            0.28
-        );
-
+.online {
+    flex-shrink: 0;
+    padding: 5px 8px;
+    border: 1px solid #669366;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, #ffffff, #d9efd5);
+    color: #23672a;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
-
-/* =========================================================
-   GAME INFORMATION
-   ========================================================= */
-
-.game-info {
-
-    min-width:
-        0;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    padding:
-        16px;
-
+.description {
+    margin-top: 20px;
+    max-width: 500px;
+    color: #404040;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
-
-/* =========================================================
-   TITLE ROW
-   ========================================================= */
-
-.game-title-row {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-
+.game-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 18px;
+    color: #555555;
+    font-size: 11px;
 }
 
+/* BUTTONS */
 
-.game-title-row h2 {
-
-    margin:
-        0;
-
-    color:
-        #000000;
-
-    font-size:
-        17px;
-
-    font-weight:
-        bold;
-
+.game-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 22px;
 }
-
-
-.online-label {
-
-    padding:
-        2px 5px;
-
-    border:
-        1px solid #5d874f;
-
-    border-radius:
-        2px;
-
-    background:
-        #dcefd4;
-
-    color:
-        #315d27;
-
-    font-size:
-        9px;
-
-    font-weight:
-        bold;
-
-}
-
-
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
-
-.game-description {
-
-    margin:
-        13px 0 10px;
-
-    color:
-        #333333;
-
-    font-size:
-        11px;
-
-    line-height:
-        1.5;
-
-}
-
-
-/* =========================================================
-   INFORMATION
-   ========================================================= */
-
-.game-information {
-
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        12px;
-
-    margin-bottom:
-        auto;
-
-    padding:
-        7px;
-
-    border:
-        1px solid #d0cec5;
-
-    background:
-        #ffffff;
-
-    color:
-        #555555;
-
-    font-size:
-        10px;
-
-}
-
-
-/* =========================================================
-   ACTIONS
-   ========================================================= */
-
-.game-actions {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        6px;
-
-    margin-top:
-        14px;
-
-}
-
-
-/* =========================================================
-   ACTION BUTTONS
-   ========================================================= */
 
 .play-button,
 .details-button {
-
-    min-height:
-        28px;
-
-    padding:
-        4px 13px;
-
-    border:
-        1px solid #315a82;
-
-    border-radius:
-        3px;
-
-    font-size:
-        11px;
-
-    font-weight:
-        bold;
-
-    color:
-        #000000;
-
-    box-shadow:
-        inset 0 1px 0 #ffffff,
-        0 1px 2px
-        rgba(
-            0,
-            0,
-            0,
-            0.2
-        );
-
+    min-height: 32px;
+    padding: 0 18px;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    transition: background 0.1s ease, transform 0.05s ease;
 }
-
 
 .play-button {
-
-    background:
-        linear-gradient(
-            to bottom,
-            #d8eaff 0%,
-            #a9cff2 48%,
-            #78aee0 100%
-        );
-
+    border: 1px solid #174f86;
+    background: linear-gradient(to bottom, #6bb5ed, #3c8ed1 45%, #2368ad);
+    color: #ffffff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
+.play-button:hover {
+    background: linear-gradient(to bottom, #82c5f3, #4ba0df 45%, #2875ba);
+}
 
 .details-button {
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff 0%,
-            #f4f3ed 45%,
-            #d5d3ca 100%
-        );
-
+    border: 1px solid #7f7f78;
+    background: linear-gradient(to bottom, #ffffff, #d8d7ce);
+    color: #000000;
 }
 
-
-.play-button:hover,
 .details-button:hover {
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff 0%,
-            #e5e3db 45%,
-            #c8c6bd 100%
-        );
-
+    background: linear-gradient(to bottom, #ffffff, #eeeeea);
+    border-color: #315a82;
 }
-
 
 .play-button:active,
 .details-button:active {
-
-    transform:
-        translateY(1px);
-
-    box-shadow:
-        inset 0 2px 3px
-        rgba(
-            0,
-            0,
-            0,
-            0.18
-        );
-
+    transform: translateY(1px);
 }
 
+/* COMING SOON */
 
-/* =========================================================
-   DISABLED
-   ========================================================= */
-
-.play-button:disabled {
-
-    cursor:
-        wait;
-
-    color:
-        #666666;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #eeeeee,
-            #d6d4cc
-        );
-
+.coming-soon {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 18px 20px;
+    border: 1px dashed #6e8eaa;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, #dceefc, #c2dcef);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
 }
 
+.coming-soon-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid #6e8eaa;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, #ffffff, #d8e8f5);
+    color: #a86f00;
+    font-size: 23px;
+}
 
-/* =========================================================
-   FOCUS
-   ========================================================= */
+.coming-soon h3 {
+    font-size: 14px;
+    color: #003399;
+}
+
+.coming-soon p {
+    margin-top: 4px;
+    color: #555555;
+    font-size: 12px;
+}
+
+/* FOCUS */
 
 button:focus-visible {
-
-    outline:
-        1px dotted #000000;
-
-    outline-offset:
-        1px;
-
+    outline: 1px dotted #000000;
+    outline-offset: 2px;
 }
 
+/* SCROLLBAR */
 
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
-
-.games-content::-webkit-scrollbar {
-
-    width:
-        16px;
-
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
 }
 
-
-.games-content::-webkit-scrollbar-track {
-
-    background:
-        #d8d7ce;
-
-    border-left:
-        1px solid #aaa9a2;
-
+::-webkit-scrollbar-track {
+    background: #d8d7ce;
+    border-left: 1px solid #b0afa8;
 }
 
-
-.games-content::-webkit-scrollbar-thumb {
-
-    background:
-        linear-gradient(
-            to right,
-            #f7f6ef,
-            #d1cfc6 50%,
-            #aaa8a0
-        );
-
-    border:
-        1px solid #88867f;
-
-    border-radius:
-        2px;
-
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #f7f6ef, #d0cec5 45%, #b8b6ad);
+    border: 1px solid #8c8a82;
+    border-radius: 2px;
 }
 
-
-.games-content::-webkit-scrollbar-thumb:hover {
-
-    background:
-        linear-gradient(
-            to right,
-            #ffffff,
-            #dedcd3 50%,
-            #b5b3aa
-        );
-
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to right, #ffffff, #d8d6cd 45%, #aaa8a0);
 }
 
+/* RESPONSIVE */
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 750px) {
-
-    .games-page {
-
-        height:
-            auto;
-
-        min-height:
-            100vh;
-
-        overflow:
-            visible;
-
-    }
-
-
-    .games-content {
-
-        overflow:
-            visible;
-
-    }
-
-
+@media (max-width: 800px) {
     .game-card {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
     }
-
 
     .game-thumbnail {
-
-        min-height:
-            220px;
-
-        border-right:
-            none;
-
-        border-bottom:
-            1px solid #b8b6ae;
-
+        min-height: 230px;
+        border-right: none;
+        border-bottom: 1px solid #6e8eaa;
     }
 
-
-    .baseplate-preview {
-
-        min-height:
-            200px;
-
+    .game-body {
+        min-height: 280px;
     }
-
 }
 
-
-@media (max-width: 500px) {
-
+@media (max-width: 560px) {
     .games-header {
-
-        height:
-            48px;
-
-        min-height:
-            48px;
-
-        padding:
-            0 6px;
-
+        padding: 0 12px;
     }
 
-
-    .games-header h1 {
-
-        font-size:
-            15px;
-
-    }
-
-
+    .back-button,
     .header-spacer {
-
-        width:
-            72px;
-
-        min-width:
-            72px;
-
+        width: 75px;
+        min-width: 75px;
     }
 
-
-    .back-button {
-
-        min-width:
-            64px;
-
-        padding:
-            4px 8px;
-
-        font-size:
-            10px;
-
+    .header-title h1 {
+        font-size: 14px;
     }
 
+    .header-title span {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
 
     .games-content {
-
-        padding:
-            6px;
-
+        padding: 24px 12px 50px;
     }
 
-
-    .games-list {
-
-        padding:
-            6px;
-
+    .section-heading h2 {
+        font-size: 22px;
     }
 
-
-    .game-info {
-
-        padding:
-            11px;
-
+    .game-body {
+        padding: 20px;
     }
 
-
-    .game-actions {
-
-        flex-wrap:
-            wrap;
-
+    .game-title-line {
+        flex-direction: column;
     }
 
+    .online {
+        align-self: flex-start;
+    }
+
+    .game-buttons {
+        flex-direction: column;
+    }
+
+    .play-button,
+    .details-button {
+        width: 100%;
+    }
 }
 
-
-/* =========================================================
-   END SOLARIA XP GAMES PAGE
-   ========================================================= */
+/* END SOLARIA XP GAMES PAGE */

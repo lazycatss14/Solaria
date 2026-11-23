@@ -13,6 +13,7 @@ const {
 
 const path = require("path");
 const fs = require("fs");
+const net = require("net");
 
 const {
     spawn
@@ -48,21 +49,27 @@ let pendingProtocolUrl = null;
 let solariaGameProcess =
     null;
 
+let solariaServerProcess =
+    null;
+
+let isAppQuitting =
+    false;
+
 
 /*
     The Electron website lives here:
 
         Solaria/
-        └── Website App/
-            └── main.js
+        â””â”€â”€ Website App/
+            â””â”€â”€ main.js
 
     The C++ engine lives here:
 
         Solaria/
-        └── Engine/
-            └── Build/
-                └── Debug/
-                    └── SolariaGame.exe
+        â””â”€â”€ Engine/
+            â””â”€â”€ Build/
+                â””â”€â”€ Debug/
+                    â””â”€â”€ SolariaGame.exe
 
     Therefore we go one folder upward from __dirname.
 */
@@ -72,7 +79,7 @@ const SOLARIA_ENGINE_PATH =
         __dirname,
         "..",
         "Engine",
-        "Build",
+        "Build-Solaria",
         "Debug",
         "SolariaGame.exe"
     );
@@ -82,6 +89,19 @@ const SOLARIA_ENGINE_DIRECTORY =
     path.dirname(
         SOLARIA_ENGINE_PATH
     );
+
+const SOLARIA_SERVER_PATH =
+    path.join(
+        __dirname,
+        "..",
+        "Engine",
+        "Network",
+        "Server",
+        "server.js"
+    );
+
+const SOLARIA_SERVER_DIRECTORY =
+    path.dirname(SOLARIA_SERVER_PATH);
 
 
 // ============================================================
@@ -764,7 +784,7 @@ function applySolariaTheme() {
     console.log(
         "[Solaria] Theme:",
         solariaThemePreference,
-        "→",
+        "â†’",
         getSolariaTheme()
     );
 
@@ -905,6 +925,7 @@ function createWindow() {
 
     mainWindow =
         new BrowserWindow({
+            fullscreen: false,
 
             width: 1200,
 
@@ -934,6 +955,9 @@ function createWindow() {
             }
 
         });
+
+    // Start as a full desktop window, not immersive fullscreen.
+    mainWindow.maximize();
 
 
     mainWindow.loadFile(
@@ -1390,16 +1414,131 @@ function isSolariaGameRunning() {
 }
 
 
+function isLocalGameServerListening() {
+
+    return new Promise((resolve) => {
+
+        const socket = net.createConnection({
+            host: "127.0.0.1",
+            port: 8787
+        });
+
+        const finish = (result) => {
+            socket.destroy();
+            resolve(result);
+        };
+
+        socket.once("connect", () => finish(true));
+        socket.once("error", () => finish(false));
+        socket.once("timeout", () => finish(false));
+        socket.setTimeout(350);
+
+    });
+
+}
+
+
+async function waitForLocalGameServer(timeoutMs = 8000, processToWatch = solariaServerProcess) {
+
+    const deadline = Date.now() + timeoutMs;
+
+    while (Date.now() < deadline) {
+
+        if (await isLocalGameServerListening()) {
+            return true;
+        }
+
+        if (processToWatch && processToWatch.exitCode !== null) {
+            throw new Error("The Solaria multiplayer server stopped before it became ready.");
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 150));
+
+    }
+
+    throw new Error("The Solaria multiplayer server did not start listening on port 8787.");
+
+}
+
+
+async function startSolariaServer() {
+
+    if (await isLocalGameServerListening()) {
+        console.log("[Solaria] Multiplayer server is already running.");
+        return;
+    }
+
+    if (!fs.existsSync(SOLARIA_SERVER_PATH)) {
+        throw new Error("The multiplayer server file was not found: " + SOLARIA_SERVER_PATH);
+    }
+
+    if (solariaServerProcess && solariaServerProcess.exitCode === null) {
+        await waitForLocalGameServer(8000, solariaServerProcess);
+        return;
+    }
+
+    console.log("[Solaria] Starting multiplayer server:", SOLARIA_SERVER_PATH);
+
+    const child = spawn(
+        process.execPath,
+        [SOLARIA_SERVER_PATH],
+        {
+            cwd: SOLARIA_SERVER_DIRECTORY,
+            detached: false,
+            stdio: "inherit",
+            windowsHide: true,
+            env: {
+                ...process.env,
+                ELECTRON_RUN_AS_NODE: "1"
+            }
+        }
+    );
+
+    solariaServerProcess = child;
+
+    child.once("exit", (code, signal) => {
+        console.log("[Solaria] Multiplayer server stopped.", code, signal);
+        if (solariaServerProcess === child) {
+            solariaServerProcess = null;
+        }
+    });
+
+    await new Promise((resolve, reject) => {
+        child.once("spawn", resolve);
+        child.once("error", reject);
+    });
+
+    await waitForLocalGameServer(8000, child);
+    console.log("[Solaria] Multiplayer server is ready.");
+
+}
+
+
+function stopSolariaServer() {
+
+    if (!solariaServerProcess) {
+        return;
+    }
+
+    if (solariaServerProcess.exitCode === null && !solariaServerProcess.killed) {
+        console.log("[Solaria] Stopping multiplayer server...");
+        solariaServerProcess.kill();
+    }
+
+}
+
+
 // ============================================================
 // LAUNCH GAME ENGINE
 // ============================================================
 
 function launchSolariaGame(
-    gameId
+    gameId,
+    playerData = {}
 ) {
 
     return new Promise(
-        (
+        async (
             resolve
         ) => {
 
@@ -1499,10 +1638,49 @@ function launchSolariaGame(
 
             try {
 
+            // The native client connects to localhost:8787, so make sure its
+            // WebSocket server is ready before launching the game process.
+            await startSolariaServer();
+
+            const avatar = playerData && playerData.avatar ? playerData.avatar : {};
+            const colors = avatar.colors || {};
+
+            const safeLine = value => String(value || "")
+                .replace(/[\r\n=]/g, " ")
+                .trim();
+
+            const safeColor = value =>
+                /^#[0-9a-fA-F]{6}$/.test(String(value || ""))
+                    ? String(value)
+                    : "";
+
+            const playerDataFile = path.join(
+                app.getPath("userData"),
+                "solaria-player-session.ini"
+            );
+
+            const playerLines = [
+                "displayName=" + safeLine(playerData.displayName || playerData.username || "Guest"),
+                "username=" + safeLine(playerData.username || ""),
+                "renderMode=" + safeLine(avatar.renderMode || "ball"),
+                "head=" + safeColor(colors.head),
+                "torso=" + safeColor(colors.torso),
+                "leftArm=" + safeColor(colors.leftArm),
+                "rightArm=" + safeColor(colors.rightArm),
+                "leftLeg=" + safeColor(colors.leftLeg),
+                "rightLeg=" + safeColor(colors.rightLeg)
+            ];
+
+            fs.writeFileSync(playerDataFile, playerLines.join("\n"), "utf8");
+
                 solariaGameProcess =
                     spawn(
                         SOLARIA_ENGINE_PATH,
-                        [],
+                        [
+                            gameId,
+                            "--player-data",
+                            playerDataFile
+                        ],
                         {
 
                             cwd:
@@ -1528,6 +1706,9 @@ function launchSolariaGame(
                         console.log(
                             "[Solaria] C++ game engine started."
                         );
+                        if (mainWindow && !mainWindow.isDestroyed()) {
+                            mainWindow.hide();
+                        }
 
 
                         resolve({
@@ -1558,6 +1739,7 @@ function launchSolariaGame(
                         solariaGameProcess =
                             null;
 
+                        stopSolariaServer();
 
                         resolve({
 
@@ -1600,6 +1782,19 @@ function launchSolariaGame(
                         solariaGameProcess =
                             null;
 
+                        stopSolariaServer();
+
+                        // Exit Game returns to the launcher. Only a real app
+                        // quit (for example, the launcher's X button) exits Solaria.
+                        if (!isAppQuitting && mainWindow && !mainWindow.isDestroyed()) {
+                            if (mainWindow.isMinimized()) {
+                                mainWindow.restore();
+                            }
+
+                            mainWindow.show();
+                            mainWindow.focus();
+                        }
+
                     }
                 );
 
@@ -1616,6 +1811,7 @@ function launchSolariaGame(
                 solariaGameProcess =
                     null;
 
+                stopSolariaServer();
 
                 resolve({
 
@@ -1644,12 +1840,14 @@ ipcMain.handle(
     async (
         event,
         {
-            gameId
+            gameId,
+            playerData
         }
     ) => {
 
         return await launchSolariaGame(
-            gameId
+            gameId,
+            playerData
         );
 
     }
@@ -2251,6 +2449,55 @@ ipcMain.handle(
 
 
 // ============================================================
+
+// ============================================================
+// GET CURRENT AUTH SESSION
+// ============================================================
+
+ipcMain.handle(
+    "auth-get-session",
+    async () => {
+
+        try {
+
+            const {
+                data,
+                error
+            } = await supabase.auth.getSession();
+
+            if (error) {
+
+                return {
+                    success: false,
+                    session: null,
+                    user: null,
+                    message: error.message
+                };
+
+            }
+
+            const session = data.session || null;
+
+            return {
+                success: true,
+                session,
+                user: session ? session.user : null
+            };
+
+        } catch (error) {
+
+            return {
+                success: false,
+                session: null,
+                user: null,
+                message: error.message || "Unable to restore session."
+            };
+
+        }
+
+    }
+);
+
 // PROFILE BACKEND
 // ============================================================
 
@@ -5102,12 +5349,25 @@ ipcMain.handle(
 
 
 // ============================================================
+app.on(
+    "window-all-closed",
+    () => {
+        console.log("[Solaria] All windows closed. Exiting.");
+        app.quit();
+    }
+);
+
+
+// ============================================================
 // CLEAN UP GAME ENGINE
 // ============================================================
 
 app.on(
     "before-quit",
     () => {
+
+        isAppQuitting = true;
+        stopSolariaServer();
 
         if (
             isSolariaGameRunning()
@@ -5151,3 +5411,5 @@ console.log(
     "[Solaria] Engine path:",
     SOLARIA_ENGINE_PATH
 );
+
+

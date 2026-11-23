@@ -1,10 +1,7 @@
 /* =========================================================
    SOLARIA AVATAR EDITOR
+   Supports the new Polytoria Avatar V3 rig
    ========================================================= */
-
-/*
- * Three.js is provided by the import map in avatar.html.
- */
 
 import * as THREE from "three";
 
@@ -21,18 +18,32 @@ import {
    SETTINGS
    ========================================================= */
 
+// The model, scene.bin, and textures are inside:
+// assets/avatar/rigs/default/
+
 const AVATAR_MODEL_PATH =
-    "../assets/avatar/rigs/blockworld-r6.glb";
+    "../avatar/rigs/Default/scene.gltf";
+
+// Use the actual rig instead of the old placeholder.
+const USE_PLACEHOLDER = false;
 
 
 /*
- * TRUE = use the built-in R6 rig.
+ * These are the actual mesh node names from your
+ * supplied GLTF file.
  *
- * The editor can still display the R6 preview even when
- * the actual game is configured to use the ball.
+ * Each mesh is a skinned mesh, so its bones continue
+ * controlling its movement.
  */
 
-const USE_PLACEHOLDER = true;
+const MODEL_PARTS = {
+    head: "Object_8",
+    rightArm: "Object_10",
+    leftLeg: "Object_12",
+    leftArm: "Object_14",
+    rightLeg: "Object_16",
+    torso: "Object_18"
+};
 
 
 /* =========================================================
@@ -41,30 +52,9 @@ const USE_PLACEHOLDER = true;
 
 const avatarData = {
 
-    /*
-     * Player gender selection.
-     */
-
     gender: "masculine",
 
-
-    /*
-     * How the avatar should appear inside the game.
-     *
-     * "ball"
-     *     The player is represented by a rolling ball.
-     *
-     * "character"
-     *     The player will eventually use the actual
-     *     Solaria character model.
-     */
-
     renderMode: "ball",
-
-
-    /*
-     * Avatar colors.
-     */
 
     colors: {
 
@@ -72,9 +62,13 @@ const avatarData = {
 
         torso: "#3366FF",
 
-        arms: "#FFD6A0",
+        leftArm: "#FFD6A0",
 
-        legs: "#222222"
+        rightArm: "#FFD6A0",
+
+        leftLeg: "#222222",
+
+        rightLeg: "#222222"
 
     }
 
@@ -86,16 +80,15 @@ const avatarData = {
    ========================================================= */
 
 let scene = null;
-
 let camera = null;
-
 let renderer = null;
-
 let controls = null;
 
 let avatar = null;
 
 let autoSpin = false;
+
+let avatarParts = {};
 
 
 /* =========================================================
@@ -104,53 +97,36 @@ let autoSpin = false;
 
 function startAvatarEditor() {
 
-    console.log(
-        "[Solaria Avatar] Starting..."
-    );
-
+    console.log("[Solaria Avatar] Starting...");
 
     loadSavedAvatar();
 
-
     setupThree();
 
+    if (!renderer) {
+        return;
+    }
 
     setupControls();
 
-
     loadAvatar();
-
 
     updateColorInputs();
 
-
     updateGenderButtons();
-
 
     updateRenderModeControls();
 
-
-    console.log(
-        "[Solaria Avatar] Ready!"
-    );
+    console.log("[Solaria Avatar] Ready!");
 }
 
 
-/*
- * This is intentionally NOT dependent only on
- * DOMContentLoaded.
- */
-
-if (
-    document.readyState === "loading"
-) {
+if (document.readyState === "loading") {
 
     document.addEventListener(
         "DOMContentLoaded",
         startAvatarEditor,
-        {
-            once: true
-        }
+        { once: true }
     );
 
 } else {
@@ -167,10 +143,7 @@ if (
 function setupThree() {
 
     const container =
-        document.getElementById(
-            "avatarPreview"
-        );
-
+        document.getElementById("avatarPreview");
 
     if (!container) {
 
@@ -181,98 +154,52 @@ function setupThree() {
         return;
     }
 
+    scene = new THREE.Scene();
 
-    /*
-     * SCENE
-     */
-
-    scene =
-        new THREE.Scene();
+    scene.background = new THREE.Color(0xe8e8e8);
 
 
-    scene.background =
-        new THREE.Color(
-            0xe8e8e8
-        );
-
-
-    /*
-     * CAMERA
-     */
+    // Camera
 
     const width =
-        Math.max(
-            container.clientWidth,
-            1
-        );
-
+        Math.max(container.clientWidth, 1);
 
     const height =
-        Math.max(
-            container.clientHeight,
-            1
-        );
+        Math.max(container.clientHeight, 1);
 
-
-    camera =
-        new THREE.PerspectiveCamera(
-            45,
-            width / height,
-            0.1,
-            1000
-        );
-
-
-    camera.position.set(
-        0,
-        3,
-        8
+    camera = new THREE.PerspectiveCamera(
+        45,
+        width / height,
+        0.1,
+        1000
     );
 
+    camera.position.set(0, 5, 12);
 
-    /*
-     * RENDERER
-     */
 
-    renderer =
-        new THREE.WebGLRenderer({
-            antialias: true
-        });
+    // Renderer
 
+    renderer = new THREE.WebGLRenderer({
+        antialias: true
+    });
 
     renderer.setPixelRatio(
-        Math.min(
-            window.devicePixelRatio || 1,
-            2
-        )
+        Math.min(window.devicePixelRatio || 1, 2)
     );
 
-
-    renderer.setSize(
-        width,
-        height
-    );
-
+    renderer.setSize(width, height);
 
     renderer.outputColorSpace =
         THREE.SRGBColorSpace;
 
-
-    renderer.shadowMap.enabled =
-        true;
-
+    renderer.shadowMap.enabled = true;
 
     container.innerHTML = "";
 
-
-    container.appendChild(
-        renderer.domElement
-    );
+    container.appendChild(renderer.domElement);
 
 
-    /*
-     * LIGHTING
-     */
+    // Lighting
 
     const hemisphereLight =
         new THREE.HemisphereLight(
@@ -281,10 +208,7 @@ function setupThree() {
             2
         );
 
-
-    scene.add(
-        hemisphereLight
-    );
+    scene.add(hemisphereLight);
 
 
     const keyLight =
@@ -293,21 +217,11 @@ function setupThree() {
             2
         );
 
+    keyLight.position.set(5, 8, 5);
 
-    keyLight.position.set(
-        5,
-        8,
-        5
-    );
+    keyLight.castShadow = true;
 
-
-    keyLight.castShadow =
-        true;
-
-
-    scene.add(
-        keyLight
-    );
+    scene.add(keyLight);
 
 
     const fillLight =
@@ -316,60 +230,32 @@ function setupThree() {
             1
         );
 
+    fillLight.position.set(-5, 4, -5);
 
-    fillLight.position.set(
-        -5,
-        4,
-        -5
+    scene.add(fillLight);
+
+
+    // Orbit controls
+
+    controls = new OrbitControls(
+        camera,
+        renderer.domElement
     );
 
+    controls.enablePan = false;
 
-    scene.add(
-        fillLight
-    );
+    controls.enableDamping = true;
 
+    controls.dampingFactor = 0.08;
 
-    /*
-     * ORBIT CONTROLS
-     */
+    controls.minDistance = 3;
 
-    controls =
-        new OrbitControls(
-            camera,
-            renderer.domElement
-        );
+    controls.maxDistance = 25;
+
+    controls.target.set(0, 6, 0);
 
 
-    controls.enablePan =
-        false;
-
-
-    controls.enableDamping =
-        true;
-
-
-    controls.dampingFactor =
-        0.08;
-
-
-    controls.minDistance =
-        3;
-
-
-    controls.maxDistance =
-        15;
-
-
-    controls.target.set(
-        0,
-        3,
-        0
-    );
-
-
-    /*
-     * RESIZE
-     */
+    // Resize
 
     window.addEventListener(
         "resize",
@@ -377,9 +263,7 @@ function setupThree() {
     );
 
 
-    /*
-     * START RENDER LOOP
-     */
+    // Render loop
 
     animate();
 }
@@ -391,14 +275,7 @@ function setupThree() {
 
 function loadAvatar() {
 
-    console.log(
-        "[Solaria Avatar] Loading avatar..."
-    );
-
-
-    /*
-     * PLACEHOLDER R6
-     */
+    console.log("[Solaria Avatar] Loading avatar...");
 
     if (USE_PLACEHOLDER) {
 
@@ -407,14 +284,7 @@ function loadAvatar() {
         return;
     }
 
-
-    /*
-     * REAL GLB
-     */
-
-    const loader =
-        new GLTFLoader();
-
+    const loader = new GLTFLoader();
 
     loader.load(
 
@@ -423,72 +293,83 @@ function loadAvatar() {
         (gltf) => {
 
             console.log(
-                "[Solaria Avatar] R6 GLB loaded."
+                "[Solaria Avatar] New character rig loaded!"
             );
 
+            removeCurrentAvatar();
 
-            avatar =
-                gltf.scene;
+            avatar = gltf.scene;
 
-
-            avatar.name =
-                "SolariaR6";
+            avatar.name = "SolariaCharacter";
 
 
             /*
-             * Make model parts cast shadows.
+             * Clone materials individually.
+             *
+             * This is important because the left and right
+             * arm meshes can share the same original GLTF
+             * material.
+             *
+             * Without cloning, coloring one arm could
+             * accidentally recolor the other.
              */
 
-            avatar.traverse(
-                (object) => {
+            avatar.traverse((object) => {
 
-                    if (
-                        object.isMesh
-                    ) {
+                if (!object.isMesh) {
+                    return;
+                }
 
-                        object.castShadow =
-                            true;
+                object.castShadow = true;
 
-                        object.receiveShadow =
-                            true;
+                object.receiveShadow = true;
 
-                    }
+                if (Array.isArray(object.material)) {
+
+                    object.material =
+                        object.material.map(material =>
+                            material.clone()
+                        );
+
+                } else if (object.material) {
+
+                    object.material =
+                        object.material.clone();
 
                 }
-            );
+
+            });
 
 
-            scene.add(
-                avatar
-            );
+            scene.add(avatar);
 
+            indexAvatarParts();
 
             centerAvatar();
 
-
             applyAvatarColors();
 
-
             frameAvatar();
+
+
+            console.log(
+                "[Solaria Avatar] Character is ready."
+            );
 
         },
 
         (progress) => {
 
-            if (
-                progress.total > 0
-            ) {
+            if (progress.total > 0) {
 
                 const percent =
-                    (
-                        progress.loaded /
-                        progress.total
-                    ) * 100;
-
+                    Math.round(
+                        (progress.loaded / progress.total) * 100
+                    );
 
                 console.log(
-                    "[Solaria Avatar] Loading " +
-                    Math.round(percent) +
+                    "[Solaria Avatar] Loading: " +
+                    percent +
                     "%"
                 );
 
@@ -499,15 +380,17 @@ function loadAvatar() {
         (error) => {
 
             console.error(
-                "[Solaria Avatar] Could not load GLB.",
+                "[Solaria Avatar] Could not load character model.",
                 error
             );
 
-
-            console.log(
-                "[Solaria Avatar] Using placeholder R6."
+            console.error(
+                "[Solaria Avatar] Check the model path and its files."
             );
 
+            console.log(
+                "[Solaria Avatar] Loading placeholder instead."
+            );
 
             createPlaceholderAvatar();
 
@@ -518,164 +401,176 @@ function loadAvatar() {
 
 
 /* =========================================================
-   CREATE PLACEHOLDER R6
+   REMOVE CURRENT AVATAR
+   ========================================================= */
+
+function removeCurrentAvatar() {
+
+    if (!avatar) {
+        return;
+    }
+
+    scene.remove(avatar);
+
+    avatar.traverse((object) => {
+
+        if (!object.isMesh) {
+            return;
+        }
+
+        if (object.geometry) {
+            object.geometry.dispose();
+        }
+
+        if (Array.isArray(object.material)) {
+
+            object.material.forEach(material => {
+                material.dispose();
+            });
+
+        } else if (object.material) {
+
+            object.material.dispose();
+
+        }
+
+    });
+
+    avatar = null;
+
+    avatarParts = {};
+}
+
+
+/* =========================================================
+   INDEX THE NEW CHARACTER'S BODY PARTS
+   ========================================================= */
+
+function indexAvatarParts() {
+
+    if (!avatar) {
+        return;
+    }
+
+    avatarParts = {};
+
+
+    avatar.traverse((object) => {
+
+        for (const [partName, objectName] of
+            Object.entries(MODEL_PARTS)) {
+
+            if (object.name === objectName) {
+
+                avatarParts[partName] = object;
+
+                console.log(
+                    "[Solaria Avatar] Found:",
+                    partName,
+                    object.name
+                );
+
+            }
+
+        }
+
+    });
+
+
+    // Report missing model parts.
+
+    for (const partName of Object.keys(MODEL_PARTS)) {
+
+        if (!avatarParts[partName]) {
+
+            console.warn(
+                "[Solaria Avatar] Could not find mesh:",
+                partName,
+                MODEL_PARTS[partName]
+            );
+
+        }
+
+    }
+}
+
+
+/* =========================================================
+   PLACEHOLDER AVATAR
    ========================================================= */
 
 function createPlaceholderAvatar() {
 
     console.log(
-        "[Solaria Avatar] Creating R6 preview..."
+        "[Solaria Avatar] Creating placeholder avatar..."
     );
 
+    removeCurrentAvatar();
 
-    /*
-     * Delete previous avatar.
-     */
+    avatar = new THREE.Group();
 
-    if (avatar) {
-
-        scene.remove(
-            avatar
-        );
-
-    }
+    avatar.name = "SolariaPlaceholder";
 
 
-    /*
-     * Create R6 container.
-     */
-
-    avatar =
-        new THREE.Group();
-
-
-    avatar.name =
-        "SolariaR6";
-
-
-    /* =====================================================
-       HEAD
-       ===================================================== */
-
-    const head =
-        createPart(
-            "Head",
-            1.8,
-            1.8,
-            1.8
-        );
-
-
-    head.position.set(
-        0,
-        5.4,
-        0
+    const head = createPart(
+        "head",
+        1.8,
+        1.8,
+        1.8
     );
 
-
-    /* =====================================================
-       TORSO
-       ===================================================== */
-
-    const torso =
-        createPart(
-            "Torso",
-            2,
-            2.4,
-            1
-        );
+    head.position.set(0, 5.4, 0);
 
 
-    torso.position.set(
-        0,
-        3.3,
-        0
+    const torso = createPart(
+        "torso",
+        2,
+        2.4,
+        1
     );
 
-
-    /* =====================================================
-       LEFT ARM
-       ===================================================== */
-
-    const leftArm =
-        createPart(
-            "LeftArm",
-            1,
-            2.4,
-            1
-        );
+    torso.position.set(0, 3.3, 0);
 
 
-    leftArm.position.set(
-        -1.5,
-        3.3,
-        0
-    );
-
-
-    /* =====================================================
-       RIGHT ARM
-       ===================================================== */
-
-    const rightArm =
-        createPart(
-            "RightArm",
-            1,
-            2.4,
-            1
-        );
-
-
-    rightArm.position.set(
-        1.5,
-        3.3,
-        0
-    );
-
-
-    /* =====================================================
-       LEFT LEG
-       ===================================================== */
-
-    const leftLeg =
-        createPart(
-            "LeftLeg",
-            1,
-            2.4,
-            1
-        );
-
-
-    leftLeg.position.set(
-        -0.5,
+    const leftArm = createPart(
+        "leftArm",
         1,
-        0
+        2.4,
+        1
     );
 
-
-    /* =====================================================
-       RIGHT LEG
-       ===================================================== */
-
-    const rightLeg =
-        createPart(
-            "RightLeg",
-            1,
-            2.4,
-            1
-        );
+    leftArm.position.set(-1.5, 3.3, 0);
 
 
-    rightLeg.position.set(
-        0.5,
+    const rightArm = createPart(
+        "rightArm",
         1,
-        0
+        2.4,
+        1
     );
 
+    rightArm.position.set(1.5, 3.3, 0);
 
-    /*
-     * Add all six R6 body parts.
-     */
+
+    const leftLeg = createPart(
+        "leftLeg",
+        1,
+        2.4,
+        1
+    );
+
+    leftLeg.position.set(-0.5, 1, 0);
+
+
+    const rightLeg = createPart(
+        "rightLeg",
+        1,
+        2.4,
+        1
+    );
+
+    rightLeg.position.set(0.5, 1, 0);
+
 
     avatar.add(
         head,
@@ -687,44 +582,29 @@ function createPlaceholderAvatar() {
     );
 
 
-    /*
-     * Add the avatar to the scene.
-     */
+    avatarParts = {
+        head,
+        torso,
+        leftArm,
+        rightArm,
+        leftLeg,
+        rightLeg
+    };
 
-    scene.add(
-        avatar
-    );
 
-
-    /*
-     * Center it.
-     */
+    scene.add(avatar);
 
     centerAvatar();
 
-
-    /*
-     * Apply colors.
-     */
-
     applyAvatarColors();
-
-
-    /*
-     * Position camera.
-     */
 
     frameAvatar();
 
-
-    console.log(
-        "[Solaria Avatar] R6 preview created."
-    );
 }
 
 
 /* =========================================================
-   CREATE BODY PART
+   CREATE PLACEHOLDER BODY PART
    ========================================================= */
 
 function createPart(
@@ -741,7 +621,6 @@ function createPart(
             depth
         );
 
-
     const material =
         new THREE.MeshStandardMaterial({
 
@@ -753,25 +632,16 @@ function createPart(
 
         });
 
+    const mesh = new THREE.Mesh(
+        geometry,
+        material
+    );
 
-    const mesh =
-        new THREE.Mesh(
-            geometry,
-            material
-        );
+    mesh.name = name;
 
+    mesh.castShadow = true;
 
-    mesh.name =
-        name;
-
-
-    mesh.castShadow =
-        true;
-
-
-    mesh.receiveShadow =
-        true;
-
+    mesh.receiveShadow = true;
 
     return mesh;
 }
@@ -784,30 +654,22 @@ function createPart(
 function centerAvatar() {
 
     if (!avatar) {
-
         return;
     }
 
+    avatar.updateMatrixWorld(true);
 
     const box =
-        new THREE.Box3()
-            .setFromObject(
-                avatar
-            );
-
+        new THREE.Box3().setFromObject(avatar);
 
     const center =
-        box.getCenter(
-            new THREE.Vector3()
-        );
+        box.getCenter(new THREE.Vector3());
 
+    avatar.position.x -= center.x;
 
-    avatar.position.x =
-        -center.x;
+    avatar.position.z -= center.z;
 
-
-    avatar.position.z =
-        -center.z;
+    avatar.updateMatrixWorld(true);
 }
 
 
@@ -817,61 +679,34 @@ function centerAvatar() {
 
 function frameAvatar() {
 
-    if (
-        !avatar ||
-        !camera ||
-        !controls
-    ) {
-
+    if (!avatar || !camera || !controls) {
         return;
     }
 
+    avatar.updateMatrixWorld(true);
 
     const box =
-        new THREE.Box3()
-            .setFromObject(
-                avatar
-            );
-
+        new THREE.Box3().setFromObject(avatar);
 
     const size =
-        box.getSize(
-            new THREE.Vector3()
-        );
-
+        box.getSize(new THREE.Vector3());
 
     const center =
-        box.getCenter(
-            new THREE.Vector3()
-        );
-
+        box.getCenter(new THREE.Vector3());
 
     const maxSize =
-        Math.max(
-            size.x,
-            size.y,
-            size.z
-        );
-
+        Math.max(size.x, size.y, size.z);
 
     const distance =
-        Math.max(
-            maxSize * 1.8,
-            5
-        );
-
+        Math.max(maxSize * 1.8, 5);
 
     camera.position.set(
-        distance,
+        center.x + distance,
         center.y + maxSize * 0.15,
-        distance
+        center.z + distance
     );
 
-
-    controls.target.copy(
-        center
-    );
-
+    controls.target.copy(center);
 
     controls.update();
 }
@@ -881,92 +716,33 @@ function frameAvatar() {
    FIND BODY PART
    ========================================================= */
 
-function findPart(
-    partName
-) {
+function findPart(partName) {
 
-    if (!avatar) {
-
-        return null;
-    }
-
-
-    let result =
-        null;
-
-
-    avatar.traverse(
-        (object) => {
-
-            if (
-                object.name ===
-                partName
-            ) {
-
-                result =
-                    object;
-
-            }
-
-        }
-    );
-
-
-    return result;
+    return avatarParts[partName] || null;
 }
 
 
 /* =========================================================
-   APPLY AVATAR COLORS
+   APPLY ALL AVATAR COLORS
    ========================================================= */
 
 function applyAvatarColors() {
 
     if (!avatar) {
-
         return;
     }
 
+    for (const [partName, color] of
+        Object.entries(avatarData.colors)) {
 
-    setPartColor(
-        "Head",
-        avatarData.colors.head
-    );
+        setPartColor(partName, color);
 
-
-    setPartColor(
-        "Torso",
-        avatarData.colors.torso
-    );
-
-
-    setPartColor(
-        "LeftArm",
-        avatarData.colors.arms
-    );
-
-
-    setPartColor(
-        "RightArm",
-        avatarData.colors.arms
-    );
-
-
-    setPartColor(
-        "LeftLeg",
-        avatarData.colors.legs
-    );
-
-
-    setPartColor(
-        "RightLeg",
-        avatarData.colors.legs
-    );
+    }
 }
 
 
 /* =========================================================
-   SET PART COLOR
+   SET BODY PART COLOR
    ========================================================= */
 
 function setPartColor(
@@ -974,11 +750,7 @@ function setPartColor(
     color
 ) {
 
-    const part =
-        findPart(
-            partName
-        );
-
+    const part = findPart(partName);
 
     if (!part) {
 
@@ -991,60 +763,43 @@ function setPartColor(
     }
 
 
-    /*
-     * Standard material.
-     */
-
-    if (
-        part.material &&
-        part.material.color
-    ) {
-
-        part.material.color.set(
-            color
-        );
+    const materials =
+        Array.isArray(part.material)
+            ? part.material
+            : [part.material];
 
 
-        part.material.needsUpdate =
-            true;
+    materials.forEach((material) => {
+
+        if (!material || !material.color) {
+            return;
+        }
+
+        material.color.set(color);
+
+        material.needsUpdate = true;
+
+    });
+
+}
 
 
+/* =========================================================
+   CHANGE A COLOR
+   ========================================================= */
+
+function changeColor(
+    partName,
+    color
+) {
+
+    if (!avatarData.colors.hasOwnProperty(partName)) {
         return;
     }
 
+    avatarData.colors[partName] = color;
 
-    /*
-     * Multiple materials.
-     */
-
-    if (
-        Array.isArray(
-            part.material
-        )
-    ) {
-
-        part.material.forEach(
-            (material) => {
-
-                if (
-                    material &&
-                    material.color
-                ) {
-
-                    material.color.set(
-                        color
-                    );
-
-
-                    material.needsUpdate =
-                        true;
-
-                }
-
-            }
-        );
-
-    }
+    setPartColor(partName, color);
 }
 
 
@@ -1055,141 +810,104 @@ function setPartColor(
 function setupControls() {
 
     /*
-     * COLOR INPUTS
+     * COLOR CONTROLS
+     *
+     * Old controls still work:
+     * headColor
+     * torsoColor
+     * armsColor
+     * legsColor
+     *
+     * New optional controls:
+     * leftArmColor
+     * rightArmColor
+     * leftLegColor
+     * rightLegColor
      */
 
-    const headColor =
-        document.getElementById(
-            "headColor"
-        );
+
+    const colorControls = {
+
+        headColor: "head",
+
+        torsoColor: "torso",
+
+        leftArmColor: "leftArm",
+
+        rightArmColor: "rightArm",
+
+        leftLegColor: "leftLeg",
+
+        rightLegColor: "rightLeg"
+
+    };
 
 
-    const torsoColor =
-        document.getElementById(
-            "torsoColor"
-        );
+    for (const [elementId, partName] of
+        Object.entries(colorControls)) {
 
+        const input =
+            document.getElementById(elementId);
+
+        if (!input) {
+            continue;
+        }
+
+        input.addEventListener("input", () => {
+
+            changeColor(
+                partName,
+                input.value
+            );
+
+        });
+
+    }
+
+
+    /*
+     * OLD SHARED ARM COLOR CONTROL
+     *
+     * If the HTML still only has armsColor,
+     * this changes both arms.
+     */
 
     const armsColor =
-        document.getElementById(
-            "armsColor"
-        );
-
-
-    const legsColor =
-        document.getElementById(
-            "legsColor"
-        );
-
-
-    /*
-     * HEAD COLOR
-     */
-
-    if (headColor) {
-
-        headColor.addEventListener(
-            "input",
-            () => {
-
-                avatarData.colors.head =
-                    headColor.value;
-
-
-                setPartColor(
-                    "Head",
-                    headColor.value
-                );
-
-            }
-        );
-
-    }
-
-
-    /*
-     * TORSO COLOR
-     */
-
-    if (torsoColor) {
-
-        torsoColor.addEventListener(
-            "input",
-            () => {
-
-                avatarData.colors.torso =
-                    torsoColor.value;
-
-
-                setPartColor(
-                    "Torso",
-                    torsoColor.value
-                );
-
-            }
-        );
-
-    }
-
-
-    /*
-     * ARM COLOR
-     */
+        document.getElementById("armsColor");
 
     if (armsColor) {
 
-        armsColor.addEventListener(
-            "input",
-            () => {
+        armsColor.addEventListener("input", () => {
 
-                avatarData.colors.arms =
-                    armsColor.value;
+            changeColor("leftArm", armsColor.value);
 
+            changeColor("rightArm", armsColor.value);
 
-                setPartColor(
-                    "LeftArm",
-                    armsColor.value
-                );
+            updateIndividualColorInputs();
 
-
-                setPartColor(
-                    "RightArm",
-                    armsColor.value
-                );
-
-            }
-        );
+        });
 
     }
 
 
     /*
-     * LEG COLOR
+     * OLD SHARED LEG COLOR CONTROL
      */
+
+    const legsColor =
+        document.getElementById("legsColor");
 
     if (legsColor) {
 
-        legsColor.addEventListener(
-            "input",
-            () => {
+        legsColor.addEventListener("input", () => {
 
-                avatarData.colors.legs =
-                    legsColor.value;
+            changeColor("leftLeg", legsColor.value);
 
+            changeColor("rightLeg", legsColor.value);
 
-                setPartColor(
-                    "LeftLeg",
-                    legsColor.value
-                );
+            updateIndividualColorInputs();
 
-
-                setPartColor(
-                    "RightLeg",
-                    legsColor.value
-                );
-
-            }
-        );
+        });
 
     }
 
@@ -1199,39 +917,29 @@ function setupControls() {
        ===================================================== */
 
     const genderButtons =
-        document.querySelectorAll(
-            ".gender-button"
-        );
+        document.querySelectorAll(".gender-button");
 
+    genderButtons.forEach((button) => {
 
-    genderButtons.forEach(
-        (button) => {
+        button.addEventListener("click", () => {
 
-            button.addEventListener(
-                "click",
-                () => {
+            avatarData.gender =
+                button.dataset.gender;
 
-                    avatarData.gender =
-                        button.dataset.gender;
+            updateGenderButtons();
 
-
-                    updateGenderButtons();
-
-
-                    console.log(
-                        "[Solaria Avatar] Gender:",
-                        avatarData.gender
-                    );
-
-                }
+            console.log(
+                "[Solaria Avatar] Gender:",
+                avatarData.gender
             );
 
-        }
-    );
+        });
+
+    });
 
 
     /* =====================================================
-       GAME AVATAR / RENDER MODE
+       RENDER MODE
        ===================================================== */
 
     setupRenderModeControls();
@@ -1242,34 +950,23 @@ function setupControls() {
        ===================================================== */
 
     const spinButton =
-        document.getElementById(
-            "spinButton"
-        );
-
+        document.getElementById("spinButton");
 
     if (spinButton) {
 
-        spinButton.addEventListener(
-            "click",
-            () => {
+        spinButton.addEventListener("click", () => {
 
-                autoSpin =
-                    !autoSpin;
+            autoSpin = !autoSpin;
 
+            spinButton.classList.toggle(
+                "active",
+                autoSpin
+            );
 
-                spinButton.classList.toggle(
-                    "active",
-                    autoSpin
-                );
+            spinButton.textContent =
+                autoSpin ? "STOP SPIN" : "AUTO SPIN";
 
-
-                spinButton.textContent =
-                    autoSpin
-                        ? "STOP SPIN"
-                        : "AUTO SPIN";
-
-            }
-        );
+        });
 
     }
 
@@ -1279,21 +976,15 @@ function setupControls() {
        ===================================================== */
 
     const backButton =
-        document.getElementById(
-            "backButton"
-        );
-
+        document.getElementById("backButton");
 
     if (backButton) {
 
-        backButton.addEventListener(
-            "click",
-            () => {
+        backButton.addEventListener("click", () => {
 
-                window.history.back();
+            window.history.back();
 
-            }
-        );
+        });
 
     }
 
@@ -1303,10 +994,7 @@ function setupControls() {
        ===================================================== */
 
     const saveButton =
-        document.getElementById(
-            "saveButton"
-        );
-
+        document.getElementById("saveButton");
 
     if (saveButton) {
 
@@ -1316,161 +1004,123 @@ function setupControls() {
         );
 
     }
+
 }
 
 
 /* =========================================================
-   GAME AVATAR / RENDER MODE CONTROLS
+   UPDATE INDIVIDUAL COLOR INPUTS
+   ========================================================= */
+
+function updateIndividualColorInputs() {
+
+    const ids = {
+
+        headColor: "head",
+
+        torsoColor: "torso",
+
+        leftArmColor: "leftArm",
+
+        rightArmColor: "rightArm",
+
+        leftLegColor: "leftLeg",
+
+        rightLegColor: "rightLeg"
+
+    };
+
+    for (const [elementId, partName] of
+        Object.entries(ids)) {
+
+        const input =
+            document.getElementById(elementId);
+
+        if (input) {
+
+            input.value =
+                avatarData.colors[partName];
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER MODE CONTROLS
    ========================================================= */
 
 function setupRenderModeControls() {
 
-    /*
-     * We support several possible IDs so the editor can
-     * use either buttons or radio inputs.
-     */
-
-
     const ballButton =
-        document.getElementById(
-            "renderBall"
-        );
-
+        document.getElementById("renderBall");
 
     const characterButton =
-        document.getElementById(
-            "renderCharacter"
-        );
+        document.getElementById("renderCharacter");
 
-
-    /*
-     * BALL
-     */
 
     if (ballButton) {
 
-        ballButton.addEventListener(
-            "click",
-            () => {
+        ballButton.addEventListener("click", () => {
+            setRenderMode("ball");
+        });
 
-                setRenderMode(
-                    "ball"
-                );
+        if (ballButton.type === "radio") {
 
-            }
-        );
+            ballButton.addEventListener("change", () => {
 
-
-        if (
-            ballButton.type ===
-            "radio"
-        ) {
-
-            ballButton.addEventListener(
-                "change",
-                () => {
-
-                    if (
-                        ballButton.checked
-                    ) {
-
-                        setRenderMode(
-                            "ball"
-                        );
-
-                    }
-
+                if (ballButton.checked) {
+                    setRenderMode("ball");
                 }
-            );
+
+            });
 
         }
 
     }
 
-
-    /*
-     * CHARACTER
-     */
 
     if (characterButton) {
 
-        characterButton.addEventListener(
-            "click",
-            () => {
+        characterButton.addEventListener("click", () => {
+            setRenderMode("character");
+        });
 
-                setRenderMode(
-                    "character"
-                );
+        if (characterButton.type === "radio") {
 
-            }
-        );
+            characterButton.addEventListener("change", () => {
 
-
-        if (
-            characterButton.type ===
-            "radio"
-        ) {
-
-            characterButton.addEventListener(
-                "change",
-                () => {
-
-                    if (
-                        characterButton.checked
-                    ) {
-
-                        setRenderMode(
-                            "character"
-                        );
-
-                    }
-
+                if (characterButton.checked) {
+                    setRenderMode("character");
                 }
-            );
+
+            });
 
         }
 
     }
 
 
-    /*
-     * Also support elements using
-     * data-render-mode.
-     */
-
     const renderOptions =
-        document.querySelectorAll(
-            "[data-render-mode]"
-        );
+        document.querySelectorAll("[data-render-mode]");
 
+    renderOptions.forEach((option) => {
 
-    renderOptions.forEach(
-        (option) => {
+        option.addEventListener("click", () => {
 
-            option.addEventListener(
-                "click",
-                () => {
+            const mode =
+                option.dataset.renderMode;
 
-                    const mode =
-                        option.dataset.renderMode;
+            if (mode === "ball" || mode === "character") {
+                setRenderMode(mode);
+            }
 
+        });
 
-                    if (
-                        mode === "ball" ||
-                        mode === "character"
-                    ) {
+    });
 
-                        setRenderMode(
-                            mode
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-    );
 }
 
 
@@ -1478,30 +1128,21 @@ function setupRenderModeControls() {
    SET RENDER MODE
    ========================================================= */
 
-function setRenderMode(
-    mode
-) {
+function setRenderMode(mode) {
 
-    if (
-        mode !== "ball" &&
-        mode !== "character"
-    ) {
-
+    if (mode !== "ball" && mode !== "character") {
         return;
     }
 
-
-    avatarData.renderMode =
-        mode;
-
+    avatarData.renderMode = mode;
 
     updateRenderModeControls();
 
-
     console.log(
         "[Solaria Avatar] Game avatar:",
-        avatarData.renderMode
+        mode
     );
+
 }
 
 
@@ -1512,20 +1153,11 @@ function setRenderMode(
 function updateRenderModeControls() {
 
     const ballButton =
-        document.getElementById(
-            "renderBall"
-        );
-
+        document.getElementById("renderBall");
 
     const characterButton =
-        document.getElementById(
-            "renderCharacter"
-        );
+        document.getElementById("renderCharacter");
 
-
-    /*
-     * Update normal buttons.
-     */
 
     if (ballButton) {
 
@@ -1533,6 +1165,13 @@ function updateRenderModeControls() {
             "active",
             avatarData.renderMode === "ball"
         );
+
+        if (ballButton.type === "radio") {
+
+            ballButton.checked =
+                avatarData.renderMode === "ball";
+
+        }
 
     }
 
@@ -1544,58 +1183,28 @@ function updateRenderModeControls() {
             avatarData.renderMode === "character"
         );
 
-    }
+        if (characterButton.type === "radio") {
 
-
-    /*
-     * Update radio inputs.
-     */
-
-    if (
-        ballButton &&
-        ballButton.type ===
-        "radio"
-    ) {
-
-        ballButton.checked =
-            avatarData.renderMode === "ball";
-
-    }
-
-
-    if (
-        characterButton &&
-        characterButton.type ===
-        "radio"
-    ) {
-
-        characterButton.checked =
-            avatarData.renderMode === "character";
-
-    }
-
-
-    /*
-     * Update anything using data-render-mode.
-     */
-
-    const renderOptions =
-        document.querySelectorAll(
-            "[data-render-mode]"
-        );
-
-
-    renderOptions.forEach(
-        (option) => {
-
-            option.classList.toggle(
-                "active",
-                option.dataset.renderMode ===
-                    avatarData.renderMode
-            );
+            characterButton.checked =
+                avatarData.renderMode === "character";
 
         }
-    );
+
+    }
+
+
+    const renderOptions =
+        document.querySelectorAll("[data-render-mode]");
+
+    renderOptions.forEach((option) => {
+
+        option.classList.toggle(
+            "active",
+            option.dataset.renderMode === avatarData.renderMode
+        );
+
+    });
+
 }
 
 
@@ -1605,60 +1214,37 @@ function updateRenderModeControls() {
 
 function updateColorInputs() {
 
-    const headColor =
-        document.getElementById(
-            "headColor"
-        );
+    const oldInputs = {
+
+        headColor: "head",
+
+        torsoColor: "torso",
+
+        armsColor: "leftArm",
+
+        legsColor: "leftLeg"
+
+    };
 
 
-    const torsoColor =
-        document.getElementById(
-            "torsoColor"
-        );
+    for (const [elementId, partName] of
+        Object.entries(oldInputs)) {
 
+        const input =
+            document.getElementById(elementId);
 
-    const armsColor =
-        document.getElementById(
-            "armsColor"
-        );
+        if (input) {
 
+            input.value =
+                avatarData.colors[partName];
 
-    const legsColor =
-        document.getElementById(
-            "legsColor"
-        );
-
-
-    if (headColor) {
-
-        headColor.value =
-            avatarData.colors.head;
+        }
 
     }
 
 
-    if (torsoColor) {
+    updateIndividualColorInputs();
 
-        torsoColor.value =
-            avatarData.colors.torso;
-
-    }
-
-
-    if (armsColor) {
-
-        armsColor.value =
-            avatarData.colors.arms;
-
-    }
-
-
-    if (legsColor) {
-
-        legsColor.value =
-            avatarData.colors.legs;
-
-    }
 }
 
 
@@ -1669,22 +1255,17 @@ function updateColorInputs() {
 function updateGenderButtons() {
 
     const buttons =
-        document.querySelectorAll(
-            ".gender-button"
+        document.querySelectorAll(".gender-button");
+
+    buttons.forEach((button) => {
+
+        button.classList.toggle(
+            "active",
+            button.dataset.gender === avatarData.gender
         );
 
+    });
 
-    buttons.forEach(
-        (button) => {
-
-            button.classList.toggle(
-                "active",
-                button.dataset.gender ===
-                    avatarData.gender
-            );
-
-        }
-    );
 }
 
 
@@ -1694,28 +1275,13 @@ function updateGenderButtons() {
 
 function saveAvatar() {
 
-    /*
-     * Convert avatar data into JSON.
-     *
-     * renderMode is included automatically.
-     */
-
     const savedAvatar =
-        JSON.stringify(
-            avatarData
-        );
-
-
-    /*
-     * Save it permanently in this
-     * browser/Electron installation.
-     */
+        JSON.stringify(avatarData);
 
     localStorage.setItem(
         "blockworldAvatar",
         savedAvatar
     );
-
 
     console.log(
         "[Solaria Avatar] Saved:",
@@ -1723,47 +1289,28 @@ function saveAvatar() {
     );
 
 
-    /*
-     * Change button to SAVED!
-     */
-
     const saveButton =
-        document.getElementById(
-            "saveButton"
-        );
-
+        document.getElementById("saveButton");
 
     if (saveButton) {
 
         const oldText =
             saveButton.textContent;
 
+        saveButton.textContent = "SAVED!";
 
-        saveButton.textContent =
-            "SAVED!";
+        saveButton.classList.add("saved");
 
+        setTimeout(() => {
 
-        saveButton.classList.add(
-            "saved"
-        );
+            saveButton.textContent = oldText;
 
+            saveButton.classList.remove("saved");
 
-        setTimeout(
-            () => {
-
-                saveButton.textContent =
-                    oldText;
-
-
-                saveButton.classList.remove(
-                    "saved"
-                );
-
-            },
-            1500
-        );
+        }, 1500);
 
     }
+
 }
 
 
@@ -1774,20 +1321,11 @@ function saveAvatar() {
 function loadSavedAvatar() {
 
     const saved =
-        localStorage.getItem(
-            "blockworldAvatar"
-        );
-
+        localStorage.getItem("blockworldAvatar");
 
     if (!saved) {
 
-        /*
-         * New accounts default to the ball.
-         */
-
-        avatarData.renderMode =
-            "ball";
-
+        avatarData.renderMode = "ball";
 
         return;
     }
@@ -1795,101 +1333,103 @@ function loadSavedAvatar() {
 
     try {
 
-        const data =
-            JSON.parse(
-                saved
-            );
+        const data = JSON.parse(saved);
 
 
-        /*
-         * Gender
-         */
+        // Gender
 
         if (
             data.gender === "masculine" ||
             data.gender === "feminine"
         ) {
 
-            avatarData.gender =
-                data.gender;
+            avatarData.gender = data.gender;
 
         }
 
 
-        /*
-         * Render mode
-         *
-         * Older saved avatars will automatically
-         * become "ball".
-         */
+        // Render mode
 
         if (
             data.renderMode === "ball" ||
             data.renderMode === "character"
         ) {
 
-            avatarData.renderMode =
-                data.renderMode;
+            avatarData.renderMode = data.renderMode;
 
         } else {
 
-            avatarData.renderMode =
-                "ball";
+            avatarData.renderMode = "ball";
 
         }
 
 
-        /*
-         * Colors
-         */
+        // Colors
 
-        if (
-            data.colors &&
-            typeof data.colors === "object"
-        ) {
+        if (data.colors && typeof data.colors === "object") {
 
-            if (
-                typeof data.colors.head ===
-                "string"
-            ) {
+            const colors = data.colors;
 
-                avatarData.colors.head =
-                    data.colors.head;
+
+            if (typeof colors.head === "string") {
+                avatarData.colors.head = colors.head;
+            }
+
+            if (typeof colors.torso === "string") {
+                avatarData.colors.torso = colors.torso;
+            }
+
+
+            /*
+             * Backwards compatibility:
+             *
+             * Old saves used:
+             * arms
+             * legs
+             *
+             * New saves use:
+             * leftArm
+             * rightArm
+             * leftLeg
+             * rightLeg
+             */
+
+            if (typeof colors.arms === "string") {
+
+                avatarData.colors.leftArm = colors.arms;
+
+                avatarData.colors.rightArm = colors.arms;
+
+            }
+
+            if (typeof colors.legs === "string") {
+
+                avatarData.colors.leftLeg = colors.legs;
+
+                avatarData.colors.rightLeg = colors.legs;
 
             }
 
 
-            if (
-                typeof data.colors.torso ===
-                "string"
-            ) {
+            // New individual colors override old shared colors.
 
-                avatarData.colors.torso =
-                    data.colors.torso;
+            const individualParts = [
+                "leftArm",
+                "rightArm",
+                "leftLeg",
+                "rightLeg"
+            ];
 
-            }
+            individualParts.forEach((partName) => {
 
+                if (typeof colors[partName] === "string") {
 
-            if (
-                typeof data.colors.arms ===
-                "string"
-            ) {
+                    avatarData.colors[partName] =
+                        colors[partName];
 
-                avatarData.colors.arms =
-                    data.colors.arms;
+                }
 
-            }
-
-
-            if (
-                typeof data.colors.legs ===
-                "string"
-            ) {
-
-                avatarData.colors.legs =
-                    data.colors.legs;
-
-            }
+            });
 
         }
 
@@ -1897,7 +1437,6 @@ function loadSavedAvatar() {
         console.log(
             "[Solaria Avatar] Saved avatar loaded."
         );
-
 
         console.log(
             "[Solaria Avatar] Render mode:",
@@ -1911,38 +1450,23 @@ function loadSavedAvatar() {
             error
         );
 
-
-        /*
-         * Safe fallback.
-         */
-
-        avatarData.renderMode =
-            "ball";
+        avatarData.renderMode = "ball";
 
     }
+
 }
 
 
 /* =========================================================
-   GET AVATAR DATA
+   PUBLIC SOLARIA AVATAR API
    ========================================================= */
-
-/*
- * This makes the avatar data available to other
- * Solaria JavaScript files.
- *
- * Later the game launcher can use this to determine
- * whether the player should spawn as a ball or character.
- */
 
 window.SolariaAvatar = {
 
     getData() {
 
         return JSON.parse(
-            JSON.stringify(
-                avatarData
-            )
+            JSON.stringify(avatarData)
         );
 
     },
@@ -1964,13 +1488,25 @@ window.SolariaAvatar = {
     },
 
 
-    setRenderMode(
-        mode
-    ) {
+    setRenderMode(mode) {
 
-        setRenderMode(
-            mode
-        );
+        setRenderMode(mode);
+
+    },
+
+
+    setColor(partName, color) {
+
+        changeColor(partName, color);
+
+        updateColorInputs();
+
+    },
+
+
+    reloadAvatar() {
+
+        loadAvatar();
 
     }
 
@@ -1983,29 +1519,15 @@ window.SolariaAvatar = {
 
 function animate() {
 
-    requestAnimationFrame(
-        animate
-    );
+    requestAnimationFrame(animate);
 
 
-    /*
-     * Auto rotation
-     */
+    if (avatar && autoSpin) {
 
-    if (
-        avatar &&
-        autoSpin
-    ) {
-
-        avatar.rotation.y +=
-            0.01;
+        avatar.rotation.y += 0.01;
 
     }
 
-
-    /*
-     * Update controls
-     */
 
     if (controls) {
 
@@ -2014,22 +1536,12 @@ function animate() {
     }
 
 
-    /*
-     * Render scene
-     */
+    if (renderer && scene && camera) {
 
-    if (
-        renderer &&
-        scene &&
-        camera
-    ) {
-
-        renderer.render(
-            scene,
-            camera
-        );
+        renderer.render(scene, camera);
 
     }
+
 }
 
 
@@ -2040,44 +1552,22 @@ function animate() {
 function resizeRenderer() {
 
     const container =
-        document.getElementById(
-            "avatarPreview"
-        );
+        document.getElementById("avatarPreview");
 
-
-    if (
-        !container ||
-        !camera ||
-        !renderer
-    ) {
-
+    if (!container || !camera || !renderer) {
         return;
     }
 
-
     const width =
-        Math.max(
-            container.clientWidth,
-            1
-        );
-
+        Math.max(container.clientWidth, 1);
 
     const height =
-        Math.max(
-            container.clientHeight,
-            1
-        );
+        Math.max(container.clientHeight, 1);
 
-
-    camera.aspect =
-        width / height;
-
+    camera.aspect = width / height;
 
     camera.updateProjectionMatrix();
 
+    renderer.setSize(width, height);
 
-    renderer.setSize(
-        width,
-        height
-    );
 }

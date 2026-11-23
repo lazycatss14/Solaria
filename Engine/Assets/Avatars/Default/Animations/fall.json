@@ -1,0 +1,402 @@
+
+{
+  "Keyframes": [
+    {
+      "Poses": [
+        {
+          "EasingStyle": "Linear",
+          "Name": "RootPart",
+          "Weight": 0,
+          "CFrame": [
+            0, 0, 0,
+            1, 0, 0,
+            0, 1, 0,
+            0, 0, 1
+          ],
+          "Children": [
+            {
+              "EasingStyle": "Linear",
+              "Name": "GLTF_created_0_rootJoint",
+              "Weight": 1,
+              "CFrame": [
+                0, -1.0958898067474366, 0,
+                1, 0, 0,
+                0, 1, 0,
+                0, 0, 1
+              ],
+              "Children": [
+                {
+                  "EasingStyle": "Linear",
+                  "Name": "LowerTorso_26",
+                  "Weight": 1,
+                  "CFrame": [
+                    0, 0, 0,
+                    1, 0, 0,
+                    0, 0.9441316723823547, 0.32956841588020327,
+                    0, -0.32956841588020327, 0.9441316723823547
+                  ],
+                  "Children": [
+                    {
+                      "EasingStyle": "Linear",
+                      "Name": "UpperLeg.R_20",
+                      "Weight": 1,
+                      "CFrame": [
+                        0, 0, 0,
+                        1, 0, 0,
+                        0, 0.8822972178459168, 0.4706926941871643,
+                        0, -0.4706926941871643, 0.8822972178459168
+                      ],
+                      "Children": [
+                        {
+                          "EasingStyle": "Linear",
+                          "Name": "LowerLeg.R_18",
+                          "Weight": 1,
+                          "CFrame": [
+                            0, 0, 0,
+                            0.9876761436462402, -0.04283453896641731, 0.15053586661815644,
+                            -0.10000881552696228, 0.5671237111091614, 0.8175382614135742,
+                            -0.12039132416248322, -0.8225178718566895, 0.5558508038520813
+                          ],
+                          "Children": [],
+                          "EasingDirection": "In"
+                        }
+                      ],
+                      "EasingDirection": "In"
+                    },
+                    {
+                      "EasingStyle": "Linear",
+                      "Name": "UpperTorso_16",
+                      "Weight": 1,
+                      "CFrame": [
+                        0, 0, 0,
+                        1, 0, 0,
+                        0, 0.9615069031715393, 0.27478080987930327,
+                        0, -0.27478080987930327, 0.9615069031715393
+                      ],
+                      "Children": [
+                        {
+                          "EasingStyle": "Linear",
+                          "Name": "UpperArm.L_14",
+                          "Weight": 1,
+                          "CFrame": [
+                            -0.039286185055971149, 0.05626380443572998, -0.3183995187282562,
+                            0.9921550750732422, 0.11386928707361222, 0.05159373953938484,
+                            -0.01161794364452362, 0.49490877985954287, -0.8688672184944153,
+                            -0.12447145581245423, 0.8614516854286194, 0.492349237203598
+                          ],
+                          "Children": [
+                            {
+                              "EasingStyle": "Linear",
+                              "Name": "LowerArm.L_12",
+                              "Weight": 1,
+                              "CFrame": [
+                                0, 0, 0,
+                                1, 0, 0,
+                                0, 1, 0,
+                                0, 0, 1
+                              ],
+                              "Children": [],
+                              "EasingDirection": "In"
+                            }
+                          ],
+                          "EasingDirection": "In"
+                        },
+                        {
+                          "EasingStyle": "Linear",
+                          "Name": "Head_2",
+                          "Weight": 1,
+                          "CFrame": [
+                            0, 0, 0,
+                            1, 0, 0,
+                            0, 0.9042246341705322, 0.427057147026062,
+                            0, -0.427057147026062, 0.9042246341705322
+                          ],
+                          "Children": [],
+                          "EasingDirection": "In"
+                        },
+                        {
+                          "EasingStyle": "Linear",
+                          "Name": "UpperArm.R_8",
+                          "Weight": 1,
+                          "CFrame": [
+                            0, -0.01603051647543907, -0.24411806464195252,
+                            1, 0, 0,
+                            0, 0.6926113367080689, -0.7213110327720642,
+                            0, 0.7213110327720642, 0.6926113367080689
+                          ],
+                          "Children": [
+                            {
+                              "EasingStyle": "Linear",
+                              "Name": "LowerArm.R_6",
+                              "Weight": 1,
+                              "CFrame": [
+                                0, 0, 0,
+                                1, 0, 0,
+                                0, 1, 0,
+                                0, 0, 1
+                              ],
+                              "Children": [
+                                {
+                                  "EasingStyle": "Linear",
+                                  "Name": "Hand.R_4",
+                                  "Weight": 1,
+                                  "CFrame": [
+                                    0, 0, 0,
+                                    1, 0, 0,
+                                    0, 1, 0,
+                                    0, 0, 1
+                                  ],
+                                  "Children": [],
+                                  "EasingDirection": "In"
+                                }
+                              ],
+                              "EasingDirection": "In"
+                            }
+                          ],
+                          "EasingDirection": "In"
+                        }
+                      ],
+                      "EasingDirection": "In"
+                    },
+                    {
+                      "EasingStyle": "Linear",
+                      "Name": "UpperLeg.L_24",
+                      "Weight": 1,
+                      "CFrame": [
+                        0, 0, 0,
+                        1, 0, 0,
+                        0, 0.9968069791793823, 0.07984881103038788,
+                        0, -0.07984881103038788, 0.9968069791793823
+                      ],
+                      "Children": [
+                        {
+                          "EasingStyle": "Linear",
+                          "Name": "LowerLeg.L_22",
+                          "Weight": 1,
+                          "CFrame": [
+                            0, 0, 0,
+                            1, 0, 0,
+                            0, 0.6203613877296448, 0.7843160629272461,
+                            0, -0.7843160629272461, 0.6203613877296448
+                          ],
+                          "Children": [],
+                          "EasingDirection": "In"
+                        }
+                      ],
+                      "EasingDirection": "In"
+                    }
+                  ],
+                  "EasingDirection": "In"
+                }
+              ],
+              "EasingDirection": "In"
+            }
+          ],
+          "EasingDirection": "In"
+        }
+      ],
+      "Name": "Keyframe",
+      "Time": 0
+    },
+    {
+      "Poses": [
+        {
+          "EasingStyle": "Linear",
+          "Name": "RootPart",
+          "Weight": 0,
+          "CFrame": [
+            0, 0, 0,
+            1, 0, 0,
+            0, 1, 0,
+            0, 0, 1
+          ],
+          "Children": [
+            {
+              "EasingStyle": "Linear",
+              "Name": "GLTF_created_0_rootJoint",
+              "Weight": 1,
+              "CFrame": [
+                0, -1.0958898067474366, 0,
+                1, 0, 0,
+                0, 1, 0,
+                0, 0, 1
+              ],
+              "Children": [
+                {
+                  "EasingStyle": "Linear",
+                  "Name": "LowerTorso_26",
+                  "Weight": 1,
+                  "CFrame": [
+                    0, 0, 0,
+                    1, 0, 0,
+                    0, 0.9495197534561157, 0.3137072026729584,
+                    0, -0.3137072026729584, 0.9495197534561157
+                  ],
+                  "Children": [
+                    {
+                      "EasingStyle": "Linear",
+                      "Name": "UpperLeg.R_20",
+                      "Weight": 1,
+                      "CFrame": [
+                        0, 0, 0,
+                        1, 0, 0,
+                        0, 0.8917078971862793, 0.4526113271713257,
+                        0, -0.4526113271713257, 0.8917078971862793
+                      ],
+                      "Children": [
+                        {
+                          "EasingStyle": "Linear",
+                          "Name": "LowerLeg.R_18",
+                          "Weight": 1,
+                          "CFrame": [
+                            0, 0, 0,
+                            0.9876761436462402, -0.04283453896641731, 0.15053586661815644,
+                            -0.10000881552696228, 0.5671237111091614, 0.8175382614135742,
+                            -0.12039132416248322, -0.8225178718566895, 0.5558508038520813
+                          ],
+                          "Children": [],
+                          "EasingDirection": "In"
+                        }
+                      ],
+                      "EasingDirection": "In"
+                    },
+                    {
+                      "EasingStyle": "Linear",
+                      "Name": "UpperLeg.L_24",
+                      "Weight": 1,
+                      "CFrame": [
+                        0, 0, 0,
+                        1, 0, 0,
+                        0, 0.9978596568107605, 0.06539221853017807,
+                        0, -0.06539221853017807, 0.9978596568107605
+                      ],
+                      "Children": [
+                        {
+                          "EasingStyle": "Linear",
+                          "Name": "LowerLeg.L_22",
+                          "Weight": 1,
+                          "CFrame": [
+                            0, 0, 0,
+                            1, 0, 0,
+                            0, 0.6203613877296448, 0.7843160629272461,
+                            0, -0.7843160629272461, 0.6203613877292461
+                          ],
+                          "Children": [],
+                          "EasingDirection": "In"
+                        }
+                      ],
+                      "EasingDirection": "In"
+                    },
+                    {
+                      "EasingStyle": "Linear",
+                      "Name": "UpperTorso_16",
+                      "Weight": 1,
+                      "CFrame": [
+                        0, 0, 0,
+                        1, 0, 0,
+                        0, 0.9650789499282837, 0.2619592547416687,
+                        0, -0.2619592547416687, 0.9650789499282837
+                      ],
+                      "Children": [
+                        {
+                          "EasingStyle": "Linear",
+                          "Name": "UpperArm.L_14",
+                          "Weight": 1,
+                          "CFrame": [
+                            -0.039286185055971149, 0.05626380443572998, -0.3183995187282562,
+                            0.9921551942825317, 0.11272861063480377, 0.05404062941670418,
+                            -0.011617962270975113, 0.5135560035705566, -0.8579773902893066,
+                            -0.1244715005159378, 0.850618839263916, 0.5108369588851929
+                          ],
+                          "Children": [
+                            {
+                              "EasingStyle": "Linear",
+                              "Name": "LowerArm.L_12",
+                              "Weight": 1,
+                              "CFrame": [
+                                0, 0, 0,
+                                1, 0, 0,
+                                0, 1, 0,
+                                0, 0, 1
+                              ],
+                              "Children": [],
+                              "EasingDirection": "In"
+                            }
+                          ],
+                          "EasingDirection": "In"
+                        },
+                        {
+                          "EasingStyle": "Linear",
+                          "Name": "Head_2",
+                          "Weight": 1,
+                          "CFrame": [
+                            0, 0, 0,
+                            1, 0, 0,
+                            0, 0.9093708395957947, 0.41598638892173769,
+                            0, -0.41598638892173769, 0.9093708395957947
+                          ],
+                          "Children": [],
+                          "EasingDirection": "In"
+                        },
+                        {
+                          "EasingStyle": "Linear",
+                          "Name": "UpperArm.R_8",
+                          "Weight": 1,
+                          "CFrame": [
+                            0, -0.01603051647543907, -0.24411806464195252,
+                            1, 0, 0,
+                            0, 0.7084616422653198, -0.7057493925094605,
+                            0, 0.7057493925094605, 0.7084616422653198
+                          ],
+                          "Children": [
+                            {
+                              "EasingStyle": "Linear",
+                              "Name": "LowerArm.R_6",
+                              "Weight": 1,
+                              "CFrame": [
+                                0, 0, 0,
+                                1, 0, 0,
+                                0, 1, 0,
+                                0, 0, 1
+                              ],
+                              "Children": [
+                                {
+                                  "EasingStyle": "Linear",
+                                  "Name": "Hand.R_4",
+                                  "Weight": 1,
+                                  "CFrame": [
+                                    0, 0, 0,
+                                    1, 0, 0,
+                                    0, 1, 0,
+                                    0, 0, 1
+                                  ],
+                                  "Children": [],
+                                  "EasingDirection": "In"
+                                }
+                              ],
+                              "EasingDirection": "In"
+                            }
+                          ],
+                          "EasingDirection": "In"
+                        }
+                      ],
+                      "EasingDirection": "In"
+                    }
+                  ],
+                  "EasingDirection": "In"
+                }
+              ],
+              "EasingDirection": "In"
+            }
+          ],
+          "EasingDirection": "In"
+        }
+      ],
+      "Name": "Keyframe",
+      "Time": 1.4666666984558106
+    }
+  ],
+  "Loop": true,
+  "Name": "fall",
+  "Priority": "Action"
+}
