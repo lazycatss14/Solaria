@@ -1,8 +1,8 @@
-﻿{
+{
   "name": "solaria-game-server",
   "version": "1.0.0",
   "private": true,
-  "description": "Solaria real-time multiplayer game server",
+  "description": "Solaria multiplayer WebSocket server",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

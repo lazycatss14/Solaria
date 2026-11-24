@@ -11,6 +11,7 @@
 #include <sstream>
 #include <regex>
 #include <fstream>
+#include <cstdlib>
 
 namespace
 {
@@ -55,6 +56,73 @@ static void NetworkLog(const std::string& message)
         return "{\"type\":\"hello\",\"name\":\"" + EscapeJson(name) +
                "\",\"room\":\"" + EscapeJson(room) + "\"}";
     }
+
+    struct ServerAddress
+    {
+        std::wstring host;
+        std::wstring path;
+        INTERNET_PORT port = 80;
+        bool secure = false;
+        bool valid = false;
+    };
+
+    static std::wstring Utf8ToWide(const std::string& value)
+    {
+        if (value.empty()) return {};
+        int count = MultiByteToWideChar(CP_UTF8, 0, value.c_str(), -1, nullptr, 0);
+        if (count <= 0) return {};
+        std::wstring result(static_cast<size_t>(count), L'\0');
+        MultiByteToWideChar(CP_UTF8, 0, value.c_str(), -1, result.data(), count);
+        if (!result.empty() && result.back() == L'\0') result.pop_back();
+        return result;
+    }
+
+    static ServerAddress ParseServerAddress(const std::string& url)
+    {
+        ServerAddress result;
+        const std::string securePrefix = "wss://";
+        const std::string plainPrefix = "ws://";
+        size_t start = 0;
+
+        if (url.rfind(securePrefix, 0) == 0)
+        {
+            result.secure = true;
+            result.port = 443;
+            start = securePrefix.size();
+        }
+        else if (url.rfind(plainPrefix, 0) == 0)
+        {
+            result.port = 80;
+            start = plainPrefix.size();
+        }
+        else return result;
+
+        size_t pathStart = url.find('/', start);
+        std::string authority = url.substr(start,
+            pathStart == std::string::npos ? std::string::npos : pathStart - start);
+        std::string path = pathStart == std::string::npos ? "/" : url.substr(pathStart);
+
+        if (authority.empty()) return result;
+
+        size_t colon = authority.rfind(':');
+        if (colon != std::string::npos)
+        {
+            std::string portText = authority.substr(colon + 1);
+            if (portText.empty()) return result;
+            char* end = nullptr;
+            long parsedPort = std::strtol(portText.c_str(), &end, 10);
+            if (!end || *end != '\0' || parsedPort < 1 || parsedPort > 65535)
+                return result;
+            result.port = static_cast<INTERNET_PORT>(parsedPort);
+            authority.resize(colon);
+        }
+
+        result.host = Utf8ToWide(authority);
+        result.path = Utf8ToWide(path);
+        result.valid = !result.host.empty() && !result.path.empty();
+        return result;
+    }
+
 }
 
 GameNetwork::GameNetwork()
@@ -266,13 +334,27 @@ void GameNetwork::Run()
         return;
     }
 
+    const char* configuredUrl = std::getenv("SOLARIA_SERVER_URL");
+    const std::string serverUrl = configuredUrl ? configuredUrl : "ws://127.0.0.1:8787/";
+    const ServerAddress address = ParseServerAddress(serverUrl);
+
+    if (!address.valid)
+    {
+        NetworkLog("Invalid SOLARIA_SERVER_URL. Use ws:// or wss://.");
+        WinHttpCloseHandle(session);
+        m_running = false;
+        return;
+    }
+
+    NetworkLog("Connecting to " + serverUrl);
     HINTERNET connection = WinHttpConnect(
-        session, L"127.0.0.1", 8787, 0);
+        session, address.host.c_str(), address.port, 0);
 
     HINTERNET request = connection
-        ? WinHttpOpenRequest(connection, L"GET", L"/",
+        ? WinHttpOpenRequest(connection, L"GET", address.path.c_str(),
             nullptr, WINHTTP_NO_REFERER,
-            WINHTTP_DEFAULT_ACCEPT_TYPES, 0)
+            WINHTTP_DEFAULT_ACCEPT_TYPES,
+            address.secure ? WINHTTP_FLAG_SECURE : 0)
         : nullptr;
 
     if (!request)

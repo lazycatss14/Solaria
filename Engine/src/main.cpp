@@ -258,11 +258,8 @@ int main(int argc, char* argv[])
     MultiplayerHUD multiplayerHUD;
 
 
-    if (testMode)
-    {
-        TraceLog(LOG_INFO, "TEST MODE: Joining as Player 1");
-        network.Start(localPlayerName, "main");
-    }
+    TraceLog(LOG_INFO, "Starting Solaria multiplayer connection...");
+    network.Start(localPlayerName, "main");
 
     int keyForward = KEY_W;
     int keyBackward = KEY_S;
@@ -340,14 +337,29 @@ int main(int argc, char* argv[])
 
             game.Update(engine.GetCameraYaw());
 
-            if (testMode)
-            {
-                Vector3 position = game.GetPlayerPosition();
-                network.SendUpdate(position.x, position.y, position.z, engine.GetCameraYaw());
-            }
+            Vector3 position = game.GetPlayerPosition();
+            network.SendUpdate(position.x, position.y, position.z, engine.GetCameraYaw());
 
             BeginMode3D(engine.GetCamera());
             game.Render(engine.IsFirstPerson());
+
+            // Draw simple network avatars for other connected players.
+            const std::string localNetworkId = network.GetPlayerId();
+            const std::vector<SolariaNetPlayer> remotePlayers = network.GetPlayers();
+
+            for (const SolariaNetPlayer& remote : remotePlayers)
+            {
+                if (remote.id.empty() || remote.id == localNetworkId)
+                    continue;
+
+                Vector3 bodyPosition = { remote.x, remote.y + 1.15f, remote.z };
+                Vector3 headPosition = { remote.x, remote.y + 2.15f, remote.z };
+
+                DrawCube(bodyPosition, 0.85f, 1.25f, 0.45f,
+                    Color{ 70, 145, 235, 255 });
+                DrawCubeWires(bodyPosition, 0.85f, 1.25f, 0.45f, DARKBLUE);
+                DrawSphere(headPosition, 0.38f, Color{ 255, 214, 160, 255 });
+            }
             EndMode3D();
 
             // Project the local player's head position into screen space.
@@ -381,6 +393,33 @@ int main(int argc, char* argv[])
                     16,
                     WHITE
                 );
+            }
+
+            // Draw names above remote players.
+            for (const SolariaNetPlayer& remote : network.GetPlayers())
+            {
+                if (remote.id.empty() || remote.id == network.GetPlayerId())
+                    continue;
+
+                Vector3 remoteNamePosition = { remote.x, remote.y + 2.65f, remote.z };
+                Vector2 remoteScreenPosition = GetWorldToScreen(
+                    remoteNamePosition, engine.GetCamera());
+
+                if (remoteScreenPosition.x >= 0.0f &&
+                    remoteScreenPosition.x <= (float)GetScreenWidth() &&
+                    remoteScreenPosition.y >= 0.0f &&
+                    remoteScreenPosition.y <= (float)GetScreenHeight())
+                {
+                    const int remoteNameWidth = MeasureText(remote.name.c_str(), 15);
+                    DrawRectangleRounded(
+                        Rectangle{ remoteScreenPosition.x - remoteNameWidth * 0.5f - 7.0f,
+                                   remoteScreenPosition.y - 3.0f,
+                                   (float)remoteNameWidth + 14.0f, 22.0f },
+                        0.25f, 6, Color{ 0, 66, 130, 210 });
+                    DrawText(remote.name.c_str(),
+                        (int)(remoteScreenPosition.x - remoteNameWidth * 0.5f),
+                        (int)remoteScreenPosition.y, 15, WHITE);
+                }
             }
 
             Rectangle statusPanel = {
